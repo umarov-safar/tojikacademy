@@ -5,6 +5,10 @@
 ### Changed:
 ### Fixed:
 
+##[1.6.0]
+### Added
+- Installed Backpack\FileManager
+
 ##[1.5.0]
 ### Added
 - Installed Backpack\NewsCrud
