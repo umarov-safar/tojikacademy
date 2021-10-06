@@ -7,8 +7,12 @@
 
 [1.1.0]
 ### Added
-Installed backpack
+- Installed Backpack\PermissionManager
+
+[1.1.0]
+### Added
+- Installed backpack
 
 [1.0.0]
 ### Added
-Installed laravel
+- Installed laravel
