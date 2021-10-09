@@ -5,6 +5,18 @@
 ### Changed:
 ### Fixed:
 
+##[1.8.0]
+### Added
+- Created question adn category question crud in admin
+
+##[1.7.0]
+### Added
+- Created command console for making dto and service classes
+```
+    php artisan make:dto NameDto
+    php artisan make:service NameService
+```
+
 ##[1.6.0]
 ### Added
 - Installed Backpack\FileManager
