@@ -3,14 +3,11 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Backpack\NewsCRUD\app\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use phpDocumentor\Reflection\Types\This;
-use function Symfony\Component\Translation\t;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class Question extends Model
+class Answer extends Model
 {
     use CrudTrait;
 
@@ -20,7 +17,7 @@ class Question extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'questions';
+    protected $table = 'answers';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -40,20 +37,21 @@ class Question extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function category() : BelongsTo
-    {
-        return $this->belongsTo(QuestionCategory::class, 'question_category_id', 'id');
-    }
+    /***
+     * @return BelongsTo
+     */
 
     public function user() : BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
-
-    public function answers() : MorphMany
+    /***
+     * @return BelongsTo
+     */
+    public function question() : BelongsTo
     {
-        return $this->morphMany(Answer::class, 'answerable');
+        return $this->belongsTo(Question::class);
     }
 
     /*
@@ -73,16 +71,4 @@ class Question extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-
-    public function setImageAttribute($value)
-    {
-        $attribute_name = "image";
-        $disk = "public";
-        $destination_path = "questions/test/";
-
-        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
-
-        return $this->attributes[$attribute_name] = $value;
-    }
-
 }

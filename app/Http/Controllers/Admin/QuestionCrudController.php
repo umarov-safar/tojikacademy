@@ -227,7 +227,7 @@ class QuestionCrudController extends CrudController
                 'label' => 'Саволгузор',
                 'attribute' => 'name',
                 'entity'   => 'user',
-                'data_source' => url('/api/question/user'),
+                'data_source' => url('/api/user/search'),
                 'placeholder'  => 'Саволдиҳандаро интихоб кунед ...',
                 'minimum_input_length' => 1,
             ]

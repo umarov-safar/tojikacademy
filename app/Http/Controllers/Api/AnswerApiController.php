@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Answer;
 use Illuminate\Http\Request;
 
-class UserApiController extends Controller
+class AnswerApiController extends Controller
 {
 
     public function search(Request $request)
@@ -16,7 +16,7 @@ class UserApiController extends Controller
 
         //if not empty
         if($search_query) {
-           return User::select('name', 'id')->where('name', 'LIKE', '%' . $search_query . '%')->paginate(10);
+            return Answer::select('answer', 'id', 'parent_id')->where('answer', 'LIKE', '%' . $search_query . '%')->paginate(10);
         }
     }
 }

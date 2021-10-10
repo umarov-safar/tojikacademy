@@ -18,6 +18,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('question/user', [\App\Http\Controllers\Api\UserApiController::class, 'index']);
+
+
+//from backpack admin panel
+Route::get('/user/search', [\App\Http\Controllers\Api\UserApiController::class, 'search']);
+Route::get('/question/search', [\App\Http\Controllers\Api\QuestionApiController::class, 'search']);
+Route::get('answer/search', [\App\Http\Controllers\Api\AnswerApiController::class, 'search']);
 
 
