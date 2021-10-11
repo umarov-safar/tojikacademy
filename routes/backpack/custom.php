@@ -19,4 +19,7 @@ Route::group([
     Route::crud('question-category', 'QuestionCategoryCrudController');
 
     Route::crud('answer', 'AnswerCrudController');
+    Route::crud('english', 'EnglishCrudController');
+    Route::crud('language-category', 'LanguageCategoryCrudController');
+    Route::crud('russian', 'RussianCrudController');
 }); // this should be the absolute last line of this file

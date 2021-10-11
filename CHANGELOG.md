@@ -5,6 +5,10 @@
 ### Changed:
 ### Fixed:
 
+## [1.10.0]- 12-10-2021
+### Added
+- Created english and russian translates lessons
+
 ## [1.9.0]- 08-10-2021
 ### Added
 - Created answer crud but `not complete`
