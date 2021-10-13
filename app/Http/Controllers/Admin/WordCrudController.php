@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Dtos\RussianDto;
-use App\Http\Requests\RussianRequest;
-use App\Services\RussianService;
+use App\Dtos\WordDto;
+use App\Http\Requests\WordRequest;
+use App\Services\WordService;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Prologue\Alerts\Facades\Alert;
 
 /**
- * Class RussianCrudController
+ * Class WordCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class RussianCrudController extends CrudController
+class WordCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation {store as traitStore;}
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
-     * @var RussianService
+     * @var WordService
      */
-    protected $russianService;
+    protected $wordService;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -34,11 +34,11 @@ class RussianCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Russian::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/russian');
-        CRUD::setEntityNameStrings('russian', 'russians');
+        CRUD::setModel(\App\Models\Word::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/word');
+        CRUD::setEntityNameStrings('word', 'words');
 
-        $this->russianService = new RussianService();
+        $this->wordService = new WordService();
     }
 
     /**
@@ -51,6 +51,9 @@ class RussianCrudController extends CrudController
     {
         CRUD::setFromDb(); // columns
 
+        CRUD::removeColumn('category_id');
+
+        CRUD::addColumn('category');
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -66,7 +69,7 @@ class RussianCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(RussianRequest::class);
+        CRUD::setValidation(WordRequest::class);
 
         CRUD::setFromDb(); // fields
 
@@ -91,64 +94,65 @@ class RussianCrudController extends CrudController
         $this->setupCreateOperation();
     }
 
+    /**
+     * Storing word by dto
+     * @return array|\Illuminate\Http\Response|void
+     */
     public function store()
     {
         $this->crud->setRequest($this->crud->validateRequest());
-        $request =  $this->crud->getRequest();
+        $request = $this->crud->getRequest();
 
-        $dto = new RussianDto(
-            $request->sentence,
+        $dto = new WordDto(
+            $request->word,
             $request->translate1,
             $request->translate2,
-            $request->translate3,
             $request->category
         );
 
-        $russian = $this->russianService->store($dto);
+        $word = $this->wordService->store($dto);
 
-        if(!$russian) {
+        if(!$word) {
 
-            Alert::error("Ибора сохта нашуд бо кадом мушкилие!")->flash();
+            Alert::error("Луғат сохта нашуд!")->flash();
 
         } else {
 
-            Alert::success("Ибора сохта шуд!")->flash();
+            Alert::success("Луғат бо муваффақона сохта шуд!")->flash();
 
             $this->crud->setSaveAction();
 
-            return $this->crud->performSaveAction($russian->getKey());
+            return $this->crud->performSaveAction($word->getKey());
         }
     }
+
 
     public function update()
     {
         $this->crud->setRequest($this->crud->validateRequest());
-        $request =  $this->crud->getRequest();
+        $request = $this->crud->getRequest();
 
-        $dto = new RussianDto(
-            $request->sentence,
+        $dto = new WordDto(
+            $request->word,
             $request->translate1,
             $request->translate2,
-            $request->translate3,
             $request->category
         );
 
+        $word = $this->wordService->update($dto, $request->id);
 
-        $russian = $this->russianService->update($dto, $request->id);
+        if(!$word) {
 
-        if(!$russian) {
-
-            Alert::error("Ибора тағир дода нашуд бо кадом мушкилие!")->flash();
+            Alert::error("Луғат тағир дода нашуд!")->flash();
 
         } else {
 
-            Alert::success("Ибора тағир дода шуд!")->flash();
+            Alert::success("Луғат тағир дода шуд!")->flash();
 
             $this->crud->setSaveAction();
 
-            return $this->crud->performSaveAction($russian->getKey());
+            return $this->crud->performSaveAction($word->getKey());
         }
-
-
     }
+
 }

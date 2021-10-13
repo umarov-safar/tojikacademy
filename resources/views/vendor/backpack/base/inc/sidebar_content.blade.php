@@ -32,11 +32,13 @@
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-newspaper-o"></i>Languages</a>
     <ul class="nav-dropdown-items">
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('word') }}'><i class='nav-icon la la-question'></i> Words</a></li>
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('russian') }}'><i class='nav-icon la la-question'></i> Russians</a></li>
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('english') }}'><i class='nav-icon la la-question'></i> Englishes</a></li>
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('language-category') }}'><i class='nav-icon la la-question'></i> Language categories</a></li>
     </ul>
 </li>
+
 
 
 

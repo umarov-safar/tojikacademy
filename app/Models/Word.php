@@ -5,9 +5,8 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Russian extends Model
+class Word extends Model
 {
     use CrudTrait;
 
@@ -17,7 +16,7 @@ class Russian extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'russian';
+    protected $table = 'words';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -37,14 +36,10 @@ class Russian extends Model
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * @return BelongsTo
-     */
     public function category() : BelongsTo
     {
         return $this->belongsTo(LanguageCategory::class);
     }
-
     /*
     |--------------------------------------------------------------------------
     | SCOPES

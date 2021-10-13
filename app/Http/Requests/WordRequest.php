@@ -5,9 +5,8 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RussianRequest extends FormRequest
+class WordRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -27,9 +26,9 @@ class RussianRequest extends FormRequest
     public function rules()
     {
         return [
-            'sentence' => 'required|unique:russian,sentence|min:5|max:255',
-            'translate1' =>  'required',
-            'category'  => 'required|exists:language_categories,id',
+            'word' => 'required',
+            'translate1' => 'required',
+
         ];
     }
 
@@ -53,12 +52,8 @@ class RussianRequest extends FormRequest
     public function messages()
     {
         return [
-            'sentence.required' => 'Ибораро нависед',
-            'sentence.unique' => 'Инхел ибора вуҷуд дорад',
-            'sentence.min' => 'Ибора бояд аз 5 ҳарф зиёд бошад',
-            'translate1.required' => 'Тарҷумаро нависед',
-            'category.required' => 'Категорияро итихоб кунед',
-            'category.exists' => 'Категория бояд дар таблитцаи категория вуҷуд дошта бошад'
+            'word.required' => 'Луғатро нависед',
+            'translate1.required' => 'Тарҷумаро нависед'
         ];
     }
 }

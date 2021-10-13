@@ -5,6 +5,15 @@
 ### Changed:
 ### Fixed:
 
+## [1.11.0]- 14-10-2021
+### Added
+- Created word crud
+
+
+## [1.10.1]- 12-10-2021
+### Fixed
+- Changed `public` to `protected` in `dto` class
+
 ## [1.10.0]- 12-10-2021
 ### Added
 - Created english and russian translates lessons
