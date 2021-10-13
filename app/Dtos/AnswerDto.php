@@ -7,27 +7,28 @@ class AnswerDto {
     /***
      * @var string $body
      */
-    public  $body;
+    protected  $body;
 
     /***
      * @var  string|null $image
      */
-    public $image;
+    protected $image;
 
     /***
      * @var int $user_id
      */
-    public $user_id;
+    protected $user_id;
 
     /***
      * @var int|null $question_id
      */
-    public $question_id;
+    protected $question_id;
 
     /***
      * @var int|null $parent_id
      */
-    public $parent_id;
+    protected $parent_id;
+
 
     public function __construct(
         string $body,
@@ -83,7 +84,6 @@ class AnswerDto {
     {
         return $this->parent_id;
     }
-
 
 
 

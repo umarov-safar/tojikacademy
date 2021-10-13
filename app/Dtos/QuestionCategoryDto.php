@@ -7,13 +7,13 @@ class QuestionCategoryDto {
     /***
      * @var string $name
      */
-    public $name;
+    protected $name;
 
 
     /***
      * @var string $slug
      */
-    public $slug;
+    protected $slug;
 
 
 

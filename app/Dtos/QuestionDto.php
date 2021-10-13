@@ -7,27 +7,27 @@ class QuestionDto {
     /**
      * @var  string $title
     */
-    public $title;
+    protected $title;
 
     /**
      * @var string|null $body
      */
-    public $body;
+    protected $body;
 
     /**
      * @var string|null $image
     */
-    public $image;
+    protected $image;
 
     /**
      * @var int $user_id
     */
-    public $user_id;
+    protected $user_id;
 
     /**
      * @var int $question_category_id
     */
-    public $question_category_id;
+    protected $question_category_id;
 
 
 
@@ -47,29 +47,45 @@ class QuestionDto {
 
     }
 
-
-    public function getTitle() : string
+    /**
+     * @return string
+     */
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function getBody() : ?string
+    /**
+     * @return string|null
+     */
+    public function getBody(): ?string
     {
-       return $this->body;
+        return $this->body;
     }
 
-    public function getImage() : ?string
+    /**
+     * @return string|null
+     */
+    public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function getUserId() : int
+    /**
+     * @return int
+     */
+    public function getUserId(): int
     {
         return $this->user_id;
     }
 
-    public function getQuestionCategoryId() : int
+    /**
+     * @return int
+     */
+    public function getQuestionCategoryId(): int
     {
         return $this->question_category_id;
     }
+
+
 }

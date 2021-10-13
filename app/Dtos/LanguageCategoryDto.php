@@ -7,17 +7,17 @@ class LanguageCategoryDto {
     /**
      * @var string $name
      */
-    public $name;
+    protected $name;
 
     /**
      * @var string $slug
      */
-    public $slug;
+    protected $slug;
 
     /**
      * @var int|null $parent
      */
-    public $parent_id;
+    protected $parent_id;
 
 
 

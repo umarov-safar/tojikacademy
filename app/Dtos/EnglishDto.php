@@ -7,23 +7,22 @@ class EnglishDto {
     /**
      * @var string $sentence
      */
-    public $sentence;
+    protected $sentence;
 
     /**
      * @var  string $translate1
      */
-    public $translate1;
+    protected $translate1;
 
     /**
      * @var string|null
      */
-    public $translate2;
+    protected $translate2;
 
     /**
      * @var int $category_id
      */
-    public $category_id;
-
+    protected $category_id;
 
 
     public function __construct(
@@ -71,6 +70,7 @@ class EnglishDto {
     {
         return $this->category_id;
     }
+
 
 
 
