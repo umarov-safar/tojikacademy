@@ -38,7 +38,12 @@
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('language-category') }}'><i class='nav-icon la la-question'></i> Language categories</a></li>
     </ul>
 </li>
-
-
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-newspaper-o"></i>Quizzes</a>
+    <ul class="nav-dropdown-items">
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('quiz') }}'><i class='nav-icon la la-question'></i> Quizzes</a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('quiz-category') }}'><i class='nav-icon la la-question'></i> Quiz categories</a></li>
+    </ul>
+</li>
 
 

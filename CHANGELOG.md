@@ -1,14 +1,19 @@
-# Changelog
+#Changelog
 [version]
-## Unreleased
+## Unreleased:
 ### Added:
 ### Changed:
 ### Fixed:
 
+
+## [1.12.0]- 18-10-2021
+### Added
+- Quiz crud
+
+
 ## [1.11.0]- 14-10-2021
 ### Added
 - Created word crud
-
 
 ## [1.10.1]- 12-10-2021
 ### Fixed
