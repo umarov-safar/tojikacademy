@@ -5,6 +5,9 @@
 ### Changed:
 ### Fixed:
 
+## [1.14.0]- 19-10-2021
+### Added
+- Via laravel-mix added important libraries
 
 ## [1.13.0]- 18-10-2021
 ### Added

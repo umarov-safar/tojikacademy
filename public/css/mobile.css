@@ -1,0 +1,240 @@
+/* for finding the blade`s  page styles you can search
+like this "home page, register page, question page etc"
+ */
+
+/*media 1280*/
+@media (max-width: 1280px) {
+    /* home page */
+    section.home > .opacity .container  h1 {
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+
+    section.home > .container  h3 {
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+    }
+
+    /*register page in 1280*/
+    #register .content{
+        width: 80% !important;
+    }
+
+
+}
+
+
+/*media 1200*/
+@media (max-width: 1200px) {
+     /* menu */
+    .nav-menu{
+        display: none !important;
+    }
+
+    .main-link{
+        justify-content: center;
+    }
+
+    #bar{
+        display: block;
+        font-size: 30px !important;
+    }
+}
+
+
+/*media 1080*/
+@media (max-width: 1080px) {
+    .mobile-menu{
+        width: 50% !important;
+    }
+}
+
+/*media 920*/
+@media (max-width: 920px) {
+    /* home page */
+    section.home >  .opacity .container p{
+        font-size: 20px;
+        line-height: 2rem;
+    }
+
+    section  .opacity h2{
+        border-bottom: 2px solid var(--main-color-text);
+    }
+
+    .clients-sey .content .told{
+        width: 30% !important;
+    }
+
+    .articles .content .article{
+        max-width: 50% !important;
+    }
+
+    /* english page */
+    .english .desc{
+        font-size: 17px;
+        max-width: unset !important;
+        padding: 15px !important;
+    }
+
+    /* question page */
+    .question-page .question .question-img img{
+        max-width:100%;
+    }
+
+    /* menu */
+    .header .main-link{
+        width: 95% !important;
+    }
+
+    .mobile-menu{
+        width: 60% !important;
+    }
+}
+
+
+/*media 842*/
+@media (max-width: 842px) {
+    * p{
+        font-size: 15px;
+    }
+
+    /* app page */
+
+
+    /* home page */
+    section.home .opacity .container{
+        padding: 10px 0;
+    }
+
+    .opacity .scroll {
+        display: none;
+    }
+
+    .home .links .btn-a{
+        margin: 7px 0;
+    }
+    .home .links .btn-a:hover {
+        color: var(--color-link);
+    }
+
+    .home   .opacity p{
+        font-size: 16px;
+    }
+    .home  .opacity h1{
+        line-height: 2rem;
+    }
+
+    .long-cart {
+        flex-wrap: wrap;
+        height: auto !important;
+    }
+
+    .long-cart .text-cart{
+        width: 100% !important;
+
+    }
+    .long-cart .text-cart a.btn-a{
+        margin-top: 18px;
+    }
+
+    .long-cart .block-img{
+        width: 100% !important;
+        height: 100%;
+        margin-top: 10px;
+    }
+
+    /* english page */
+    .showAllAnswer {
+        width: 90%;
+    }
+
+    /*  login form fixed  */
+    #auth-js .form-auth{
+        width: 80%;
+    }
+
+
+}
+
+
+/*media 800*/
+@media (max-width: 800px) {
+    /* home page */
+    .clients-sey .content .told{
+        width: 45% !important;
+    }
+
+    .clients-sey .content .told .name-img{
+        display: block;
+    }
+
+    .articles .content .article{
+        max-width: 100% !important;
+    }
+
+    .question .asked .name-img{
+        font-size: 16px;
+    }
+
+    .question .asked a{
+        font-size: 17px;
+    }
+
+    /* english page | russian page */
+    .learning .content .demo-real,
+    .learning .content .demo-random{
+        min-width: unset;
+        width: 100%;
+    }
+    .learning .content .demo-real  button span.text,
+    .learning .content .demo-random button span.text {
+        padding: 10px;
+    }
+    .learning .content .demo-real,
+    .learning .content .demo-random {
+        min-height: 80px;
+        height: auto;
+    }
+
+    /* register page */
+    #register .content{
+        width: 90% !important;
+    }
+
+}
+
+
+/*media 744*/
+@media (max-width: 744px){
+    /*register page in 744*/
+    #register {
+        width: 100% !important;
+    }
+
+}
+
+/*media 690*/
+@media (max-width: 690px) {
+    /* question page */
+    .question-page .question {
+        padding: 15px 10px !important;
+    }
+
+    .question-page .question-body .title{
+        font-size: 28px;
+    }
+
+    .mobile-menu{
+        width: 80% !important;
+    }
+}
+
+
+/*media 590*/
+@media (max-width: 690px) {
+
+    /*register page in 690*/
+    #register .content{
+        width: 90%;
+    }
+}

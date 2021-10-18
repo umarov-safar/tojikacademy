@@ -11,8 +11,14 @@
     },
     "devDependencies": {
         "axios": "^0.21",
+        "jquery-ui": "^1.13.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.4",
+        "owl.carousel": "^2.3.4",
+        "skrollr": "^0.6.26"
     }
 }
