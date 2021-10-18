@@ -6,6 +6,10 @@
 ### Fixed:
 
 
+## [1.13.0]- 18-10-2021
+### Added
+- Ide-helper was added
+
 ## [1.12.0]- 18-10-2021
 ### Added
 - Quiz crud
@@ -17,7 +21,7 @@
 
 ## [1.10.1]- 12-10-2021
 ### Fixed
-- Changed `public` to `protected` in `dto` class
+- Changed `public` to `protected` in `dto` classes
 
 ## [1.10.0]- 12-10-2021
 ### Added
