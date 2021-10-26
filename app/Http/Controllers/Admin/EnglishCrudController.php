@@ -39,6 +39,8 @@ class EnglishCrudController extends CrudController
         CRUD::setEntityNameStrings('english', 'englishes');
 
         $this->englishService = new EnglishService();
+
+        dd(auth());
     }
 
     /**

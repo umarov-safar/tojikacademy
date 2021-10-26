@@ -34,8 +34,8 @@
                             </a>
                         </div>
                         <nav class="ml-4 nav-menu">
-                            <ul class="d-flex menu-items" >
-                                <li class="catalog-menu ">
+                            <ul class="d-flex menu-items">
+                                <li class="catalog-menu">
                                     <a href="" class="parent-item">Англиси <i class="fas fa-angle-down"></i></a>
                                     <div class="child-items">
                                         <ul class="link-list">
@@ -86,10 +86,11 @@
                         <div class="d-flex align-center justify-center">
                             @auth
                                 <a class="btn-account" href="/account/profile"><i class="far fa-user-circle"></i> <span>{{ auth()->user()->name }}</span></a>
+                                <a class="btn-account p-3 mr-6" href="{{ route('logout') }}"><i class="fas fa-sign-in-alt"></i> </a>
                             @endauth
                             @guest
-                                <a class="btn-account p-3 mr-6" href=""><i class="fas fa-sign-in-alt"></i> </a>
-                                <a class="btn-account p-3 ml-6" href=""><i class="fas fa-user-plus"></i></a>
+                                <a class="btn-account p-3 mr-6" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> </a>
+                                <a class="btn-account p-3 ml-6" href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a>
                             @endguest
                         </div>
                     </nav>

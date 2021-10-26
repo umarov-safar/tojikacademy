@@ -70,4 +70,16 @@ return [
         public_path('storage') => storage_path('app/public'),
     ],
 
+    'image_sizes' => [
+      'users' => [
+          '200x200' => [
+              'w' => 200,
+              'h' => 200
+          ],
+          '1000x900' => [
+              'w' => 1000,
+              'h'=> 900
+          ]
+      ]
+    ],
 ];

@@ -5,6 +5,12 @@
 ### Changed:
 ### Fixed:
 
+
+## [1.15.0]- 26-10-2021
+### Added
+- Registration and login created
+
+
 ## [1.14.0]- 19-10-2021
 ### Added
 - Via laravel-mix added important libraries
