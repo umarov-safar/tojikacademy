@@ -6,14 +6,14 @@ if(!function_exists('upload_image'))
      * @param $file
      * @return string
      */
-    function upload_user_image($file) : string
+    function upload_image($file, $configFolderSize) : string
     {
         $userFolder = 'uploads/users/';
 
         $image = Image::make($file);
 
         //the user's image size in config
-        $sizes = config('filesystems.image_sizes.users');
+        $sizes = config('filesystems.image_sizes.'.$configFolderSize);
 
         //doing image file nice
         $nameAndExtension = explode('.', $file->getClientOriginalName()); // to array converting
@@ -37,4 +37,35 @@ if(!function_exists('upload_image'))
 
         return json_encode($imageSizes);
     }
+
+    //upload image 64 base
+    if(!function_exists('upload_image64')){
+        function upload_image64($content, string $uploadFolder)
+        {
+            $dom = new \DOMDocument();
+            @$dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $imageFiles = $dom->getElementsByTagName('img');
+
+            foreach($imageFiles as $item => $image){
+                $data = $image->getAttribute('src');
+                $exploded = explode(';', $data);
+                if(count($exploded) > 1){
+                    list($type, $data) = $exploded;
+                    list(, $data)      = explode(',', $data);
+
+                    list(, $extension) = explode('/',$type);
+
+                    $imageData = base64_decode($data);
+                    $image_name= "/uploads/$uploadFolder/question". time().$item . '.' . $extension;
+                    $path = public_path($image_name)  ;
+                    file_put_contents($path, $imageData);
+                    $image->removeAttribute('src');
+                    $image->setAttribute('src', $image_name );
+                }
+            }
+            $content = $dom->saveHTML($dom->documentElement);
+            return utf8_decode($content);
+        }
+    }
+
 }

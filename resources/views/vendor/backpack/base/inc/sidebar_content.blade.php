@@ -47,3 +47,5 @@
 </li>
 
 
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('like') }}'><i class='nav-icon la la-question'></i> Likes</a></li>

@@ -31,9 +31,9 @@ class RegisterController extends Controller
     {
 
         //uploading file and get path
-        $avatar = null;
+
         if($request->file('avatar')){
-           $avatar = upload_user_image($request->file('avatar'));
+           $request->avatar = upload_image($request->file('avatar'), 'users');
         }
 
         $request->password = Hash::make($request->password);

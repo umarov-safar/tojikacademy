@@ -7,41 +7,41 @@ class QuestionDto {
     /**
      * @var  string $title
     */
-    protected $title;
+    protected string $title;
 
     /**
      * @var string|null $body
      */
-    protected $body;
+    protected ?string $body;
 
     /**
-     * @var string|null $image
-    */
-    protected $image;
+     * @var string $slug
+     */
+    protected string $slug;
 
     /**
      * @var int $user_id
     */
-    protected $user_id;
+    protected int $user_id;
 
     /**
      * @var int $question_category_id
     */
-    protected $question_category_id;
+    protected int $question_category_id;
 
 
 
     public function __construct(
         string $title,
         ?string $body,
-        ?string $image,
+        string $slug,
         int $user_id,
         int $question_category_id
     )
     {
         $this->title = $title;
         $this->body = $body;
-        $this->image = $image;
+        $this->slug = $slug;
         $this->user_id = $user_id;
         $this->question_category_id = $question_category_id;
 
@@ -64,11 +64,11 @@ class QuestionDto {
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getImage(): ?string
+    public function getSlug(): string
     {
-        return $this->image;
+        return $this->slug;
     }
 
     /**

@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -5,17 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ Session::token() }}">
 
+
     <meta name="keywords" content="@yield('keywords','Омузиши забони руси, омузиши забони англиси, тоҷикистон')">
     <meta name="author" content="@yield('author', 'Баҳромзода Сафарбек')">
     <meta name="description" content="@yield('description', 'Тоҷик Академия шабакаи дарси')">
     <meta name="page-type" content="Blogging">
 
+    <title>@yield('title', 'Тоҷик Академия')</title>
+
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <link rel="stylesheet" href="{{asset('css/mobile.css')}}">
-    @yield('cssfiles')
-    <title>@yield('title', 'Тоҷик Академия')</title>
+    @yield('css')
+
+
+    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('js_head')
 </head>
 
 <body>
@@ -58,11 +66,11 @@
                                     </div>
                                 </li>
                                 <li class="catalog-menu ">
-                                    <a href="" class="parent-item">Савол ва Ҷавоб<i class="fas fa-angle-down"></i></a>
+                                    <a href="#" class="parent-item">Савол ва Ҷавоб<i class="fas fa-angle-down"></i></a>
                                     <div class="child-items">
                                         <ul class="link-list">
-                                            <li class="item"> <a href="">Савол додан</a></li>
-                                            <li class="item"><a href="">Саволҳо</a></li>
+                                            <li class="item"><a href="{{ route('questions.index') }}">Саволҳо</a></li>
+                                            <li class="item"> <a href="{{ route('questions.create') }}">Савол додан</a></li>
                                             <li class="item"><a href="#">Дарсҳо</a></li>
                                             <li class="item"><a href="#">Видеоҳо</a></li>
                                         </ul>
@@ -151,8 +159,8 @@
                             </a>
                             <div class="child-items-mobile">
                                 <ul class="link-list-mobile">
-                                    <li class="item-mobile"><a href="">Саволҳо</a></li>
-                                    <li class="item-mobile"><a href="">Савол пурсидан</a></li>
+                                    <li class="item-mobile"><a href="{{ route('questions.index') }}">Саволҳо</a></li>
+                                    <li class="item-mobile"> <a href="{{ route('questions.create') }}">Савол додан</a></li>
                                     <li class="item-mobile"><a href="">Саволҳо аз англиси</a></li>
                                     <li class="item-mobile"><a href="#">Видеоҳо</a></li>
                                 </ul>
@@ -228,9 +236,8 @@
     </footer>
 </div>
 
-<script src="{{ asset('js/app.js') }}"></script>
 <script src="{{asset('js/main.js')}}"></script>
 
-@yield('jsfiles')
+@yield('js_bottom')
 </body>
 </html>

@@ -81,6 +81,11 @@ like this "home page, register page, question page etc"
         max-width:100%;
     }
 
+    .question #content * img{
+        float: unset !important;
+        width: 100% !important;
+    }
+
     /* menu */
     .header .main-link{
         width: 95% !important;
@@ -236,5 +241,15 @@ like this "home page, register page, question page etc"
     /*register page in 690*/
     #register .content{
         width: 90%;
+    }
+
+    h1{
+        font-size: 26px !important;
+    }
+    h2{
+        font-size: 22px !important;
+    }
+    h3{
+        font-size: 17px !important;
     }
 }

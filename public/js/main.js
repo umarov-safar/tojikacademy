@@ -65,25 +65,3 @@ $('#avatar').change((event) => {
     }
 })
 
-
-
-
-/* like to questions */
-$(document).ready(function() {
-    $('.allow-like').click(function() {
-        let params = $(this).data('param').split('/');
-        let data = {
-            user_id: params[0],
-            question_id: 5
-        }
-
-        $.ajax({
-            url: 'api/like/question',
-            method: "POST",
-            data: data,
-            success:  function(data) {
-                console.log(data)
-            }
-        })
-    })
-})

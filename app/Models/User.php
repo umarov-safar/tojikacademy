@@ -46,4 +46,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * @return null|array
+     */
+    public function imageSizes($size): ?string
+    {
+        if($this->avatar){
+            return json_decode($this->avatar, true)[$size];
+        }
+        return null;
+    }
+
+
+    public function fullName() {
+        return $this->name . ' ' . $this->last_name;
+    }
+
 }

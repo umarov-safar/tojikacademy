@@ -31,7 +31,7 @@ class LoginController extends Controller
        $logged =  Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
        if($logged) {
-           return redirect('/');
+           return redirect()->intended();
        }
 
        return back()->withErrors(['error' => 'Почтаи электрони ё рамз нодуруст аст!']);

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use App\Models\Question;
 use Illuminate\Foundation\Http\FormRequest;
 
 class QuestionRequest extends FormRequest
@@ -15,7 +16,15 @@ class QuestionRequest extends FormRequest
     public function authorize()
     {
         // only allow updates if the user is logged in
-        return backpack_auth()->check();
+        return true;
+    }
+
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+           'slug' => \Str::slug($this->title)
+        ]);
     }
 
     /**
@@ -29,7 +38,7 @@ class QuestionRequest extends FormRequest
         return [
             'title' => 'required|min:5',
             'category' => 'required|exists:question_categories,id',
-            'user_id' => 'required|exists:users,id',
+            'slug' => 'required|unique:questions,user_id,' . auth()->user()->id
         ];
     }
 
@@ -57,9 +66,6 @@ class QuestionRequest extends FormRequest
             'title.min' => 'Савол бояд аз 5 ҳарф зиёд бошад',
             'category.required' => 'Категорияи саволро итихоб кунед',
             'category.exists' => 'Категория ёфт нашуд. Категория дурустро интихоб кунед',
-            'user_id.required' => 'Саволдиҳандаро интихоб кунед',
-            'user_id.exists' => 'Истифода баранда ёфт нашуд',
-            'image.mimes' => 'Формати акc бояд jpg, png, jpeg, gif, svg, webp бошад'
         ];
     }
 }

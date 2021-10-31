@@ -114,7 +114,7 @@ class QuestionCrudController extends CrudController
        $dto = new QuestionDto(
            $request->title,
            $request->body,
-           $request->image,
+           $request->slug,
            $request->user_id,
            $request->category
        );
@@ -153,7 +153,7 @@ class QuestionCrudController extends CrudController
         $dto = new QuestionDto(
             $request->title,
             $request->body,
-            $request->image,
+            $request->slug,
             $request->user_id,
             $request->category
         );
@@ -206,12 +206,12 @@ class QuestionCrudController extends CrudController
 
             ],
             [
-                'name' => 'image',
-                'type' => 'browse',
-                'label' => 'Акс барои савол',
+                'name' => 'slug',
+                'type' => 'text',
+                'label' => 'Slug ссылка',
                 'attributes' => [
-                    'placeholder' => 'Акс барои савол'
-                ]
+                    'placeholder' => 'Адрес ссылка...',
+                ],
             ],
             //relationships
             [

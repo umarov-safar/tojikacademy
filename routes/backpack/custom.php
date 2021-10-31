@@ -25,4 +25,5 @@ Route::group([
     Route::crud('word', 'WordCrudController');
     Route::crud('quiz', 'QuizCrudController');
     Route::crud('quiz-category', 'QuizCategoryCrudController');
+    Route::crud('like', 'LikeCrudController');
 }); // this should be the absolute last line of this file

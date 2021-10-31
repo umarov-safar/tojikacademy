@@ -14,17 +14,14 @@
 html{
     font-size: 1.1rem;
     scroll-behavior: smooth;
+    font-family: 'Roboto', sans-serif;
 }
 
-section.page{
-    padding-top: 20px;
-}
 
-*{
+html, body, p, h1, h2, h3, h4, h5, h6, a, div, input, textarea, section, article, small, strong, footer{
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-    font-family: 'Roboto', sans-serif;
     margin: 0;
     letter-spacing: 1px;
     padding: 0;
@@ -98,9 +95,20 @@ pre{
 
 .like-btn{
     cursor: pointer;
+    padding: 0;
+    border: unset;
+    font-size: 20px;
+    color: #0c5480;
+    background: unset;
 }
 
+.like-count{
+    margin-left: -5px;
+}
 
+.form-like{
+    margin-right: 7px;
+}
 
 /* btn-a */
 .btn-a{
@@ -215,25 +223,25 @@ pre{
     margin: auto;
 }
 .mb-1{
-    margin: 1px;
+    margin-bottom: 1px;
 }
 .mb-1{
-    margin: 1px;
+    margin-bottom: 1px;
 }
 .mb-2{
-    margin: 2px;
+    margin-bottom: 2px;
 }
 .mb-3{
-    margin: 3px;
+    margin-bottom: 3px;
 }
-.mbb-4{
-    margin: 4px;
+.mb-4{
+    margin-bottom: 4px;
 }
 .mb-5{
-    margin: 5px;
+    margin-bottom: 5px;
 }
 .mb-6{
-    margin: 6px;
+    margin-bottom: 6px;
 }
 .mb-7{
     margin: 7px;
@@ -392,7 +400,7 @@ pre{
 }
 
 .green{
-    color: green;
+    color: green !important;
 }
 
 .red{
@@ -429,7 +437,7 @@ pre{
 .form-item{
     text-align: left;
     width: 100%;
-    padding: 10px;
+    padding-bottom: 14px;
 }
 
 .form-item-flex{
@@ -459,7 +467,6 @@ pre{
     border-radius: .25rem;
     transition: border-color .15s ease-in-out;
     outline: none;
-    font-weight: bold;
 }
 
 
@@ -481,6 +488,10 @@ pre{
 }
 
 .inline-block{
+    display: inline-block;
+}
+
+.d-inline-block{
     display: inline-block;
 }
 

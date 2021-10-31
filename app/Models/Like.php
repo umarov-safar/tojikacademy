@@ -2,15 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Traits\QuestionLikeTrait;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-class Question extends Model
+class Like extends Model
 {
-    use CrudTrait, QuestionLikeTrait;
+    use CrudTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -18,9 +15,9 @@ class Question extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'questions';
+    protected $table = 'likes';
     // protected $primaryKey = 'id';
-    // public $timestamps = false;
+    public $timestamps = false;
     protected $guarded = ['id'];
     // protected $fillable = [];
     // protected $hidden = [];
@@ -32,38 +29,15 @@ class Question extends Model
     |--------------------------------------------------------------------------
     */
 
-
-    public function formattedDate(){
-        return $this->created_at->format('d-m-Y H:m');
-    }
-
-
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
 
-    public function category() : BelongsTo
-    {
-        return $this->belongsTo(QuestionCategory::class, 'question_category_id', 'id');
+    public function likeable() {
+        $this->morphTo();
     }
-
-    public function user() : BelongsTo
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
-
-    public function askedByCurrentUser(User $user) : bool
-    {
-        return $this->user->id == $user->id;
-    }
-
-    public function answers() : MorphMany
-    {
-        return $this->morphMany(Answer::class, 'answerable');
-    }
-
 
     /*
     |--------------------------------------------------------------------------
@@ -82,16 +56,4 @@ class Question extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-
-    public function setImageAttribute($value)
-    {
-        $attribute_name = "image";
-        $disk = "public";
-        $destination_path = "questions/test/";
-
-        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
-
-        return $this->attributes[$attribute_name] = $value;
-    }
-
 }

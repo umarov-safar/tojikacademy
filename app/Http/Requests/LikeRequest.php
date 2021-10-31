@@ -4,9 +4,8 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 
-class QuestionCategoryRequest extends FormRequest
+class LikeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,17 +15,7 @@ class QuestionCategoryRequest extends FormRequest
     public function authorize()
     {
         // only allow updates if the user is logged in
-        return backpack_auth()->check();
-    }
-
-    /***
-     * preparing slug
-     */
-    public function prepareForValidation()
-    {
-        $this->merge([
-                'slug' =>  $this->slug ? Str::slug($this->slug) : Str::slug($this->name),
-            ]);
+        return true;
     }
 
     /**
@@ -37,13 +26,9 @@ class QuestionCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'slug' => 'unique:question_categories,slug,'.$this->id,
+            'like_id'
         ];
     }
-
-
-
 
     /**
      * Get the validation attributes that apply to the request.
@@ -53,7 +38,7 @@ class QuestionCategoryRequest extends FormRequest
     public function attributes()
     {
         return [
-
+            //
         ];
     }
 
@@ -65,8 +50,7 @@ class QuestionCategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Категория бо ин ном алайкай вуҷуд дорад',
-            'slug.unique' => 'Номи ягона бо ин ном вуҷуд дорад',
+            //
         ];
     }
 }

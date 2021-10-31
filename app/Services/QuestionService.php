@@ -21,11 +21,12 @@ class QuestionService {
      * @return bool|\App\Models\Question
      */
     public function store(QuestionDto $request) {
+
         $question = new Question();
 
         $question->title = $request->getTitle();
         $question->body = $request->getBody();
-        $question->image = $request->getImage();
+        $question->slug = $request->getSlug();
         $question->user_id = $request->getUserId();
         $question->question_category_id = $request->getQuestionCategoryId();
 
@@ -40,11 +41,10 @@ class QuestionService {
 
     public function update(QuestionDto $request, int $id)
     {
-        $question = Question::find($id);
+        $question = Question::findOrFail($id);
 
         $question->title = $request->getTitle();
         $question->body = $request->getBody();
-        $question->image = $request->getImage();
         $question->user_id = $request->getUserId();
         $question->question_category_id = $request->getQuestionCategoryId();
 

@@ -5,6 +5,14 @@
 ### Changed:
 ### Fixed:
 
+## [1.15.0]- 31-10-2021
+### Added
+- Created question(create,delete, update) 
+- `Like, dislike system`
+- Add summernote editor to question form
+- Removed image field from question and answer table
+- Change some field in  tables
+
 
 ## [1.15.0]- 26-10-2021
 ### Added
