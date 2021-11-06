@@ -15,7 +15,7 @@ class AnswerRequest extends FormRequest
     public function authorize()
     {
         // only allow updates if the user is logged in
-        return backpack_auth()->check();
+        return true;
     }
 
     /**
@@ -26,7 +26,8 @@ class AnswerRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'answer' => 'required|min:2',
+            'parent_id' => 'nullable|exists:answers,parent_id',
         ];
     }
 
@@ -50,7 +51,8 @@ class AnswerRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'answer.required' => 'Ҷавобро нависед!',
+            'answer.min' => 'ҷавоб бояд аз 2 ҳарф зиёд бошад',
         ];
     }
 }

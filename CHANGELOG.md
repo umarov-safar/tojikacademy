@@ -5,7 +5,15 @@
 ### Changed:
 ### Fixed:
 
-## [1.15.0]- 31-10-2021
+## [1.17.0]- 31-10-2021
+### Added
+- Answer to question
+- pagination to question section
+- sing page for questions with own category
+### Fixed
+- menu fixed postion with scroll bar
+
+## [1.16.0]- 31-10-2021
 ### Added
 - Created question(create,delete, update) 
 - `Like, dislike system`

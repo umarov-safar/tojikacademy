@@ -4,7 +4,7 @@ namespace App\Models\Traits;
 
 use App\Models\Like;
 
-trait QuestionLikeTrait
+trait LikeTrait
 {
 
     public function likes() {

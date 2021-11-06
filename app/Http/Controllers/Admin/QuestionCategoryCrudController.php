@@ -75,6 +75,22 @@ class QuestionCategoryCrudController extends CrudController
             ]
         ]);
         $this->crud->addField([
+            'name' => 'description',
+            'type' => 'textarea',
+            'label' => 'Дар бораи категория',
+            'attributes' => [
+                'placeholder' => 'Дар бораи категория ...'
+            ]
+        ]);
+        $this->crud->addField([
+            'name' => 'image',
+            'type' => 'browse',
+            'label' => 'Номи категория',
+            'attributes' => [
+                'placeholder' => 'Номи категория ...'
+            ]
+        ]);
+        $this->crud->addField([
             'name' => 'slug',
             'label' => 'Slug барои категория',
             'hint' => 'Агар slug пуркарда нашавад аз ном сохта мешавад',
@@ -114,6 +130,8 @@ class QuestionCategoryCrudController extends CrudController
         //setting data to dto class
         $dto = new QuestionCategoryDto(
             $request->name,
+            $request->description,
+            $request->image,
             $request->slug,
         );
 
@@ -143,6 +161,8 @@ class QuestionCategoryCrudController extends CrudController
         //setting data to dto class
         $dto = new QuestionCategoryDto(
             $request->name,
+            $request->description,
+            $request->image,
             $request->slug,
         );
 

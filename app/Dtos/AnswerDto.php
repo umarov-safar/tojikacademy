@@ -7,42 +7,35 @@ class AnswerDto {
     /***
      * @var string $body
      */
-    protected  $body;
-
-    /***
-     * @var  string|null $image
-     */
-    protected $image;
+    protected string $body;
 
     /***
      * @var int $user_id
      */
-    protected $user_id;
+    protected int $user_id;
 
     /***
-     * @var int|null $question_id
+     * @var string $answerable_id
      */
-    protected $question_id;
+    protected string $answerable_type;
 
     /***
-     * @var int|null $parent_id
+     * @var int|null $answerable_id
      */
-    protected $parent_id;
+    protected ?int $answerable_id;
 
 
     public function __construct(
         string $body,
-        ?string $image,
         int $user_id,
-        ?int $question_id,
-        ?int $parent_id
+        string $answerable_type,
+        int $answerable_id
     )
     {
         $this->body = $body;
-        $this->image = $image;
         $this->user_id = $user_id;
-        $this->question_id = $question_id;
-        $this->parent_id = $parent_id;
+        $this->answerable_type = $answerable_type;
+        $this->answerable_id = $answerable_id;
     }
 
     /**
@@ -54,14 +47,6 @@ class AnswerDto {
     }
 
     /**
-     * @return string|null
-     */
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    /**
      * @return int
      */
     public function getUserId(): int
@@ -70,20 +55,21 @@ class AnswerDto {
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getQuestionId(): ?int
+    public function getAnswerableType(): string
     {
-        return $this->question_id;
+        return $this->answerable_type;
     }
 
     /**
      * @return int
      */
-    public function getParentId(): ?int
+    public function getAnswerableId(): int
     {
-        return $this->parent_id;
+        return $this->answerable_id;
     }
+
 
 
 

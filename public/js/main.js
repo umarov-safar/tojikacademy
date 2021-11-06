@@ -1,3 +1,11 @@
+$(window).scroll(function () { 
+    let scroll = $(this).scrollTop();
+    if(scroll > 60){
+        $('#desktop-menu').addClass('menu-fixed');
+    } else if(scroll == 0) {
+        $('#desktop-menu').removeClass('menu-fixed');
+    }
+});
 
 //Nav bar menu
 // in desktop

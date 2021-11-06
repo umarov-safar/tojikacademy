@@ -1,39 +1,36 @@
 @extends('layout.app')
 
 @section('content')
-       <div class="questions-page page">
-           <section class="center">
-               <div class="container">
-                   <div class="max-width">
-                     <div class="parent-content">
-                        <div class="content">
-                            <div class="text-question-page">
-                                <p class="fs-22 bold mb-7">Агар саволе дошта бошед дар сайти мо пурсед истифода барандагон ба шумо ҷавоб медиҳанд.</p><br>
-                                <a href="{{route('questions.create')}}" id="ask-question" class="btn-b">Савол додан!</a>
-                            </div>
-                            <br>
-                               <div class="list-category">
-                                    <ul class="list">
-                                        @forelse($categories as $category)
-                                            @if(isset($_GET['category']) && $category->id == $_GET['category'])
-                                                <li class="li-item"><a class="a-item bg-lightblue" href="{{ route('questions.index', ['category' => $category->id]) }}">{{$category->name}}</a></li>
-                                            @else
-                                                <li class="li-item"><a class="a-item" href="{{ route('questions.index', ['category' => $category->id]) }}">{{$category->name}}</a></li>
-                                            @endif
-                                        @empty
-                                            <h1>Аввалин шуда савол гузоред!</h1>
-                                        @endforelse
-                                    </ul>
-                                </div>
-                            </div>
-                     </div>
-                   </div>
-               </div>
-           </section>
-
-        {{--  Questions section  --}}
-           <x-questions-section :questions="$questions"></x-questions-section>
-       </div>
+<div class="questions-page page">
+   <div class="max-width">
+      <div class="d-flex flex-wrap" id="questions-content">
+                <div class="categories">
+                    <ul>
+                       <li><a class="text">Категорияи саволҳо</a></li>
+                       @foreach ($categories as $category)
+                       <li>
+                           <a href="{{ route('question_category', $category->slug) }}">{{ $category->name }}</a>
+                       </li>
+                       @endforeach
+                    </ul>
+                 </div>
+         {{--  Questions section  --}}
+         <div class="questions">
+            <br>
+            <div class="d-flex justify-between content-top">
+                <div class="orders">
+                    <a href="{{ route('questions.index') }}/?orderWith=desc">Саволҳо аз нав</a>
+                    <a href="{{ route('questions.index') }}/?orderWith=asc">Саволҳои аз куҳна</a>
+                    <a href="{{ route('questions.index') }}/?orderWith=month">Саволҳои ин моҳ</a>
+                    <a href="{{ route('questions.index') }}/?orderWith=day">Саволҳои имруз</a>
+                </div>
+                <div class=''>
+                    <a href="{{ route('questions.create') }}" class="btn-b">Савол пурсидан</a>
+                </div>
+            </div>
+             <x-questions-section :questions="$questions" :text="'Саволҳои навтарин'"></x-questions-section>
+         </div>
+      </div>
+   </div>
+</div>
 @endsection
-
-

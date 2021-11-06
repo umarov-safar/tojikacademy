@@ -29,9 +29,9 @@
 <body>
 <div class="wrapper">
     <div class="menu-wrapper">
-        <div class="menu">
+        <div class="menu" id="desktop-menu">
             <header class="header">
-                <div class="main-link  destop-menu">
+                <div class="main-link  desktop-menu">
                     <div id="bar">
                         <i class="fas fa-bars"></i>
                     </div>

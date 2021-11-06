@@ -26,13 +26,47 @@ class QuestionController extends Controller
     public function index(Request $request)
     {
         $categories = QuestionCategory::all();
-        $questions = $request->has('category') ? Question::where('category_id', $request->category) : Question::orderBy('created_at', 'desc')->paginate(20);
+        $questions =  $this->orderedQuestions($request);
 
         return view('answerquestion.questions')
             ->with([
                 'categories' => $categories,
                 'questions' => $questions
             ]);
+    }
+
+    /**
+     * Ordering question
+     * @param Request $request
+     * @return Questions
+     */
+    public function orderedQuestions(Request $request) {
+        
+        if($request->has('orderWith')){
+            
+            switch($request->orderWith){
+                case 'desc':
+                    return Question::orderBy('created_at', 'desc')->paginate(10);
+                break;
+                case 'asc':
+                    return Question::orderBy('created_at', 'asc')->paginate(10); 
+                break;       
+                case 'month': 
+                    return Question::orderBy('created_at', 'desc')
+                                    ->whereMonth('created_at', date('m'))
+                                    ->whereYear('created_at', date('Y'))
+                                    ->paginate(10);
+                break;
+                case 'day':
+                    return Question::orderBy('created_at', 'desc')
+                                    ->whereDay('created_at', date('d'))
+                                    ->paginate(10);
+               break;                                        
+            }
+        }
+
+        return Question::orderBy('created_at', 'desc')->paginate(10);
+
     }
 
     /**
@@ -151,6 +185,22 @@ class QuestionController extends Controller
        if($question) {
            return back();
        }
-
     }
+
+    /**
+     * Get category questions
+     * @param string $slug
+     * @return QuestionCategory
+     */
+    public function questionsWithCategory($slug) {
+        
+        $category = QuestionCategory::where('slug', $slug)->get()->firstOrFail();
+
+        $questions = Question::where('question_category_id', $category->id)
+                                ->orderBy('created_at', 'desc')
+                                ->paginate(2);
+
+        return view('answerquestion.category_with_questions', compact('category', 'questions'));
+    }
+
 }

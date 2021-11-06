@@ -16,6 +16,8 @@ class QuestionCategoryService {
         $questionCategory = new QuestionCategory();
 
         $questionCategory->name = $request->getName();
+        $questionCategory->description = $request->getDescription();
+        $questionCategory->image = $request->getImage();
         $questionCategory->slug = $request->getSlug();
 
         if(!$questionCategory->save()){
@@ -36,6 +38,8 @@ class QuestionCategoryService {
         $questionCategory = QuestionCategory::find($id);
 
         $questionCategory->name = $request->getName();
+        $questionCategory->description = $request->getDescription();
+        $questionCategory->image = $request->getImage();
         $questionCategory->slug = $request->getSlug();
 
         if(!$questionCategory->update()) {

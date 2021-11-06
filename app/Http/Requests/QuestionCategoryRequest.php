@@ -38,6 +38,8 @@ class QuestionCategoryRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'description' => 'required',
+            'image' => 'required',
             'slug' => 'unique:question_categories,slug,'.$this->id,
         ];
     }
@@ -67,6 +69,8 @@ class QuestionCategoryRequest extends FormRequest
         return [
             'name.required' => 'Категория бо ин ном алайкай вуҷуд дорад',
             'slug.unique' => 'Номи ягона бо ин ном вуҷуд дорад',
+            'image.required' => 'Акс барои категория интихоб кунед!',
+            'description.required' => 'Дар бораи категория маълумот диҳед.'
         ];
     }
 }

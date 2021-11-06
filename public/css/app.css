@@ -1,5 +1,3 @@
-
-
 .change-login{
     display: block;
     margin: 10px 4px 4px;
@@ -35,11 +33,7 @@
     background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-width: bold;
-}
-
-.menu-wrapper{
-    height: 70px;
+    font-weight: bold;
 }
 
 .menu{
@@ -47,9 +41,11 @@
     height: 80px;
     background-color: #262629;
     color: rgb(239, 236, 236);
-    position: fixed;
     top: 0;
     z-index: 999999;
+}
+.menu-fixed{
+    position: fixed !important;
 }
 
 header.header{
@@ -229,6 +225,7 @@ header .mobile-menu{
     transition: left 0.3s;
     overflow-y: scroll;
     padding-bottom: 30px;
+    z-index: 111111;
 }
 
 .show-mobile {
@@ -284,10 +281,7 @@ header .mobile-menu{
     padding: 15px;
 }
 
-
 /*--------------- Header menu --------------*/
-
-
 .bg-change{
     background: var(--main-bg-color);
 }
@@ -296,7 +290,7 @@ header .mobile-menu{
 
 /*default Sections*/
 section .container{
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 section h2{
@@ -559,7 +553,39 @@ section.home > .opacity .container p{
     margin: 8px 0;
 }
 
+.paginate-quesiton  .pagination{
+    display: flex;
+    list-style: none;
+}
 
+.paginate-quesiton  .pagination li{
+    padding: 8px 14px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(138, 136, 136);
+    border-radius: 50%;
+    margin: 1px;
+}
+.paginate-quesiton  .pagination li.active{
+    background: rgb(3, 3, 3);
+    color: white;
+}
+
+
+.paginate-quesiton  .pagination li:last-child,
+.paginate-quesiton  .pagination li:first-child,
+.paginate-quesiton  .pagination li:last-child a,
+.paginate-quesiton  .pagination li:first-child a
+{
+    border-radius: 10px;
+    border: unset;
+    color: white !important;
+    background: rgb(3, 3, 3);
+}
+.paginate-quesiton  .pagination li:first-child.disabled,
+.paginate-quesiton  .pagination li:last-child.disabled{
+    color: white;
+    background: rgb(129, 129, 129);
+} 
 
 .question .asked .name-img{
     display: flex;
@@ -567,6 +593,7 @@ section.home > .opacity .container p{
     gap: 10px;
     margin: 10px 4px;
 }
+
 
 .question .asked {
     padding: 10px;
@@ -846,11 +873,6 @@ footer{
 
 
 /* questions page */
-
-.questions-page .container{
-    padding: 2rem 0;
-}
-
 .questions-page {
     background: white;
 }
@@ -861,44 +883,94 @@ footer{
     justify-content: center;
 }
 
+#questions-content{
+    position: relative;
+}
+
+#questions-content > a{
+    position: absolute;
+    right: 5%;
+    margin-top: 15px;
+}
+
+.questions-page .categories{
+    width: 20%;
+}
+
+.questions-page .categories ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.questions-page .categories ul li a{
+    display: block;
+    border: 1px solid #ccc;
+    padding: 10px 7px;
+    width: 100%;
+    color: #292828;
+    cursor: pointer;
+}
+
+.questions-page .categories ul li a.text{
+    background-color: hsl(180deg 8% 97%);
+    padding: 15px 10px;
+    font-size: 20px;
+    cursor: initial;
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+}
+
+.questions-page .questions{
+    width: 75%;
+    margin-left: 10px;
+}
+
+.questions-page .questions .content-top{
+    margin-top: 20px;
+    flex-wrap: wrap-reverse;
+    height: auto;
+    gap: 20px;
+}
+
+.questions-page .questions .content-top .orders{
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap-reverse;
+    justify-content: space-around;
+}
+
+.questions-page .questions .content-top .orders a{
+    padding: 5px;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+    font-size: 15px;
+    background: whitesmoke;
+    color: #000;
+}
+
+.questions-page .questions .text{
+    align-items: center;
+}
+
+
+.questions-page .questions h2{
+    text-align: center;
+    display: none;
+}
+
+.questions-page .questions section .container{
+    padding: 0 !important;
+}
+
 .question-content{
     width: 100%;
     display: block;
     justify-content: center;
-    background: white;
     padding: 10px;
-
 }
 
-
-.list-category {
-    margin-left: 10px !important;
-}
-
-
-.list-category .list {
-    text-align: left;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.list-category .list .li-item{
-    margin: 6px;
-}
-
-.list-category .list .li-item .a-item{
-    background: white;
-    display: block;
-    padding: 10px 14px;
-    border: 1px solid #e7e7e7;
-    font-size: 1.2rem;
-    letter-spacing: 1.7px;
-    border-radius: 15px;
-    box-shadow: 1px 1px 20px rgb(187 185 185 / 30%);
-    font-weight: bold;
-
-}
 
 
 #ask-question{
@@ -920,7 +992,6 @@ footer{
 }
 
 small.des, small.ans {
-    text-decoration: underline;
     color: #7e7e7e;
 }
 

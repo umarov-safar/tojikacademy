@@ -20,6 +20,7 @@ like this "home page, register page, question page etc"
         width: 80% !important;
     }
 
+    
 
 }
 
@@ -38,6 +39,15 @@ like this "home page, register page, question page etc"
     #bar{
         display: block;
         font-size: 30px !important;
+    }
+
+    /* questions page */
+    .questions-page .questions{
+        width: 70%;
+    }
+
+    .questions-page .categories{
+        width: 30%;
     }
 }
 
@@ -216,14 +226,20 @@ like this "home page, register page, question page etc"
         width: 100% !important;
     }
 
+    /* questions page */
+    .questions-page .questions{
+        width: 100%;
+    }
+
+    .questions-page .categories{
+        width: 97%;
+        margin: auto;
+    }
 }
 
 /*media 690*/
 @media (max-width: 690px) {
     /* question page */
-    .question-page .question {
-        padding: 15px 10px !important;
-    }
 
     .question-page .question-body .title{
         font-size: 28px;

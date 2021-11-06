@@ -1,6 +1,8 @@
 <section id="questions" class="question">
     <div class="container max-width">
-        <h2>Саволҳои охирин</h2>
+        <div class="w-100 text">
+            <h2>{{ isset($text) ? $text : 'Саволҳои охирин' }}</h2>
+        </div>
         <div class="content">
             @forelse($questions as $question)
                 <div class="asked">
@@ -33,7 +35,7 @@
                     </div>
 
                     {{--     title    --}}
-                    <a href="questions/{{$question->slug}}" class="ques">{{ $question->title }}</a>
+                    <a href="/questions/{{$question->slug}}" class="ques">{{ $question->title }}</a>
                     <div class="d-flex justify-between align-center">
                         <div class="icons d-flex align-center">
                             @if(Auth::check())
@@ -64,7 +66,7 @@
                                             @method('DELETE')
                                             <input type="hidden" value="{{ $question->id }}" name="likeable_id">
                                             <input type="hidden" value="question" name="likeable_type">
-                                            <button class="like-btn green"><i class="fas fa-thumbs-up"></i></button>
+                                            <button class="like-btn green"><i class="fas fa-thumbs-down"></i></button>
                                             <small class="like-count green">{{ $question->dislikes->count() }}</small>
                                         </form>
                                     @else
@@ -72,7 +74,7 @@
                                             @csrf
                                             <input type="hidden" value="{{ $question->id }}" name="likeable_id">
                                             <input type="hidden" value="question" name="likeable_type">
-                                            <button class="like-btn"><i class="fas fa-thumbs-up"></i></button>
+                                            <button class="like-btn"><i class="fas fa-thumbs-down"></i></button>
                                             <small class="like-count">{{ $question->dislikes->count() }}</small>
                                         </form>
                                     @endif
@@ -99,13 +101,13 @@
                             @endif
 
 
-                            <a href="{{ '/' }}/{{$question->id}}" class="comment">
+                            <a href="{{ route('questions.show', $question->slug)  }}" class="comment">
                                 <i class="fas fa-comment"></i>
-                                <small class="answers-count">33</small>
+                                <small class="answers-count">{{ $question->answers->count() }}</small>
                             </a>
-                            <a class="answer-btn" href="{{ '/' }}/{{$question->id}}">Ҷавоб додан</a>
+                            <a class="answer-btn" href="{{ route('questions.show', $question->slug) }}">Ҷавоб додан</a>
                         </div>
-                        <a href="#">#{{ $question->category->name }}</a>
+                        <a href="{{ route('question_category', $question->category->slug) }}">#{{ $question->category->name }}</a>
                     </div>
                 </div>
             @empty
@@ -115,7 +117,12 @@
             @isset($link)
                     <a class="btn-b" href="{{ route('questions.index') }}">Ҳамаи саволҳо</a>
             @endisset
-
+            
+            @if($questions instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                <div class='paginate-quesiton d-flex justify-center'>
+                    {{ $questions->links('vendor.pagination.default') }}
+                </div>
+            @endif
         </div>
     </div>
 </section>

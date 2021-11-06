@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Answer;
+use App\Models\Question;
+
 if(!function_exists('upload_image'))
 {
     /**
@@ -67,5 +70,29 @@ if(!function_exists('upload_image'))
             return utf8_decode($content);
         }
     }
-
 }
+
+
+
+if(!function_exists('getModelNamespaceName')){
+    /**
+     * Pass model name to get the namespace name for polymorphism
+     * @param string $likeable_type;
+     * @return string App\Models\$model_type
+     */
+    function getModelNamespaceName(string $model_type) : string
+    {
+        switch (strtolower($model_type)){
+            case 'question':
+                $model_type = Question::class;
+                break;
+            case 'answer':
+                $model_type  = Answer::class;
+                break;
+        }
+        return $model_type;
+    }
+}
+
+
+

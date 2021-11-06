@@ -40,6 +40,9 @@ pre{
     color: #195faa;
 }
 
+.bg-primary{
+    background: #007bff!important;
+}
 
 .imp{
     color: var(--imp);
@@ -463,7 +466,7 @@ pre{
     color: #212529 !important;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #7a9eb5;
+    border: 1px solid #7e8299;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out;
     outline: none;
@@ -513,4 +516,9 @@ pre{
 
 .align-end {
     align-items: flex-end;
+}
+
+
+.flex-wrap{
+    flex-wrap: wrap !important;
 }

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Traits\QuestionLikeTrait;
+use App\Models\Traits\LikeTrait;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Question extends Model
 {
-    use CrudTrait, QuestionLikeTrait;
+    use CrudTrait, LikeTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -61,7 +61,7 @@ class Question extends Model
 
     public function answers() : MorphMany
     {
-        return $this->morphMany(Answer::class, 'answerable');
+        return $this->morphMany(Answer::class, 'answerable')->orderBy('created_at', 'desc');
     }
 
 

@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Answer routes
     Route::resource('answers', AnswerController::class)->only('store', 'update', 'destroy');
+    Route::post('answers/to/answer', [AnswerController::class, 'answerToAnswer'])->name('answer_to_answer');
 
     // Like routes
     Route::post('like/like', [LikeController::class, 'like'])->name('like');
@@ -58,3 +59,5 @@ Route::group(['middleware' => ['guest']], function() {
 
 //Question routes
 Route::resource('questions', QuestionController::class)->except('store', 'update', 'destroy');
+Route::resource('answers', QuestionController::class)->except('store', 'update', 'destroy');
+Route::get('questions/category/{slug}', [QuestionController::class, 'questionsWithCategory'])->name('question_category');
