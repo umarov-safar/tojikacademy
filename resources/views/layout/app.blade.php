@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
-    <link rel="stylesheet" href="{{asset('css/mobile.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/mobile.css') }}">
     @yield('css')
 
 
@@ -47,7 +47,7 @@
                                     <a href="" class="parent-item">Англиси <i class="fas fa-angle-down"></i></a>
                                     <div class="child-items">
                                         <ul class="link-list">
-                                            <li class="item"><a href="">Машқҳо</a></li>
+                                            <li class="item"><a href="{{ route('english') }}">Машқҳо</a></li>
                                             <li class="item"><a href="#">Омузиши луғатҳо</a></li>
                                             <li class="item"><a href="#">Дарсҳо</a></li>
                                             <li class="item"><a href="#">Видеоҳо</a></li>
@@ -58,7 +58,7 @@
                                     <a href="" class="parent-item">Руси <i class="fas fa-angle-down"></i></a>
                                     <div class="child-items">
                                         <ul class="link-list">
-                                            <li class="item"><a href="">Машқҳо</a></li>
+                                            <li class="item"><a href="{{ route('russian') }}">Машқҳо</a></li>
                                             <li class="item"><a href="#">Омузиши луғатҳо</a></li>
                                             <li class="item"><a href="#">Дарсҳо</a></li>
                                             <li class="item"><a href="#">Видеоҳо</a></li>

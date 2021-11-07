@@ -40,7 +40,6 @@ class EnglishCrudController extends CrudController
 
         $this->englishService = new EnglishService();
 
-        dd(auth());
     }
 
     /**

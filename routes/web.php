@@ -6,6 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\EnglishController;
+use App\Http\Controllers\RussinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +63,5 @@ Route::group(['middleware' => ['guest']], function() {
 Route::resource('questions', QuestionController::class)->except('store', 'update', 'destroy');
 Route::resource('answers', QuestionController::class)->except('store', 'update', 'destroy');
 Route::get('questions/category/{slug}', [QuestionController::class, 'questionsWithCategory'])->name('question_category');
+Route::get('english', [EnglishController::class, 'index'])->name('english');
+Route::get('russian', [RussinController::class, 'index'])->name('russian');

@@ -10,7 +10,26 @@ let showAnswerButton = $("#show");
 let messageWords = $('.message');
 let showALlAnswersBtn = $('#showAllAnswer');
 
+//speech text
+let synth = speechSynthesis;
+function textToSpeech(text){
+    let utternamce = new SpeechSynthesisUtterance(text);
+    for(let voice of synth.getVoices()){
+        if(voice.name == 'Google русский'){
+            utternamce.voice = voice;
+        }
+    }
+    speechSynthesis.speak(utternamce)
+}
 
+$(document).click((e) => {
+    textBtn = e.target;
+    if(textBtn.classList.contains('listen')){
+        let text = textBtn.parentElement.querySelector('span.text');
+        textToSpeech(text.innerText)
+    }
+})
+//end speech text
 
 function howManyTask(howMany = 10, btn = false) {
     if(btn !== false && btn.classList.contains('infinity')) {
@@ -190,7 +209,7 @@ class  EnRu extends  EnRuHtml{
     }
 
     parseSentence(sentence){
-        let randomWordEn = this.doRandomWord(sentence.translate_1.split(' '));
+        let randomWordEn = this.doRandomWord(sentence.translate1.split(' '));
         let tjSentence = sentence.sentence;
         return {randomWordEn, tjSentence};
     }
@@ -225,12 +244,13 @@ class  EnRu extends  EnRuHtml{
             return false;
         }
 
-        let russianMain = this.data[0].translate_1;
+        let russianMain = this.data[0].translate1;
         let russianUser = this.getSentenceText();
         if(russianMain.toLowerCase() === russianUser.toLowerCase()) {
             this.sayMessage(messageWords, '<span class="success">Офарин! Шумо дуруст ҷавоб  додед!</span>', 1);
         } else {
-            this.sayMessage(messageWords, "Ooops! Шумо нодуруст ҷовоб додед!");
+            this.sayMessage(messageWords, `<p>Ooops! Шумо нодуруст ҷовоб додед!</p>
+                                           <p class='green'>Ҷавоби дуруст: ${russianMain}</p>`, 1);
         }
         this.clearClickWordTop();
         return true;
@@ -243,7 +263,7 @@ class  EnRu extends  EnRuHtml{
             return false;
         }
 
-        let russianMain = this.data[this.count - 1].translate_1;
+        let russianMain = this.data[this.count - 1].translate1;
         let russianUser = this.getSentenceText();
         //For show all answer after finishing
         let tajikSent = this.data[this.count - 1].sentence;
@@ -251,7 +271,8 @@ class  EnRu extends  EnRuHtml{
             this.sayMessage(messageWords, '<span class="success">Офарин! Шумо дуруст ҷавоб  додед!</span>', 1);
             this.addAnswerUser(tajikSent, russianMain, russianUser, true);
         } else {
-            this.sayMessage(messageWords, "Ooops! Шумо нодуруст ҷовоб додед!");
+            this.sayMessage(messageWords, `<p>Ooops! Шумо нодуруст ҷовоб додед!</p>
+                                          <p class='green'>Ҷавоби дуруст: <strong>${russianMain}</strong></p>`, 1);
             this.addAnswerUser(tajikSent, russianMain, russianUser, false);
         }
         this.clearClickWordTop();
@@ -313,14 +334,3 @@ $('#newTask').click(function () {
     window.location.reload();
 })
 
-
-
-$(document).on("click", function(event){
-    if(event.target.classList.contains('listen')){
-        let parent = event.target.parentElement;
-        let text = parent.innerText;
-        var msg = new SpeechSynthesisUtterance();
-        msg.text = text;
-        window.speechSynthesis.speak(msg);
-    }
-})
