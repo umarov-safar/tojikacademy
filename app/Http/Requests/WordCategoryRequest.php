@@ -3,10 +3,9 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use App\Models\Question;
 use Illuminate\Foundation\Http\FormRequest;
 
-class QuestionRequest extends FormRequest
+class WordCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,15 +15,7 @@ class QuestionRequest extends FormRequest
     public function authorize()
     {
         // only allow updates if the user is logged in
-        return true;
-    }
-
-
-    protected function prepareForValidation()
-    {
-        $this->merge([
-           'slug' => \Str::slug($this->title)
-        ]);
+        return backpack_auth()->check();
     }
 
     /**
@@ -32,13 +23,10 @@ class QuestionRequest extends FormRequest
      *
      * @return array
      */
-
     public function rules()
     {
         return [
-            'title' => 'required|min:5',
-            'category' => 'required|exists:question_categories,id',
-            'slug' => 'required|unique:questions,user_id,' . backpack_auth()->user()->id,
+            'name' => 'required',
         ];
     }
 
@@ -50,7 +38,7 @@ class QuestionRequest extends FormRequest
     public function attributes()
     {
         return [
-
+            //
         ];
     }
 
@@ -62,10 +50,7 @@ class QuestionRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'Лутфан саволро нависед',
-            'title.min' => 'Савол бояд аз 5 ҳарф зиёд бошад',
-            'category.required' => 'Категорияи саволро итихоб кунед',
-            'category.exists' => 'Категория ёфт нашуд. Категория дурустро интихоб кунед',
+            'name.required' => "Номро пур кунед"
         ];
     }
 }

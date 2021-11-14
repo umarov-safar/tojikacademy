@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionCategoryTable extends Migration
+class CreateRussianWordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateQuestionCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('question_categories', function (Blueprint $table) {
+        Schema::create('russian_words', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->string('image', 300);
-            $table->text('description');
+            $table->string('word');
+            $table->string('translate');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateQuestionCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question_category');
+        Schema::dropIfExists('russian_words');
     }
 }

@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Word extends Model
+class RussianWord extends Model
 {
     use CrudTrait;
 
@@ -16,7 +16,7 @@ class Word extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'words';
+    protected $table = 'russian_words';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -36,9 +36,23 @@ class Word extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function category() : BelongsTo
+    /**
+     * relationship for word
+     * @return BelongsToMany
+     */
+    public function words() : BelongsToMany
     {
-        return $this->belongsTo(LanguageCategory::class);
+        return $this->belongsToMany(RussianWord::class, 'russian_pivot_word', 'word_id', 'related_word_id');
+    }
+
+
+    /**
+     * category relationship
+     * @return BelongsToMany
+     */
+    public function categories() : BelongsToMany
+    {
+        return $this->belongsToMany(WordCategory::class, 'russian_word_pivot_category', 'word_id', 'word_category_id');
     }
     /*
     |--------------------------------------------------------------------------

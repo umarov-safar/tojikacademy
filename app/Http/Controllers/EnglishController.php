@@ -12,19 +12,19 @@ class EnglishController extends Controller
     /**
      * Return main page english and questions
      */
-    public function index() 
+    public function index()
     {
         //getting english category
         $category = QuestionCategory::whereSlug('english')
                                         ->get()
-                                        ->first();
-        
+                                        ->firstOrFail();
+
         //question english
         $questions = Question::where('question_category_id', $category->id)
                                 ->orderBy('created_at', 'desc')
                                 ->limit(10)
                                 ->get();
-       
+
         return view('lessons.english', ['questions' => $questions]);
     }
 

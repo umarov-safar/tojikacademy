@@ -7,24 +7,24 @@ use App\Models\QuestionCategory;
 use App\Models\Russian;
 use Illuminate\Http\Request;
 
-class RussinController extends Controller
+class RussianController extends Controller
 {
     /**
      * Return main page english and questions
      */
-    public function index() 
+    public function index()
     {
         //getting english category
         $category = QuestionCategory::whereSlug('russian')
                                         ->get()
                                         ->first();
-        
+
         //question english
         $questions = Question::where('question_category_id', $category->id)
                                 ->orderBy('created_at', 'desc')
                                 ->limit(10)
                                 ->get();
-                                
+
         return view('lessons.russian', ['questions' => $questions]);
     }
 

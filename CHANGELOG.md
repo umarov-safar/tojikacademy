@@ -4,6 +4,17 @@
 ### Added:
 ### Changed:
 ### Fixed:
+
+### Added
+## [1.18.0]- 15-11-2021
+### Added
+- Word crud in admin (russian and english)
+
+### Changed
+- removed Word crud WordLanguage crud
+
+
+
 ## [1.18.0]- 11-10-2021
 ### Added
 - English and russin page for learnign english sentences

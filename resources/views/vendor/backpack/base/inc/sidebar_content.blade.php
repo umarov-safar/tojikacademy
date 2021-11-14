@@ -19,8 +19,10 @@
         <li class="nav-item"><a class="nav-link" href="{{ backpack_url('tag') }}"><i class="nav-icon la la-tag"></i> Tags</a></li>
     </ul>
 </li>
+
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('elfinder') }}"><i class="nav-icon la la-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('log') }}'><i class='nav-icon la la-terminal'></i> Logs</a></li>
+
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-newspaper-o"></i>Questions</a>
     <ul class="nav-dropdown-items">
@@ -29,15 +31,25 @@
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('question-category') }}'><i class='nav-icon la la-question'></i> Question categories</a></li>
     </ul>
 </li>
+
 <li class="nav-item nav-dropdown">
-    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-newspaper-o"></i>Languages</a>
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-newspaper-o"></i>Sentences</a>
     <ul class="nav-dropdown-items">
-        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('word') }}'><i class='nav-icon la la-question'></i> Words</a></li>
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('russian') }}'><i class='nav-icon la la-question'></i> Russians</a></li>
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('english') }}'><i class='nav-icon la la-question'></i> Englishes</a></li>
-        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('language-category') }}'><i class='nav-icon la la-question'></i> Language categories</a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('language-category') }}'><i class='nav-icon la la-question'></i> Sentence categories</a></li>
     </ul>
 </li>
+
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-newspaper-o"></i>Words</a>
+    <ul class="nav-dropdown-items">
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('english-word') }}'><i class='nav-icon la la-question'></i> English words</a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('russian-word') }}'><i class='nav-icon la la-question'></i> Russian words</a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('word-category') }}'><i class='nav-icon la la-question'></i> Word categories</a></li>
+    </ul>
+</li>
+
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-newspaper-o"></i>Quizzes</a>
     <ul class="nav-dropdown-items">
@@ -46,6 +58,6 @@
     </ul>
 </li>
 
-
-
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('like') }}'><i class='nav-icon la la-question'></i> Likes</a></li>
+
+

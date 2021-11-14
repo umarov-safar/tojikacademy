@@ -22,8 +22,10 @@ Route::group([
     Route::crud('english', 'EnglishCrudController');
     Route::crud('language-category', 'LanguageCategoryCrudController');
     Route::crud('russian', 'RussianCrudController');
-    Route::crud('word', 'WordCrudController');
     Route::crud('quiz', 'QuizCrudController');
     Route::crud('quiz-category', 'QuizCategoryCrudController');
     Route::crud('like', 'LikeCrudController');
+    Route::crud('word-category', 'WordCategoryCrudController');
+    Route::crud('russian-word', 'RussianWordCrudController');
+    Route::crud('english-word', 'EnglishWordCrudController');
 }); // this should be the absolute last line of this file

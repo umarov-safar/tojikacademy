@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class WordRequest extends FormRequest
+class RussianWordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,6 +18,25 @@ class WordRequest extends FormRequest
         return backpack_auth()->check();
     }
 
+    protected function prepareForValidation()
+    {
+        //remove correct word in wrong words
+        if($this->isMethod('PUT'))
+        {
+            $wordsID = $this->words;
+
+            if(is_array($wordsID) && in_array($this->id, $wordsID))
+            {
+                unset($wordsID[array_search($this->id, $wordsID)]);
+                $this->merge([
+                    'words' => $wordsID
+                ]);
+            }
+
+        }
+    }
+
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,8 +46,9 @@ class WordRequest extends FormRequest
     {
         return [
             'word' => 'required',
-            'translate1' => 'required',
-
+            'translate' => 'required',
+            'categories' => 'required',
+            'words' => 'required|array|min:2|max:2',
         ];
     }
 
@@ -53,7 +73,9 @@ class WordRequest extends FormRequest
     {
         return [
             'word.required' => 'Луғатро нависед',
-            'translate1.required' => 'Тарҷумаро нависед'
+            'translate.required' => 'Тарҷумаро нависед',
+            'categories.required' => 'Категория луғатро интхоб кунед',
+            'words.required' => 'Луғатҳои нодурустро интихоб кунед',
         ];
     }
 }

@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Dtos\WordDto;
-use App\Http\Requests\WordRequest;
-use App\Services\WordService;
+use App\Dtos\RussianWordDto;
+use App\Http\Requests\RussianWordRequest;
+use App\Models\RussianWord;
+use App\Models\WordCategory;
+use App\Services\RussianWordService;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Prologue\Alerts\Facades\Alert;
 
 /**
- * Class WordCrudController
+ * Class RussianWordCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class WordCrudController extends CrudController
+class RussianWordCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation {store as traitStore;}
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
-    /**
-     * @var WordService
-     */
-    protected $wordService;
+
+    protected RussianWordService $russianWordService;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -34,11 +34,11 @@ class WordCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Word::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/word');
-        CRUD::setEntityNameStrings('word', 'words');
+        CRUD::setModel(\App\Models\RussianWord::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/russian-word');
+        CRUD::setEntityNameStrings('russian word', 'russian words');
 
-        $this->wordService = new WordService();
+        $this->russianWordService = new RussianWordService();
     }
 
     /**
@@ -51,9 +51,6 @@ class WordCrudController extends CrudController
     {
         CRUD::setFromDb(); // columns
 
-        CRUD::removeColumn('category_id');
-
-        CRUD::addColumn('category');
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -69,13 +66,29 @@ class WordCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(WordRequest::class);
+        CRUD::setValidation(RussianWordRequest::class);
 
         CRUD::setFromDb(); // fields
 
-        CRUD::removeField('category_id');
+        $this->crud->addField([
+            'label'             => 'Words',
+            'type'              => 'select2_multiple',
+            'name'              => 'words', // the method that defines the relationship in your Model
+            'entity'            => 'words', // the method that defines the relationship in your Model
+            'attribute'         => 'word', // foreign key attribute that is shown to user
+            'model'             => RussianWord::class,
+            'pivot'             => true, // on create&update, do you need to add/delete pivot table entries?
+        ]);
 
-        CRUD::addField('category');
+        $this->crud->addField([
+            'label'             => 'Categories',
+            'type'              => 'select2_multiple',
+            'name'              => 'categories', // the method that defines the relationship in your Model
+            'entity'            => 'categories', // the method that defines the relationship in your Model
+            'attribute'         => 'name', // foreign key attribute that is shown to user
+            'model'             => WordCategory::class,
+            'pivot'             => true, // on create&update, do you need to add/delete pivot table entries?
+        ]);
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
@@ -94,23 +107,20 @@ class WordCrudController extends CrudController
         $this->setupCreateOperation();
     }
 
-    /**
-     * Storing word by dto
-     * @return array|\Illuminate\Http\Response|void
-     */
     public function store()
     {
         $this->crud->setRequest($this->crud->validateRequest());
         $request = $this->crud->getRequest();
 
-        $dto = new WordDto(
+
+        $dto = new RussianWordDto(
             $request->word,
-            $request->translate1,
-            $request->translate2,
-            $request->category
+            $request->translate,
+            $request->categories,
+            $request->words
         );
 
-        $word = $this->wordService->store($dto);
+        $word = $this->russianWordService->store($dto);
 
         if(!$word) {
 
@@ -132,14 +142,14 @@ class WordCrudController extends CrudController
         $this->crud->setRequest($this->crud->validateRequest());
         $request = $this->crud->getRequest();
 
-        $dto = new WordDto(
+        $dto = new RussianWordDto(
             $request->word,
-            $request->translate1,
-            $request->translate2,
-            $request->category
+            $request->translate,
+            $request->categories,
+            $request->words,
         );
 
-        $word = $this->wordService->update($dto, $request->id);
+        $word = $this->russianWordService->update($dto, $request->id);
 
         if(!$word) {
 

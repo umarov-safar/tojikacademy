@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\EnglishController;
-use App\Http\Controllers\RussinController;
+use App\Http\Controllers\RussianController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,4 +31,4 @@ Route::get('answer/search', [\App\Http\Controllers\Api\AnswerApiController::clas
 
 //Route lessong
 Route::get('english/get', [EnglishController::class, 'get']);
-Route::get('russian/get', [RussinController::class, 'get']);
+Route::get('russian/get', [RussianController::class, 'get']);
