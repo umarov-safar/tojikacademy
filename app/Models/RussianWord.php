@@ -54,6 +54,11 @@ class RussianWord extends Model
     {
         return $this->belongsToMany(WordCategory::class, 'russian_word_pivot_category', 'word_id', 'word_category_id');
     }
+
+    /**
+     * @param int $id category id
+     */
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

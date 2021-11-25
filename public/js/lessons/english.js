@@ -1,36 +1,20 @@
 let descripEngSection = $('#english-description') // The description section before starting exercise
-let exerciseEnSection = $('#english-exercise') //The exercise section for learnig by default is hidden
+let exerciseEnSection = $('#english-exercise') //The exercise section for learning by default is hidden
 
 
 let demoRandomWords = $('#random-demo-words'); //Demo for random word
 let demoChoiceWords = $('#choice-demo-words'); //Choice words demo
-let demoTajikWord = $("#demo-text-tajik"); 
-let nextButton = $("#next");
-let showAnswerButton = $("#show");
-let messageWords = $('.message');
-let showALlAnswersBtn = $('#showAllAnswer');
+let demoTajikWord = $("#demo-text-tajik"); //demo for sentence
+let nextButton = $("#next"); // next button
+let showAnswerButton = $("#show"); // answer button
+let messageWords = $('.message'); // demo for showing message
+let showALlAnswersBtn = $('#showAllAnswer'); // all answer div
 
 
-let synth = speechSynthesis;
-function textToSpeech(text){
-    let utternamce = new SpeechSynthesisUtterance(text);
-    for(let voice of synth.getVoices()){
-        if(voice.name == 'Google US English'){
-            utternamce.voice = voice;
-        }
-    }
-    synth.speak(utternamce)
-}
-
-$(document).click((e) => {
-    textBtn = e.target;
-    if(textBtn.classList.contains('listen')){
-        let text = textBtn.parentElement.querySelector('span.text');
-        textToSpeech(text.innerText)
-    }
-})
+let bgPercent = 0;
 
 
+// starting task after choosing user how many task wants to do
 function howManyTask(howMany = 10, target = false) {
     if(target !== false && target.classList.contains('infinity')) {
         showAnswerButton[0].remove();
@@ -46,6 +30,8 @@ function howManyTask(howMany = 10, target = false) {
             contentType: "application/json"
         },
         success: function (data) {
+            //after request returns object json
+            bgPercent = 100 / data.length;
             startTask(new English(data));
         },
         error: function(){
@@ -54,11 +40,12 @@ function howManyTask(howMany = 10, target = false) {
     })
 }
 
-
+// starting task in page
 function startTask(English)  {
     descripEngSection.addClass('hidden');
     exerciseEnSection.removeClass('hidden');
 
+    //next button in 10 or 20 task
     nextButton.click(function() {
         if(nextButton.hasClass('activeBtn') && English.nextTask()) {
             nextButton.toggleClass('activeBtn');
@@ -66,21 +53,30 @@ function startTask(English)  {
         }
     })
 
+    //show answer  and start next task
     showAnswerButton.click(function(){
         if(showAnswerButton.hasClass('activeBtn') && English.showAnswer()) {
+
+            //adding width to counter bg
+            $('.counter .percent').css({
+                width: '+=' + bgPercent + '%',
+            })
+
             nextButton.toggleClass('activeBtn');
             showAnswerButton.toggleClass('activeBtn');
         }
     })
 
+    //infinity task if user choice it
     let infinityBtn = $("#infinityBtn");
     infinityBtn.click(function() {
-        if(infinityBtn.hasClass('activeBtn') && English.showAnswerInfinity()) {
+        if(infinityBtn.hasClass('activeBtn') && English.showAnswerInfinity(English.data[0])) {
             infinityBtn.toggleClass('activeBtn');
             nextInfinityBtn.toggleClass('activeBtn');
         }
     });
 
+    //next button of infinity task
     let nextInfinityBtn = $("#nextInfinityBtn");
     nextInfinityBtn.click(function() {
         if(nextInfinityBtn.hasClass('activeBtn')) {
@@ -90,30 +86,55 @@ function startTask(English)  {
         }
     })
 
+    //showing all correct and incorrect tasks
     showALlAnswersBtn.click(function() {
         English.showAllAnswer();
     })
 
 }
 
+
+//text to speech
+function speech(e) {
+    textToSpeech(e.innerText);
+}
+
+
 class EnglishHtml{
-    /*
+    /**
     * @task is object
     * task have randomWord and tajik Sentence
     * */
     prepareWordHhtml(task, num) {
         for(let i = 0; i < task.randomWordEn.length; i++ ) {
             let button = this.createElement('button', false,'word');
-            button.innerHTML += `
-                <span class="text">${task.randomWordEn[i]}</span>
-                <i class="fa fa-volume-up listen"></i>
-            `;
+            button.setAttribute('onclick', 'speech(this)');
+            button.innerHTML += `<span class="text listen">${task.randomWordEn[i]}</span>`;
             demoRandomWords.append(button);
         }
         demoTajikWord.text(num  + task.tjSentence);
         this.addToDemoWord();
     }
 
+    /**
+     * Create element
+     * @param element
+     * @param text
+     * @param className
+     * @returns {*}
+     */
+    createElement(element,  text, className) {
+        let newElement = document.createElement(element);
+        if(text) newElement.innerText = text;
+        if(className) newElement.classList.add(className);
+
+        return newElement;
+    }
+
+    /**
+     * Add button word to checking demo
+     * @return void
+     */
     addToDemoWord() {
         let words = $('.word .text');
         words.each((item, val) => {
@@ -130,23 +151,29 @@ class EnglishHtml{
         })
     }
 
-    createElement(element,  text, className) {
-        let newElement = document.createElement(element);
-        if(text) newElement.innerText = text;
-        if(className) newElement.classList.add(className);
-
-        return newElement;
-    }
-
+    /**
+     * Clear demos words after clicking next task
+     * @return  void
+     */
     clearDemos() {
         demoRandomWords.html('')
         demoChoiceWords.html('');
     }
 
+    /**
+     * checking are all words choice
+     * @returns {boolean}
+     */
     isDemoEmpty() {
         return demoRandomWords.find('button').length > 0;
     }
 
+    /**
+     * Say message to user if any error
+     * @param where
+     * @param text
+     * @param format
+     */
     sayMessage(where, text, format = 0) {
         if(format) {
             where.html(text);
@@ -155,6 +182,10 @@ class EnglishHtml{
         }
     }
 
+    /**
+     * Getting all words button and make just text for checking
+     * @returns {string}
+     */
     getSentenseText() {
         let words = demoChoiceWords.find('button');
         words.filter((index, val) => {
@@ -163,6 +194,10 @@ class EnglishHtml{
         return Array.from(words).join(' ');
     }
 
+    /**
+     * After showing answer clear all class name of words on top
+     * for not choose user
+     */
     clearClickWordTop() {
         let words = demoChoiceWords.find('button');
         words.filter((index, val) => {
@@ -170,6 +205,10 @@ class EnglishHtml{
         })
     }
 
+    /**
+     * after ending task show all correct and incorrect sentence
+     * @param data
+     */
     prepareAllAnswer(data) {
         for(let i = 0; i < data.length; i++) {
             let classAnswer = 'danger'
@@ -177,27 +216,46 @@ class EnglishHtml{
                 classAnswer = 'success'
             }
             $('#allAnswer').append(`
-                    <div class="answers  bg-white">
+                    <div class="answers">
                                 <div class="trans">
-                                    <p class="bold"><span>${i+1}.</span> ${data[i].sentence} </p>
+                                    <p class="bold white"><span>${i+1}.</span> ${data[i].tajik} </p>
                                 </div>
                                 <div class="us">
-                                    <p><span class="under-l">Асоси:</span> ${data[i].englishAnswer}</p>
+                                    <p class="success"><span class="under-l">Асоси:</span> ${data[i].englishAnswer}</p>
                                 </div>
                                 <div class="your">
-                                    <p class="${classAnswer}"><span class="under-l">Шумо:</span>${data[i].englishUser}</p>
+                                    <p class="${classAnswer}"><span class="under-l">Шумо:</span> ${data[i].englishUser}</p>
                                 </div>
                      </div>` )
         }
         $('.showAllAnswer').removeClass('hidden');
     }
 
+
+    /**
+     * Getting all words button and make just text for checking
+     * @returns {string}
+     */
+    getSentenceText() {
+        let words = demoChoiceWords.find('button');
+        words.filter((index, val) => {
+            words[index] =  val.innerText.trim(' ');
+        })
+        return Array.from(words).join(' ');
+    }
+
 }
 
 
 class  English extends  EnglishHtml{
+
     count = 1;
     answers = [];
+
+    /**
+     * Set data sentence
+     * @param data
+     */
     constructor(data) {
         super();
         this.data = data;
@@ -208,12 +266,22 @@ class  English extends  EnglishHtml{
         }
     }
 
+    /**
+     * Preparing sentence
+     * @param sentence
+     * @returns Object
+     */
     parseSentence(sentence){
         let randomWordEn = this.doRandomWord(sentence.translate1.split(' '));
         let tjSentence = sentence.sentence;
         return {randomWordEn, tjSentence};
     }
 
+    /**
+     * Doing random words from sentence
+    * @param item
+    * @returns array
+    */
     doRandomWord(item) {
         let tmp, current, top = item.length;
         if(top) {
@@ -226,74 +294,90 @@ class  English extends  EnglishHtml{
         }
         return item;
     }
+
+    /**
+     * Next task
+     * @returns {boolean}
+     */
     nextTask() {
         if(this.isDemoEmpty()) {
+            return false;
+        }
+
+        if (this.count === this.data.length) {
+            this.sayMessage(messageWords, '<p class="success">Офарин! Шумо тамом кардед!</p>', 1)
+            $('.finishedBtn').removeClass('hidden')
+            $('.next-show').addClass('hidden')
             return false;
         }
 
         this.sayMessage(messageWords, "<br>", 1);
         this.clearDemos();
         this.prepareWordHhtml(this.parseSentence(this.data[this.count++]), this.count + '. ');
+
         return true;
     }
 
+    /**
+     * showing answer in 10 or 20 task
+     * @returns {boolean}
+     */
     showAnswer() {
-        if(this.isDemoEmpty()) {
+        if (this.isDemoEmpty()) {
             this.sayMessage(messageWords, "Лутфан интихоб кунед ҳамаи калимаҳоро!");
             setTimeout(() => messageWords.html('<br>'), 2000);
             return false;
         }
 
-        let englishMain = this.data[this.count - 1].translate1;
-        let englishUser = this.getSentenseText();
-        //For show all answer after finishing
+        //the user's answer
+        let englishUser = this.getSentenceText().toLowerCase();
+
+        //db data
+        let englishMain = this.data[this.count - 1];
+        let translate1 = englishMain.translate1 ? englishMain.translate1.toLowerCase() : '';
+        let translate2 = englishMain.translate2 ? englishMain.translate2.toLowerCase() : '';
+        let translate3 = englishMain.translate3 ? englishMain.translate3.toLowerCase() : '';
+
+        //For showing all answer after finishing
         let tajikSent = this.data[this.count - 1].sentence;
-        if(englishMain.toLowerCase() === englishUser.toLowerCase()) {
+
+        if (englishUser === translate1) {
             this.sayMessage(messageWords, '<span class="success">Офарин! Шумо дуруст ҷавоб  додед!</span>', 1);
-            this.addAnswerUser(tajikSent, englishMain, englishUser, true);
+            this.addAnswerUser(tajikSent, this.firstLetterToUpper(translate1), this.firstLetterToUpper(englishUser), true);
+        } else if (englishUser === translate2) {
+            this.sayMessage(messageWords, '<span class="success">Офарин! Шумо дуруст ҷавоб  додед!</span>', 1);
+            this.addAnswerUser(tajikSent, this.firstLetterToUpper(translate2), this.firstLetterToUpper(englishUser), true);
+        } else if (englishUser === translate3) {
+            this.sayMessage(messageWords, '<span class="success">Офарин! Шумо дуруст ҷавоб  додед!</span>', 1);
+            this.addAnswerUser(tajikSent, this.firstLetterToUpper(translate2), this.firstLetterToUpper(englishUser), true);
         } else {
             this.sayMessage(messageWords, `<p>Ooops! Шумо нодуруст ҷовоб додед!</p>
-                                          <p class='green'>Ҷавоби дуруст: ${englishMain}</p>`, 1);
-            this.addAnswerUser(tajikSent, englishMain, englishUser, false);
+                                                <p class='green'>Ҷавоби дуруст: <strong>${this.firstLetterToUpper(translate1)}</strong></p>`, 1);
+            this.addAnswerUser(tajikSent, this.firstLetterToUpper(translate1), this.firstLetterToUpper(englishUser), false);
         }
+
         this.clearClickWordTop();
 
-        if(this.count == this.data.length) {
-            this.sayMessage(messageWords, '<h4 class="success">Офарин! Шумо тамом кардед!</h4>', 1)
-            $('.finishedBtn').removeClass('hidden')
-            $('.next-show').addClass('hidden')
-            return;
-        }
+
         return true;
     }
 
 
-    showAnswerInfinity() {
-        if(this.isDemoEmpty()) {
-            this.sayMessage(messageWords, "Лутфан интихоб кунед ҳамаи калимаҳоро!");
-            setTimeout(() => messageWords.html('<br>'), 2000);
-            return false;
-        }
 
-        let englishMain = this.data[0].translate1;
-        let englishUser = this.getSentenseText();
-        //For show all answer after finishing
-        let tajikSent = this.data[0].sentence;
-        console.log(englishMain.toLowerCase() + '===' + englishUser.toLowerCase());
-        if(englishMain.toLowerCase() === englishUser.toLowerCase()) {
-            this.sayMessage(messageWords, '<span class="success">Офарин! Шумо дуруст ҷавоб  додед!</span>', 1);
-        } else {
-            this.sayMessage(messageWords, "Ooops! Шумо нодуруст ҷовоб додед!");
-        }
-        this.clearClickWordTop();
-        return true;
-    }
-
-
+    /**
+     * Showing all answer after end
+     */
     showAllAnswer() {
         this.prepareAllAnswer(this.answers);
     }
 
+    /**
+     * Add answer user to all answers for showing in end
+     * @param tajik
+     * @param answer
+     * @param userAnswer
+     * @param isCorrect
+     */
     addAnswerUser(tajik, answer, userAnswer, isCorrect){
         this.answers.push({
             tajik: tajik,
@@ -303,10 +387,18 @@ class  English extends  EnglishHtml{
         });
     }
 
+    /**
+     * data in infinity task
+     * @param data
+     */
     infinity(data) {
         this.prepareWordHhtml(this.parseSentence(data[0]), '');
     }
 
+
+    /**
+     * next infinity request
+     */
     nextInfinity() {
         let obj = this;
         $.ajax({
@@ -314,15 +406,60 @@ class  English extends  EnglishHtml{
             method: "GET",
             data: {howMany: 1},
             success: function (data) {
-                obj.sayMessage(messageWords, '<br>', 1);
-                obj.clearDemos();
-                obj.prepareWordHhtml(obj.parseSentence(data[0]), '');
+                obj.prepareNextInfinity(data);
             },
             error: function () {
                 console.log('Some problem is here')
             }
         })
 
+    }
+
+    /**
+     * @return void
+     * @param data
+     */
+    prepareNextInfinity(data){
+        this.data = data;
+        this.sayMessage(messageWords, '<br>', 1);
+        this.clearDemos();
+        this.prepareWordHhtml(this.parseSentence(data[0]), '');
+    }
+
+    showAnswerInfinity(data) {
+
+        if(this.isDemoEmpty()) {
+            this.sayMessage(messageWords, "Лутфан интихоб кунед ҳамаи калимаҳоро!");
+            setTimeout(() => messageWords.html('<br>'), 2000);
+            return false;
+        }
+
+        //db data
+        let englishMain = data;
+        let translate1 = englishMain.translate1 ? englishMain.translate1.toLowerCase() : '';
+        let translate2 = englishMain.translate2 ? englishMain.translate2.toLowerCase() : '';
+        let translate3 = englishMain.translate3 ? englishMain.translate3.toLowerCase() : '';
+
+
+        let englishUser = this.getSentenceText().toLowerCase();
+
+        if(englishUser === translate1 || englishUser === translate2 || englishUser === translate3) {
+            this.sayMessage(messageWords, '<span class="success">Офарин! Шумо дуруст ҷавоб  додед!</span>', 1);
+        } else {
+            this.sayMessage(messageWords, `<p>Ooops! Шумо нодуруст ҷовоб додед!</p>
+                                           <p class='green'>Ҷавоби дуруст: ${this.firstLetterToUpper(translate1)}</p>`, 1);
+        }
+        this.clearClickWordTop();
+        return true;
+    }
+
+    /**
+     * Make the first letter to upper case
+     * @param text
+     * @returns {string}
+     */
+    firstLetterToUpper(text){
+        return text.charAt(0).toUpperCase() + text.slice(1);
     }
 }
 

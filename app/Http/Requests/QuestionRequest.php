@@ -38,7 +38,7 @@ class QuestionRequest extends FormRequest
         return [
             'title' => 'required|min:5',
             'category' => 'required|exists:question_categories,id',
-            'slug' => 'required|unique:questions,user_id,' . backpack_auth()->user()->id,
+            'slug' => 'required|unique:questions,user_id,' . auth()->user()->id,
         ];
     }
 

@@ -5,8 +5,16 @@
 ### Changed:
 ### Fixed:
 
+## [1.20.0]- 11-10-2021
 ### Added
-## [1.18.0]- 15-11-2021
+- English and Russian word page for learning
+- English and Russian category page
+
+### Changed
+- English and Russian sentence page
+- Big change in js files English and Russian sentence 
+
+## [1.19.0]- 15-11-2021
 ### Added
 - Word crud in admin (russian and english)
 
@@ -17,7 +25,7 @@
 
 ## [1.18.0]- 11-10-2021
 ### Added
-- English and russin page for learnign english sentences
+- English and russian page for learnign english sentences
 
 
 ## [1.17.0]- 10-10-2021

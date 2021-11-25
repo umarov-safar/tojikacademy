@@ -8,8 +8,8 @@
 
 
     <meta name="keywords" content="@yield('keywords','Омузиши забони руси, омузиши забони англиси, тоҷикистон')">
-    <meta name="author" content="@yield('author', 'Баҳромзода Сафарбек')">
     <meta name="description" content="@yield('description', 'Тоҷик Академия шабакаи дарси')">
+    <meta name="author" content="@yield('author', 'Баҳромзода Сафарбек')">
     <meta name="page-type" content="Blogging">
 
     <title>@yield('title', 'Тоҷик Академия')</title>
@@ -59,7 +59,7 @@
                                     <div class="child-items">
                                         <ul class="link-list">
                                             <li class="item"><a href="{{ route('russian') }}">Машқҳо</a></li>
-                                            <li class="item"><a href="{{ route('word-russian')  }}">Омузиши луғатҳо</a></li>
+                                            <li class="item"><a href="{{ route('russian-words')  }}">Омузиши луғатҳо</a></li>
                                             <li class="item"><a href="#">Дарсҳо</a></li>
                                             <li class="item"><a href="#">Видеоҳо</a></li>
                                         </ul>

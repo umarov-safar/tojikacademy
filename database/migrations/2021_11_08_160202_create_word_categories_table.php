@@ -18,6 +18,7 @@ class CreateWordCategoriesTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('image')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

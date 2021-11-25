@@ -20,7 +20,7 @@ like this "home page, register page, question page etc"
         width: 80% !important;
     }
 
-    
+
 
 }
 
@@ -104,6 +104,10 @@ like this "home page, register page, question page etc"
     .mobile-menu{
         width: 60% !important;
     }
+
+    .learning .content .counter{
+        width: 100%;
+    }
 }
 
 
@@ -112,9 +116,6 @@ like this "home page, register page, question page etc"
     * p{
         font-size: 15px;
     }
-
-    /* app page */
-
 
     /* home page */
     section.home .opacity .container{
@@ -160,7 +161,7 @@ like this "home page, register page, question page etc"
 
     /* english page */
     .showAllAnswer {
-        width: 90%;
+        width: 95%;
     }
 
     /*  login form fixed  */
@@ -168,7 +169,14 @@ like this "home page, register page, question page etc"
         width: 80%;
     }
 
+    /* Russian word page */
+    #word-categories-parent{
+        width: 90%;
+    }
 
+    .word-categories .category  img{
+        border: 2px solid #f29a5a
+    }
 }
 
 
@@ -203,17 +211,23 @@ like this "home page, register page, question page etc"
     }
     .learning .content .demo-real  button span.text,
     .learning .content .demo-random button span.text {
-        padding: 10px;
+        padding: 7px;
     }
     .learning .content .demo-real,
     .learning .content .demo-random {
-        min-height: 80px;
+        min-height: 55px;
         height: auto;
     }
 
     /* register page */
     #register .content{
         width: 90% !important;
+    }
+
+
+
+    #russian-word .links a {
+        width: 70%;
     }
 
 }
@@ -248,24 +262,16 @@ like this "home page, register page, question page etc"
     .mobile-menu{
         width: 80% !important;
     }
+
 }
 
 
 /*media 590*/
-@media (max-width: 690px) {
+@media (max-width: 590px) {
 
     /*register page in 690*/
     #register .content{
         width: 90%;
     }
 
-    h1{
-        font-size: 26px !important;
-    }
-    h2{
-        font-size: 22px !important;
-    }
-    h3{
-        font-size: 17px !important;
-    }
 }

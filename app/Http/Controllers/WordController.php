@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Word;
+use App\Models\RussianWord;
+use App\Models\WordCategory;
 use Illuminate\Http\Request;
 
 class WordController extends Controller
@@ -16,8 +17,8 @@ class WordController extends Controller
 
     public function russian()
     {
-        $word = Word::all()->first();
-        return view('words.russian', ['word' => $word]);
+        $wordCategories = WordCategory::all();
+        return view('words.russian', ['wordCategories' => $wordCategories]);
     }
 
 }

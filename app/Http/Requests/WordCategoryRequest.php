@@ -18,6 +18,13 @@ class WordCategoryRequest extends FormRequest
         return backpack_auth()->check();
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+           'slug' => $this->slug ?? \Str::slug($this->name)
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,6 +34,7 @@ class WordCategoryRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'slug' => 'required|unique:word_categories,slug,' . $this->id
         ];
     }
 
@@ -50,7 +58,8 @@ class WordCategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => "Номро пур кунед"
+            'name.required' => "Номро пур кунед",
+            'slug.unique' => 'Слаг вуҷуд дорад'
         ];
     }
 }

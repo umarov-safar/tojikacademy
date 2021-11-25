@@ -24,6 +24,7 @@ class WordCategoryCrudController extends CrudController
 
 
     protected WordCategoryService $wordCategoryService;
+
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      *
@@ -67,6 +68,9 @@ class WordCategoryCrudController extends CrudController
 
         CRUD::setFromDb(); // fields
 
+        CRUD::field('description')->type('textarea');
+
+        CRUD::field('image')->type('browse');
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
@@ -95,6 +99,8 @@ class WordCategoryCrudController extends CrudController
         $dto = new WordCategoryDto(
             $request->name,
             $request->description,
+            $request->image,
+            $request->slug
         );
 
 
@@ -126,6 +132,8 @@ class WordCategoryCrudController extends CrudController
         $dto = new WordCategoryDto(
             $request->name,
             $request->description,
+            $request->image,
+            $request->slug
         );
 
 

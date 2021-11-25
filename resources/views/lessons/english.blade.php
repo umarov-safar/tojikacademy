@@ -23,6 +23,9 @@
             <section class="learning hidden" id="english-exercise" oncut="return false">
                 <div class="container max-width">
                     <div class="content">
+                        <div class="counter">
+                            <div class="percent"></div>
+                        </div>
                         <h3 id="demo-text-tajik">Hoops something wrong</h3>
                         <div class="demo-real" id="demo-real">
                             <div class="words" id="choice-demo-words">
@@ -51,7 +54,7 @@
                 </div>
                 <div class="showAllAnswer hidden">
                     <div class="box">
-                        <h3 class="center">Ҷавобҳои дурст!</h3>
+                        <h3 class="center white">Ҷавобҳои дурст!</h3>
                         <div class="answers-demo p-10" id="allAnswer">
                         {{--   Load here from js --}}
                         </div>
@@ -59,7 +62,7 @@
                     <button  class="btn-b" style="margin: 5px;" onclick="closeAllAnswer()">Пушидан</button>
                 </div>
             </section>
-            
+
             @if($questions)
             <x-questions-section :questions="$questions"></x-questions-section>
             @endif

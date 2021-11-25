@@ -1,4 +1,4 @@
-$(window).scroll(function () { 
+$(window).scroll(function () {
     let scroll = $(this).scrollTop();
     if(scroll > 60){
         $('#desktop-menu').addClass('menu-fixed');
@@ -63,7 +63,6 @@ $(document).ready(function(){
 
 
 
-
 //If the user selected avatar then show img in bottom
 $('#avatar').change((event) => {
     let file = event.target.files[0];
@@ -73,3 +72,16 @@ $('#avatar').change((event) => {
     }
 })
 
+
+//text to speech function for learning word and sentence
+let synth = speechSynthesis;
+function textToSpeech(text, name){
+    synth.cancel();
+    let utternamce = new SpeechSynthesisUtterance(text);
+    for(let voice of synth.getVoices()){
+        if(voice.name === name){
+            utternamce.voice = voice;
+        }
+    }
+    speechSynthesis.speak(utternamce)
+}

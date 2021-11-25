@@ -27,7 +27,7 @@ class RussianRequest extends FormRequest
     public function rules()
     {
         return [
-            'sentence' => 'required|unique:russian,sentence|min:5|max:255',
+            'sentence' => 'required|min:5|max:255|unique:russian,sentence,' . $this->id,
             'translate1' =>  'required',
             'category'  => 'required|exists:language_categories,id',
         ];
