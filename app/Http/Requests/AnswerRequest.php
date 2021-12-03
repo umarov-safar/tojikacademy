@@ -27,7 +27,7 @@ class AnswerRequest extends FormRequest
     {
         return [
             'answer' => 'required|min:2',
-            'parent_id' => 'nullable|exists:answers,parent_id',
+            'parent_id' => 'nullable|exists:answers,id',
         ];
     }
 

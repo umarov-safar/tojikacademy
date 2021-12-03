@@ -13,7 +13,7 @@ class LikeController extends Controller
 
     public function like(Request $request) {
 
-        $likeableType = getModelNamespaceName($request->likeable_type);
+        $likeableType = getModelNamespace($request->likeable_type);
 
         $liked = Like::updateOrCreate(
             [
@@ -34,7 +34,7 @@ class LikeController extends Controller
 
     public function dislike(Request $request)
     {
-        $likeableType = getModelNamespaceName($request->likeable_type);
+        $likeableType = getModelNamespace($request->likeable_type);
 
         $disliked = Like::updateOrCreate(
             [

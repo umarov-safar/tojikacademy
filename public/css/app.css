@@ -596,8 +596,7 @@ section.home > .opacity .container p{
 
 
 .question .asked {
-    padding: 10px;
-    border-bottom: 1px solid #eeccee;
+    border-top: 1px solid #eeccee;
 }
 
 .question .asked a:hover{
@@ -611,6 +610,10 @@ section.home > .opacity .container p{
 .question .icons{
     margin-top: 10px;
     font-size: 20px;
+}
+
+.answer-level-2 {
+    margin-left: 2%;
 }
 
 
@@ -995,12 +998,6 @@ footer{
 
 small.des, small.ans {
     color: #7e7e7e;
-}
-
-.question-page .comment-form{
-    padding: 5px;
-    border-top: 1px solid #ccc;
-    margin-bottom: 20px;
 }
 
 .question-page .header-question{

@@ -20,6 +20,7 @@ class AnswerService {
         $answer->user_id = $request->getUserId();
         $answer->answerable_type = $request->getAnswerableType();
         $answer->answerable_id = $request->getAnswerableId();
+        $answer->parent_id = $request->getParentId();
 
         if(!$answer->save())
         {

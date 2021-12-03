@@ -1,6 +1,6 @@
 <section id="questions" class="question">
     <div class="container max-width">
-        <div class="w-100 text">
+        <div class="w-100 text left-t">
             <h2>{{ isset($text) ? $text : 'Саволҳои охирин' }}</h2>
         </div>
         <div class="content">
@@ -117,7 +117,7 @@
             @isset($link)
                     <a class="btn-b" href="{{ route('questions.index') }}">Ҳамаи саволҳо</a>
             @endisset
-            
+
             @if($questions instanceof \Illuminate\Pagination\LengthAwarePaginator)
                 <div class='paginate-quesiton d-flex justify-center'>
                     {{ $questions->links('vendor.pagination.default') }}

@@ -60,7 +60,7 @@ if(!function_exists('upload_image'))
 
                     $imageData = base64_decode($data);
                     $image_name= "/uploads/$uploadFolder/question". time().$item . '.' . $extension;
-                    $path = public_path($image_name)  ;
+                    $path = public_path($image_name);
                     file_put_contents($path, $imageData);
                     $image->removeAttribute('src');
                     $image->setAttribute('src', $image_name );
@@ -74,13 +74,13 @@ if(!function_exists('upload_image'))
 
 
 
-if(!function_exists('getModelNamespaceName')){
+if(!function_exists('getModelNamespace')){
     /**
      * Pass model name to get the namespace name for polymorphism
      * @param string $likeable_type;
      * @return string App\Models\$model_type
      */
-    function getModelNamespaceName(string $model_type) : string
+    function getModelNamespace(string $model_type) : string
     {
         switch (strtolower($model_type)){
             case 'question':

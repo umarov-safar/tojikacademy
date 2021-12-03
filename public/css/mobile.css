@@ -108,6 +108,11 @@ like this "home page, register page, question page etc"
     .learning .content .counter{
         width: 100%;
     }
+
+/*answer to answer*/
+    .answer-level-2{
+        margin-left: 4%;
+    }
 }
 
 

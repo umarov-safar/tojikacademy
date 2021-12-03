@@ -35,10 +35,10 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     //Question routes
-    Route::resource('questions', QuestionController::class)->only('store', 'update', 'destroy');
+    Route::resource('questions', QuestionController::class);
 
     //Answer routes
-    Route::resource('answers', AnswerController::class)->only('store', 'update', 'destroy');
+    Route::resource('answers', AnswerController::class);
     Route::post('answers/to/answer', [AnswerController::class, 'answerToAnswer'])->name('answer_to_answer');
 
     // Like routes
@@ -62,8 +62,8 @@ Route::group(['middleware' => ['guest']], function() {
 
 
 //Question routes
-Route::resource('questions', QuestionController::class)->except('store', 'update', 'destroy');
-Route::resource('answers', QuestionController::class)->except('store', 'update', 'destroy');
+Route::resource('questions', QuestionController::class)->only('index', 'show', 'create');
+Route::resource('answers', QuestionController::class)->only('index', 'show', 'create');
 Route::get('questions/category/{slug}', [QuestionController::class, 'questionsWithCategory'])->name('question_category');
 
 //sentences languages routes

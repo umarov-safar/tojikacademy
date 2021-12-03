@@ -12,13 +12,12 @@
 @section('content')
     <div class="question-page">
         <section class="center page">
-            <div class="container">
+            <div class="container" style="padding-top:  5px">
                 <div class="max-width">
                     <div class="parent-content">
                         <div class="content">
                             <div class="text-question-page">
-                                <h1>Саволе доред?</h1>
-                                <h3>Марҳамат дар сайти мо пурсед ба зуди истифода барандагон ба шумо ҷавоб медиҳанд!</h3>
+                                <h1>Тағири савол</h1>
                             </div>
                             <div class="category-and-form">
                                 <div class="question-content">
@@ -30,34 +29,37 @@
                                         {{ $message }}
                                         @enderror
                                         @if(session()->has('message'))
-                                            <h4 class="green">{{ session()->get('message') }}</h4>
+                                             <h4 class="green">{{ session()->get('message') }}</h4>
                                         @endif
-                                        <form action="{{route('questions.store')}}" method="POST" enctype="multipart/form-data">
+                                        <form action="{{route('questions.update', $question->id)}}" method="POST" enctype="multipart/form-data">
                                             @csrf
+                                            @method('PUT')
                                             <div class="form-item">
-                                                <label class="input-label" for="title">Савол:</label>
-                                                <input type="text" name="title" class="input" id="title" value="{{old('title')}}" placeholder="Саволатонро дар инҷо нависед...">
+                                                <label class="input-label" for="title">Савол</label>
+                                                <input type="text" name="title" class="input" id="title" value="{{ $question->title }}" placeholder="Саволатонро дар инҷо нависед...">
                                                 @error('title')
-                                                    <spam class="red">{{ $message  }}</spam>
+                                                    {{ $message  }}
                                                 @enderror
                                             </div>
                                             <div class="form-item">
-                                                <label class="input-label" for="summernote">Шарҳи савол:</label>
-                                                <textarea name="body" id="summernote" class="textarea" cols="30"  placeholder="Шарҳи савол..." rows="7">{{ old('body') }}</textarea>
+                                                <label class="input-label" for="summernote">Шарҳи савол</label>
+                                                <textarea name="body" id="summernote" data-editor="sumernote" class="textarea" cols="30"  placeholder="Шарҳи савол..." rows="7">{{ $question->body }}</textarea>
                                             </div>
                                             <div class="form-item">
                                                  <label class="input-label" for="category">Савол дар бораи: </label>
                                                  <select class="input" name="category" id="category">
-                                                     @forelse($categories as $category)
-                                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                     @empty
-                                                     @endforelse
+                                                     @foreach($categories as $category)
+                                                         @if($category->id == $question->category->id)
+                                                             <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                                         @else
+                                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                         @endif
+                                                     @endforeach
                                                  </select>
-                                                @error('category') <span class="red">{{ $message }}</span> @enderror
                                              </div>
                                             <br>
                                             <div class="form-item-flex">
-                                                 <button class="btn-b" type="submit">Пурсидан</button>
+                                                 <button class="btn-b" type="submit">Тағири савол</button>
                                             </div>
                                         </form>
                                     </div>
@@ -68,30 +70,5 @@
                 </div>
             </div>
         </section>
-
-
     </div>
-@endsection
-
-
-
-@section('js_bottom')
-    <script>
-        $(document).ready(function(){
-            $('#summernote').summernote({
-                placeholder: 'Шарҳи савол дар инҷо ...',
-                tabsize: 2,
-                height: 250,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview']]
-                ]
-            });
-        });
-    </script>
 @endsection

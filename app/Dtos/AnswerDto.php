@@ -24,18 +24,31 @@ class AnswerDto {
      */
     protected ?int $answerable_id;
 
+    /**
+     * @var int|null
+     */
+    protected ?int $parent_id;
+
+    /**
+     * @param string $body
+     * @param int $user_id
+     * @param string $answerable_type
+     * @param int $answerable_id
+     */
 
     public function __construct(
         string $body,
         int $user_id,
         string $answerable_type,
-        int $answerable_id
+        int $answerable_id,
+        ?int $parent_id
     )
     {
         $this->body = $body;
         $this->user_id = $user_id;
         $this->answerable_type = $answerable_type;
         $this->answerable_id = $answerable_id;
+        $this->parent_id = $parent_id;
     }
 
     /**
@@ -70,6 +83,13 @@ class AnswerDto {
         return $this->answerable_id;
     }
 
+    /**
+     * @return int|null
+     */
+    public function getParentId(): ?int
+    {
+        return $this->parent_id;
+    }
 
 
 

@@ -85,3 +85,38 @@ function textToSpeech(text, name){
     }
     speechSynthesis.speak(utternamce)
 }
+
+
+
+// for show question page
+function showAnswerToAnswerForm(el) {
+    let form = el.parentElement.querySelector('form');
+    form.classList.toggle('hidden');
+    el.classList.add('hidden');
+}
+
+function closeAnswerToAnswerForm(el){
+    let form = el.parentElement;
+    form.classList.toggle('hidden');
+    form.parentElement.querySelector('.show-btn').classList.remove('hidden');
+    el.preventDefault();
+
+}
+
+
+$(document).ready(function(){
+    $('textarea[data-editor="summernote"]').summernote({
+        placeholder: 'Ҷавоби шумо ...',
+        tabsize: 2,
+        height: 250,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview']]
+        ]
+    });
+});

@@ -28,7 +28,7 @@ class QuestionController extends Controller
         $categories = QuestionCategory::all();
         $questions =  $this->orderedQuestions($request);
 
-        return view('answerquestion.questions')
+        return view('answers-questions.questions')
             ->with([
                 'categories' => $categories,
                 'questions' => $questions
@@ -41,17 +41,17 @@ class QuestionController extends Controller
      * @return Questions
      */
     public function orderedQuestions(Request $request) {
-        
+
         if($request->has('orderWith')){
-            
+
             switch($request->orderWith){
                 case 'desc':
                     return Question::orderBy('created_at', 'desc')->paginate(10);
                 break;
                 case 'asc':
-                    return Question::orderBy('created_at', 'asc')->paginate(10); 
-                break;       
-                case 'month': 
+                    return Question::orderBy('created_at', 'asc')->paginate(10);
+                break;
+                case 'month':
                     return Question::orderBy('created_at', 'desc')
                                     ->whereMonth('created_at', date('m'))
                                     ->whereYear('created_at', date('Y'))
@@ -61,7 +61,7 @@ class QuestionController extends Controller
                     return Question::orderBy('created_at', 'desc')
                                     ->whereDay('created_at', date('d'))
                                     ->paginate(10);
-               break;                                        
+               break;
             }
         }
 
@@ -75,10 +75,11 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        return view('answerquestion.create')
+
+        return view('answers-questions.create')
             ->with([
                 'categories' => QuestionCategory::all(),
-                'questions' => []
+                'questions' => Question::limit(10)->orderBy('created_at', 'desc')->get()
             ]);
     }
 
@@ -89,7 +90,7 @@ class QuestionController extends Controller
     public function store(QuestionRequest $request)
     {
         if($request->body){
-            $request->body = upload_image64($request->body, 'questions');
+            $request->body = upload_image64(html_entity_decode($request->body), 'questions');
         }
 
         $dto = new QuestionDto(
@@ -118,7 +119,7 @@ class QuestionController extends Controller
     {
         $question = Question::where('slug', $slug)->firstOrFail();
         $questions=[];
-        return view('answerquestion.show', compact('question', 'questions'));
+        return view('answers-questions.show', compact('question', 'questions'));
     }
 
     /**
@@ -130,7 +131,7 @@ class QuestionController extends Controller
     {
         $question = Question::findOrFail($id);
 
-        return view('answerquestion.edit')
+        return view('answers-questions.edit')
             ->with([
                 'categories' => QuestionCategory::all(),
                 'question' => $question,
@@ -174,33 +175,38 @@ class QuestionController extends Controller
      */
     public function destroy(int $id)
     {
-        // find and remove likes
+        // find and remove likes and answers to this answers
        $question = Question::find($id);
+
        $question->likes()->delete();
        $question->dislikes()->delete();
+
+       $question->answers()->delete();
 
        //remove model
        $question = $question->delete();
 
        if($question) {
-           return back();
+           return redirect('/');
        }
     }
 
     /**
      * Get category questions
      * @param string $slug
-     * @return QuestionCategory
      */
-    public function questionsWithCategory($slug) {
-        
+    public function questionsWithCategory($slug)
+    {
+
         $category = QuestionCategory::where('slug', $slug)->get()->firstOrFail();
 
         $questions = Question::where('question_category_id', $category->id)
                                 ->orderBy('created_at', 'desc')
                                 ->paginate(2);
 
-        return view('answerquestion.category_with_questions', compact('category', 'questions'));
+        return view('answers-questions.category_with_questions', compact('category', 'questions'));
     }
+
+
 
 }

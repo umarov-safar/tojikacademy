@@ -5,7 +5,11 @@
 ### Changed:
 ### Fixed:
 
-## [1.20.0]- 11-10-2021
+## [1.21.0]- 04-12-2021
+### Added
+- Answer to answer
+
+## [1.20.0]- 26-11-2021
 ### Added
 - English and Russian word page for learning
 - English and Russian category page
@@ -23,12 +27,12 @@
 
 
 
-## [1.18.0]- 11-10-2021
+## [1.18.0]- 11-11-2021
 ### Added
 - English and russian page for learnign english sentences
 
 
-## [1.17.0]- 10-10-2021
+## [1.17.0]- 10-11-2021
 ### Added
 - Answer to question
 - pagination to question section

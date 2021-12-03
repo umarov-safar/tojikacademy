@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mobile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.layout.css') }}">
     @yield('css')
 
 
@@ -233,11 +234,13 @@
                 </div>
             </div>
         </div>
+
+        <script src="{{asset('js/main.js')}}"></script>
+
+        @yield('js_bottom')
+
     </footer>
 </div>
 
-<script src="{{asset('js/main.js')}}"></script>
-
-@yield('js_bottom')
 </body>
 </html>

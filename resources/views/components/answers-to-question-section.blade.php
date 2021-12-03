@@ -3,6 +3,7 @@
         <h3>Ҷавобҳо</h3>
         <div class="content">
             @forelse($answers as $answer)
+
                 <div class="asked">
                     {{--    Full name, img date     --}}
                     <div class="name-img d-flex justify-between">
@@ -17,6 +18,7 @@
                                 <small class="ml-2">{{ $answer->formattedDate() }}</small>
                             </div>
                         </div>
+
                         @if(Auth::check() && $answer->answeredByCurrentUser(Auth::user()))
                             <div class="d-flex">
                                 <form action="{{ route('answers.destroy', $answer->id) }}" method="POST">
@@ -32,11 +34,37 @@
                         @endif
                     </div>
 
-                    {{--     title    --}}
-                    <div>
-                        {!! $answer->answer !!}
+                    {{--     answer    --}}
+                    <div class="answer-level-1">
+                        <div class="answer-body">
+                            {!! $answer->answer !!}
+                        </div>
+                            <div class="comment-form">
+                                <form action="{{ route('answers.store') }}" method="POST" enctype="multipart/form-data" class="hidden col-md-8">
+                                @csrf
+                                    <div class="form-item">
+                                        <label class="input-label" for="answer"><p class="bold" >Ҷавоби шумо:</p></label>
+                                        @error('answer')
+                                        <p class="red">{{ $message }}</p>
+                                        @enderror
+                                        <textarea name="answer"
+                                                  class="textarea"
+                                                  cols="30"
+                                                  rows="4"
+                                                  data-editor="summernote"
+                                                  placeholder="Ҷавобатонро инҷо нависед... "
+                                                  required
+                                        ></textarea>
+                                    </div>
+                                    <input type="hidden" name="answerable_id" value="{{ $answer->id }}">
+                                    <input type="hidden" name="answerable_type" value="answer">
+                                    <input type="hidden" name="parent_id" value="{{ $answer->id }}">
+                                    <button class="btn">Ҷавоб додан</button>
+                                    <button class="btn" onclick="closeAnswerToAnswerForm(this)">Пушидан</button>
+                                </form>
+                            <button class="btn show-btn mt-5" onclick="showAnswerToAnswerForm(this)">Ҷавоб додан</button>
+                        </div>
                     </div>
-
 
                     <div class="d-flex justify-between align-center">
                         <div class="icons d-flex align-center">
@@ -81,7 +109,6 @@
                                         </form>
                                     @endif
                                 </div>
-
                                 {{-- if user is not log in --}}
                             @else
                                 <div class="d-flex  align-center">
@@ -101,10 +128,15 @@
                                     </form>
                                 </div>
                             @endif
-
-{{--                                <a class="answer-btn white"  href="#" style="background: #22524b">Ҷавоб додан</a>--}}
+                        {{-- <a class="answer-btn white"  href="#" style="background: #22524b">Ҷавоб додан</a> --}}
                         </div>
                     </div>
+
+                    {{-- answers to answer --}}
+                    <div class="answer-level-2">
+                        <x-answers-to-answer-section :answers="$answer->answers" :parent="$answer"></x-answers-to-answer-section>
+                    </div>
+
                 </div>
             @empty
                 <p>Аввалин шуда ҷавоб гузоред</p>
@@ -113,3 +145,4 @@
         </div>
     </div>
 </section>
+

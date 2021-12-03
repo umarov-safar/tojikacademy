@@ -6,6 +6,7 @@ use App\Models\Traits\LikeTrait;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Answer extends Model
@@ -61,6 +62,14 @@ class Answer extends Model
     public function question() : BelongsTo
     {
         return $this->belongsTo(Question::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function answers() : MorphMany
+    {
+        return $this->morphMany(Answer::class, 'answerable');
     }
 
     /*

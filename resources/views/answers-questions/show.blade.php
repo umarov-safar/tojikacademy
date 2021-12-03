@@ -85,7 +85,7 @@
                                 @endif
                                     @if(Auth::check() && $question->askedByCurrentUser(Auth::user()))
                                         <div class="d-flex">
-                                            <form action="{{ route('answers.destroy', $question->id) }}" method="POST">
+                                            <form action="{{ route('questions.destroy', $question->id) }}" method="POST">
                                                 @csrf
                                                 @method("DELETE")
                                                 <button class="like-btn danger m-3"><i class="far fa-trash-alt"></i></button>
@@ -121,7 +121,7 @@
                                 @error('answer')
                                 <p class="red">{{ $message }}</p>
                                 @enderror
-                                <textarea name="answer" id="summernote" class="textarea" cols="30" placeholder="Ҷавобатонро инҷо нависед... " rows="7"></textarea>
+                                    <textarea name="answer" id="summernote" data-editor="summernote" class="textarea" cols="30" placeholder="Ҷавобатонро инҷо нависед... " rows="7"></textarea>
                             </div>
 
                             <input type="hidden" name="answerable_id" value="{{ $question->id }}">
@@ -131,21 +131,18 @@
                     </div>
 
 
+                    {{--         answers            --}}
+                    <x-answers-to-question-section :answers="$question->answers"></x-answers-to-question-section>
 
-                    <x-answers-section :answers="$question->answers"></x-answers-section>
                 </div>
             </section>
-
-
-
 @endsection
-
 
 
 @section('js_bottom')
     <script>
         $(document).ready(function(){
-            $('#summernote').summernote({
+            $('textarea[data-editor="summernote"]').summernote({
                 placeholder: 'Ҷавоби шумо ...',
                 tabsize: 2,
                 height: 250,
