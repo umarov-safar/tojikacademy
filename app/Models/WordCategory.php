@@ -36,11 +36,19 @@ class WordCategory extends Model
     */
 
     /**
-     * Returns the words related with this category
+     * Returns the words related with russian word  with specific category
      */
-    public function words()
+    public function russianWords()
     {
         return $this->belongsToMany(RussianWord::class, 'russian_word_pivot_category', 'word_category_id', 'word_id');
+    }
+
+    /**
+     * Returns the words related with english word  with specific category
+     */
+    public function englishWords()
+    {
+        return $this->belongsToMany(EnglishWord::class, 'english_word_pivot_category', 'word_category_id', 'word_id');
     }
 
     /*

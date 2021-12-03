@@ -88,13 +88,12 @@ function textToSpeech(text, name){
 
 
 
-// for show question page
+// it use in question
 function showAnswerToAnswerForm(el) {
     let form = el.parentElement.querySelector('form');
     form.classList.toggle('hidden');
     el.classList.add('hidden');
 }
-
 function closeAnswerToAnswerForm(el){
     let form = el.parentElement;
     form.classList.toggle('hidden');
@@ -104,6 +103,8 @@ function closeAnswerToAnswerForm(el){
 }
 
 
+
+//reach text for question anb answer page
 $(document).ready(function(){
     $('textarea[data-editor="summernote"]').summernote({
         placeholder: 'Ҷавоби шумо ...',
@@ -119,4 +120,17 @@ $(document).ready(function(){
             ['view', ['fullscreen', 'codeview']]
         ]
     });
+});
+
+
+
+
+//confirm to delete question
+$('.delete-btn').click(function(event) {
+    event.preventDefault();
+    let deleteQuestion = confirm('Шумо дар ҳақиқат мехоҳед саволро пок кунед?');
+    if(deleteQuestion)
+    {
+        $(this).parent().submit();
+    }
 });

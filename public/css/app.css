@@ -98,7 +98,6 @@ header .main-link  .menu-items
     position: relative;
     line-height: 1.31;
     -moz-osx-font-smoothing: auto;
-    -webkit-font-smoothing: auto;
     font-weight: 700;
 }
 
@@ -132,7 +131,6 @@ header .main-link  .menu-items
 }
 
 
-
 header .main-link  .menu-items
 .catalog-menu  .child-items{
     position: absolute;
@@ -161,7 +159,6 @@ header .main-link  .menu-items
     font-size: 12px;
     line-height: 1.5;
     color: #fff;
-
 }
 
 
@@ -371,9 +368,7 @@ section.home > .opacity .container p{
     transform: scale3d(1.02, 1.02, 1.02);
 }
 
-/* question section */
-.form-like {
-}
+
 
 .long-cart .text-cart .btn-a{
     display: inline-block;

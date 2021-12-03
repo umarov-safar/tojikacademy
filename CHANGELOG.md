@@ -5,6 +5,10 @@
 ### Changed:
 ### Fixed:
 
+## [1.22.0]- 04-12-2021
+### Added 
+- English word page
+
 ## [1.21.0]- 04-12-2021
 ### Added
 - Answer to answer

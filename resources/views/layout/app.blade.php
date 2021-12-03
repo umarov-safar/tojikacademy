@@ -49,7 +49,7 @@
                                     <div class="child-items">
                                         <ul class="link-list">
                                             <li class="item"><a href="{{ route('english') }}">Машқҳо</a></li>
-                                            <li class="item"><a href="#">Омузиши луғатҳо</a></li>
+                                            <li class="item"><a href="{{ route('english-words') }}">Омузиши луғатҳо</a></li>
                                             <li class="item"><a href="#">Дарсҳо</a></li>
                                             <li class="item"><a href="#">Видеоҳо</a></li>
                                         </ul>

@@ -10,6 +10,7 @@ use App\Http\Controllers\EnglishController;
 use App\Http\Controllers\RussianController;
 use App\Http\Controllers\WordController;
 use \App\Http\Controllers\RussianWordController;
+use \App\Http\Controllers\EnglishWordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,3 +75,5 @@ Route::get('russian', [RussianController::class, 'index'])->name('russian');
 Route::get('words', [WordController::class, 'index'])->name('words');
 Route::get('words/russian', [RussianWordController::class, 'categories'])->name('russian-words');
 Route::get('words/russian/{slug}', [RussianWordController::class, 'learn']);
+Route::get('words/english', [EnglishWordController::class, 'categories'])->name('english-words');
+Route::get('words/english/{slug}', [EnglishWordController::class, 'learn']);

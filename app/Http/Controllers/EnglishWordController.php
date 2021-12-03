@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\WordCategory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class RussianWordController extends Controller
+class EnglishWordController extends Controller
 {
 
     //getting all categories for learning
@@ -13,7 +13,7 @@ class RussianWordController extends Controller
     {
        $wordCategories  =  WordCategory::all();
 
-       return view('words.russian.categories-words',
+       return view('words.english.categories-words',
            compact('wordCategories')
        );
     }
@@ -24,14 +24,14 @@ class RussianWordController extends Controller
      */
     public function learn(string $slug)
     {
-        $category = WordCategory::with(['russianWords' => function(BelongsToMany $query) {
+        $category = WordCategory::with(['englishWords' => function(BelongsToMany $query) {
                                     return $query->inRandomOrder()->limit(100);
                                 }])
                                 ->whereSlug($slug)
                                 ->get()
                                 ->first();
 
-        $words = $category->russianWords;
+        $words = $category->englishWords;
 
         $wordsArray = [];
         foreach ($words as $key => $entry)
@@ -50,7 +50,7 @@ class RussianWordController extends Controller
             $wordsArray[] = $word;
         }
 
-        return view('words.russian.learn', compact('wordsArray', 'category'));
+        return view('words.english.learn', compact('wordsArray', 'category'));
     }
 
 }

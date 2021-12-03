@@ -96,7 +96,7 @@ pre{
     display: block;
 }
 
-.like-btn{
+.like-btn, .delete-btn, .edit-btn{
     cursor: pointer;
     padding: 0;
     border: unset;

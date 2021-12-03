@@ -21,11 +21,11 @@
                                 <form action="{{ route('answers.destroy', $answer->id) }}" method="POST">
                                     @csrf
                                     @method("DELETE")
-                                    <button class="like-btn danger m-3"><i class="far fa-trash-alt"></i></button>
+                                    <button class="delete-btn danger m-3"><i class="far fa-trash-alt"></i></button>
                                 </form>
                                 <form action="{{ route('answers.edit', $answer->id) }}" >
                                     @csrf
-                                    <button class="like-btn m-3"><i class="far fa-edit"></i></button>
+                                    <button class="edit-btn m-3"><i class="far fa-edit"></i></button>
                                 </form>
                             </div>
                         @endif
