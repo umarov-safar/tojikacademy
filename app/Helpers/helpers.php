@@ -1,5 +1,6 @@
 <?php
-
+use Intervention\Image\Facades\Image;
+use Nette\Utils\Json;
 use App\Models\Answer;
 use App\Models\Question;
 
@@ -9,9 +10,9 @@ if(!function_exists('upload_image'))
      * @param $file
      * @return string
      */
-    function upload_image($file, $configFolderSize) : string
+    function upload_image($file, $configFolderSize, $folder = '/') : string
     {
-        $userFolder = 'uploads/users/';
+        $userFolder = 'uploads' . $folder;
 
         $image = Image::make($file);
 
@@ -40,6 +41,115 @@ if(!function_exists('upload_image'))
 
         return json_encode($imageSizes);
     }
+
+
+
+
+    if(!function_exists('saveImageSizes'))
+    {
+        /**
+         * @param $mainImage
+         * @param $galleries
+         * @param string $model
+         * @return string
+         * @throws \Nette\Utils\JsonException
+         */
+        function saveImageSizes($mainImage, $galleries, string $model)
+        {
+            // создать размер картинки для главная картинка
+            $mainPaths = imageResizer($mainImage, $model);
+
+            // массив на джейсон
+            $galleries = is_array($galleries)  ? $galleries : Json::decode($galleries);
+
+            //перемена каторая все галлерий будет сохранено
+            $galleriesPaths = [];
+
+            //loop для каждый картинки из галлерия чтобы сделать необходимый размеры
+            foreach ($galleries as $gallery)
+            {
+                $galleriesPaths[] = imageResizer($gallery, $model);
+            }
+
+            if(count($galleriesPaths) > 0) {
+                $imageSizes = [
+                    'main' => $mainPaths,
+                    'gallery' => $galleriesPaths
+                ];
+            } else {
+                $imageSizes = [
+                    'main' => $mainPaths
+                ];
+            }
+
+
+            $imageSizes = Json::encode($imageSizes);
+
+            return $imageSizes;
+
+        }
+    }
+
+
+
+    if(!function_exists('imageResizer'))
+    {
+        /**
+         * Paths to image
+         * @param string $imagePath
+         * @param string $configSizes
+         * @return array;
+         */
+        function imageResizer(string $imagePath, string $configSizes, $toFolder = '') : array
+        {
+
+            $paths = [];
+
+            // конфиг размер картинки
+            $imageSizes = config('filesystems.image_sizes.'.$configSizes);
+
+
+            $folder = explode('/', $imagePath);
+            $imageName = end($folder);
+
+            foreach ($imageSizes as $key => $size)
+            {
+
+                $img =  Image::make(public_path($imagePath));
+                $img->resize($size['w'], $size['h']);
+                if($size['w'] > 400) {
+                    $waterMark = Image::make(public_path('uploads/watermark.jpg'));
+                    $waterMark->resize(200, 200);
+                } else {
+                    $waterMark = Image::make(public_path('uploads/watermark.jpg'));
+                    $waterMark->resize(80, 80);
+                }
+
+                $img->insert($waterMark, 'bottom-right');
+
+                $newImageName = date('y-m-H-s') . '-' . $imageName;
+                $uploadFolder = 'uploads/' . $toFolder . '/' . $key . '/';
+                $publicPath = public_path($uploadFolder);
+
+                if(!file_exists($publicPath) && mkdir($publicPath))
+                {
+                    $img->save($publicPath  . $newImageName);
+                    $paths[$key] = $uploadFolder  . $newImageName ;
+                }
+                else
+                {
+                    $img->save($publicPath  . $newImageName);
+                    $paths[$key] = $uploadFolder . $newImageName ;
+                }
+            }
+
+            return $paths;
+
+        }
+    }
+
+
+
 
     //upload image 64 base
     if(!function_exists('upload_image64')){

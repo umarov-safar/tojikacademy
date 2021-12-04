@@ -33,7 +33,7 @@ class RegisterController extends Controller
         //uploading file and get path
 
         if($request->file('avatar')){
-           $request->avatar = upload_image($request->file('avatar'), 'users');
+           $request->avatar = upload_image($request->file('avatar'), 'users', 'users');
         }
 
         $request->password = Hash::make($request->password);

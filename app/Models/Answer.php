@@ -57,11 +57,10 @@ class Answer extends Model
     }
 
     /***
-     * @return BelongsTo
      */
-    public function question() : BelongsTo
+    public function question()
     {
-        return $this->belongsTo(Question::class);
+        return $this->belongsTo(Question::class, 'answerable_id', 'id');
     }
 
     /**
@@ -72,6 +71,11 @@ class Answer extends Model
         return $this->morphMany(Answer::class, 'answerable');
     }
 
+
+    public function parent() : BelongsTo
+    {
+        return $this->belongsTo(Answer::class, 'id', 'parent_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

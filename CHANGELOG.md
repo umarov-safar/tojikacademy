@@ -5,6 +5,12 @@
 ### Changed:
 ### Fixed:
 
+## [1.23.0]- 05-12-2021
+### Added
+- Seo tags and description to Article plugin
+- functional ArticleCrud
+
+
 ## [1.22.0]- 04-12-2021
 ### Added 
 - English word page

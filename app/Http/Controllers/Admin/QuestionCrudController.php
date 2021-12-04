@@ -199,11 +199,14 @@ class QuestionCrudController extends CrudController
             ],
             [
                 'name' => 'body',
-                'type' => 'textarea',
+                'type' => 'summernote',
                 'label' => 'Шарҳи савол',
                 'attributes' => [
                     'placeholder' => 'Шарҳи саволро дар инҷо нависед...',
                 ],
+                'options' => [
+                    'height' => 220
+                ]
 
             ],
             [

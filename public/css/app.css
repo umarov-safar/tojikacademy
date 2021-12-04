@@ -527,9 +527,9 @@ section.home > .opacity .container p{
 
 .articles .content{
     display: flex;
+    justify-content: space-around;
     align-items: stretch;
     flex-wrap: wrap;
-    justify-content: space-between;
     margin-top: 10px;
 }
 
@@ -537,7 +537,8 @@ section.home > .opacity .container p{
     max-width: 30%;
     margin: 10px 10px 10px 0 ;
     background: white;
-    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #cccccc;
 }
 
 .articles .content .article img{
@@ -545,6 +546,7 @@ section.home > .opacity .container p{
 }
 
 .articles .content .article  .title{
+    display: block;
     margin: 8px 0;
 }
 

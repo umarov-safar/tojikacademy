@@ -365,7 +365,7 @@ pre{
     padding: 2px;
 }
 .p-3{
-    padding: 3px;
+    padding: 3px !important;
 }
 .p-4{
     padding: 4px;

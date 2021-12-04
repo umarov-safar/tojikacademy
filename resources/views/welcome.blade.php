@@ -141,15 +141,19 @@
         <div class="container max-width">
             <h2>Мавзуъҳо</h2>
             <div class="content">
-                @for($i = 0; $i < 6; $i++)
+                @forelse($articles as $article)
                     <div class="article">
-                        <div class="name-img">
-                            <a href=""><img src="https://russkieslova.ru/wp-content/uploads/2020/10/idti.jpg" alt=""></a>
-                            <a href="mavzuho/2133" class="title"><h3>ГЛАГОЛЫ ДВИЖЕНИЯ, урок 1 – ИДТИ-ХОДИТЬ, ЕХАТЬ-ЕЗДИТЬ</h3></a>
+                        <div class="img" style="border-bottom: 1px solid #ccc">
+                            <a href="/articles/{{ $article->slug }}"><img src="{{ $article->smallImage() }}" alt="{{ $article->title }}"></a>
                         </div>
-                        <p class="des">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci commodi culpa dicta dignissimos dolorem dolores, doloribus ea et facere in laboriosam laudantium minus, neque obcaecati odio quae rem sunt vitae.</p>
+                       <div class="text p-7">
+                           <a href="/articles/{{ $article->slug }}" class="title upper mb-6"><h4>{{ $article->title }}</h4></a>
+                           <p class="des">{{ $article->description }}</p>
+                       </div>
                     </div>
-                @endfor
+                @empty
+                    <p>Ҳоло мавзуъҳо нест</p>
+                @endforelse
             </div>
         </div>
     </section>
