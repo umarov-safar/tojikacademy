@@ -202,7 +202,7 @@
     </div>
 
     {{-- Content of html is here --}}
-    <main style="min-height: 80vh">
+    <main style="min-height: 80vh" id="main">
         @yield("content")
     </main>
 

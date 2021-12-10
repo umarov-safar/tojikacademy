@@ -3,96 +3,227 @@
 @section('content')
 
     {{-- Description of website--}}
-    <section class="page home">
-        <div class="opacity">
-            <div class="container max-width">
-                <h1>Хуш омадед ба Тоҷик Академия</h1>
-                <h3>Тоҷик Акдемия яке аз бузургтарин шабакаи дарсии дар Тоҷикистон мебошад!</h3>
-                <p>Дар ин шабаки дарси шумо метавонед бисёр дарсҳои лозимаро биомузед аз ҷумла
-                    <a href="{{ '/' }}"><span class="imp">Руси</span></a>,
-                    <a href="{{ '/' }}"><span class="imp">Англиси</span></a>,
-                    <a href=""><span class="imp">Информатика</span></a>,
-                    <a href=""><span class="imp">Барномасози</span></a>,
-                    <a href=""><span class="imp">Алгебра</span></a>
-                    ва ғайра. Дар шабка мавзуҳои дарси ворид карда мешавад дар қисми <a href="#mavzuho"><span class="imp">Мавзуъҳо</span></a>.
-                </p>
-                <div class="links">
-                    <a  href="{{ '/' }}" class="btn-a light">Руси</a>
-                    <a href="{{ '/' }}" class="btn-a light">Англиси</a>
-                    <a href="" class="btn-a light">Видеоҳо</a>
-                    <a href="{{ '/' }}" class="btn-a light">С&Ҷ</a>
+    <section class="welcome" id="description-site">
+        <div class="container">
+           <div class="row">
+               <div class="col-lg-6 d-flex justify-center align-center">
+                   <div class="center">
+                       <h1 class="title-welcome">Хуш омадед ба сомонаи Тоҷик Академия</h1>
+                       <p class="col-lg-10 m-auto text">
+                           <strong>Тоҷик Академия</strong> яке аз сомонаи бузургтарини дарсии Тоҷикистон мебошад. Ҳадаф аз кушодани
+                           сомоно кумак ба шахсоне аст, ки мехоҳанд дарсҳои пешрафтаин даруни ва дунёро биомузанд.
+                       </p>
+                   </div>
+               </div>
+               <div class="col-lg-6">
+                   <img src="{{ asset('images/logo.png') }}" alt="Тоҷик Академия" width="60%" class="logo-welcome">
+               </div>
+           </div>
+        </div>
+    </section>
+
+
+    {{--  Some link to main products  --}}
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Бо мо биомуз</h2>
+            <div class="boxes">
+                <div class="card">
+                    <h3 class="center">Забони Руси</h3>
+                    <p>
+                        Дар сомонаи мо шумо забони руси онлайн меомузед.
+                        Ҳамаи луғатҳо ва ибораҳоро метавонед талафузашро гуш кунед. Луғатҳо бо категорияҳо мебошад.
+                    </p>
+                    <div class="links">
+                        <a class="link"  href="">
+                            Омузиши Луғатҳо
+                        </a>
+                        <a class="link"  href="">
+                            Омузиши Ибораҳо
+                        </a>
+                    </div>
                 </div>
-                <div class="scroll">
-                    <a href="#service">
-                        Поён <br>
-                        <i class='fas fa-arrow-down'></i>
+                <div class="card">
+                    <h3 class="center">Забони Англиси</h3>
+                    <p>
+                        Дар сомонаи мо шумо забони Англисиро низ онлайн ва бо категорияҳои лозими меомузед.
+                        Ҳамат луғатҳо ва ибораҳоро метавонед тарзи талафузашро гуш кунед.
+                    </p>
+                    <div class="links">
+                        <a class="link"  href="">
+                            Омузиши Луғатҳо
+                        </a>
+                        <a class="link"  href="">
+                            Омузиши Ибораҳо
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="center">Саволу ҷавоб</h3>
+                    <p>
+                        Саволу ҷавоб ин беҳтарин роҳ барои рушди дониш мебошад.
+                        Дар сомонаи мо метавонед савол гузоред ва ба саволҳо ҷавоб диҳед.
+                        Саволҳо категорияи худашро доранд
+                    </p>
+                    <div class="links">
+                        <a class="link-1"  href="">
+                            Саҳифаи Саволҳо
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="center">Мавзӯҳои дарсӣ</h3>
+                    <p>
+                        Мавзуҳои гунугуни дарси дар сомонаи мо нашр мешава содда фаҳмонда.
+                        Мавзуҳо аз категорияҳо иборат мебошанд ба монанди Математика, Руси, Англиси
+                        ва ғайра
+                    </p>
+                    <div class="links">
+                        <a class="link-1"  href="">
+                            Саҳифаи мавзӯҳо
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="center">Хабарҳои нав</h3>
+                    <p>
+                        Дар сомона хабарҳои нави аз сомона, тоҷикистон ва дунё нашр мешавад.
+                        Мо талош мекунем ки хабарҳои навро ба шумо расон аз дунёи илму техналогия.
+                    </p>
+                    <div class="links">
+                        <a class="link-1"  href="">
+                            Саҳифаи Хабарҳо
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="center">Тестҳои ММТ</h3>
+                    <p>
+                        Дар сомоно тестҳои маркази миллии тести гузошта мешавад. Шумо метавонед онлайн тестҳо кор кунед
+                        ва балҳои худро бубинед. Тестҳо аз ҳамаи фанҳо мебошад.
+                    </p>
+                    <div class="links">
+                        <a class="link-1"  href="">
+                           Саҳифаи тестҳо
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="center">Видеоҳои дарсӣ</h3>
+                    <p>
+                        Мо видеоҳои дарси дар шабака мегузорем. Мо низ youtube канал дорем дар онҷо низ
+                        видеоҳои дарси гузошта мешавад. Видеҳо низ категорияҳои худашро дорад.
+                    </p>
+                    <div class="links">
+                        <a class="link-1"  href="">
+                            Саҳифаи тестҳо
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <h3 class="center">Бозиҳои ҷолиб</h3>
+                    <p>
+                        Дар шабака мо бозиҳои ҷолиб тартиб медиҳем ба монанди тестҳо ва ҷаводиҳандаҳои беҳтарин ва ба
+                        шахсоне ки ҷойҳои хубро ишғол карданд туҳфаҳо дода мешавад.
+                    </p>
+                    <div class="links">
+                        <a class="link-1"  href="">
+                            Саҳифаи тестҳо
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    {{--    Serive (our work)--}}
+    <section class="service" id="service">
+        <div class="container">
+            <h2 class="section-title">Корҳои мо</h2>
+            <div class="row justify-between">
+                <div class="long-cart col-lg-6 col-sm-12" data-0="left: -1000px; transition: 0.4s" data-700="left: 0">
+                    <div class="text-cart">
+                        <a href="https://www.youtube.com/c/tojikacademy">
+                            <h3 class="cart-title red">Youtube</h3>
+                        </a>
+                        <p>
+                            Моро дар ютуб зиёда аз 12 500 нафар тамошо мекунад ва аз дарсҳои мо бениҳоят хушҳол ва сипосгузоранд. Шумо низ бо мо бипайвандед то аз дарсҳои нав огаҳ бошед.
+                            Ба тугмаи поён зер кунеду ба шабакаи мо дар youtube обуна шавед.
+                        </p>
+                        <a href="https://www.youtube.com/c/tojikacademy" class="btn-a">Youtube-и мо</a>
+                    </div>
+                    <a href="https://www.youtube.com/c/tojikacademy"   class="block-img">
+                        <img src="{{ asset('images/youtobe.png') }}" alt="Тоҷик Академия омузиши дарсҳо">
+                    </a>
+                </div>
+
+                <div class="long-cart col-lg-6 col-sm-12" data-100="left: 1000px;  transition: 0.4s" data-1000="left: 0px; transition: 0.4s">
+                    <div class="text-cart" >
+                        <a href="https://www.instagram.com/tojikacademy">
+                            <h3 class="cart-title"><span style="color:  #bc1888">Instagram</span></h3>
+                        </a>
+                        <p>
+                            Дар инстаграмм мо видеоҳои хурд ва аксҳои дарси дорем.
+                            Бо обуна шудан дар Инстаграми мо шумо луғатҳои нав меомузед бо аксҳои ҷолиб.
+                            Луғатҳои забони Русӣ ва Англисӣ мегузорем дар онҷо.
+                        </p>
+                        <a href="https://www.instagram.com/tojikacademy" class="btn-a ins">instagram-и мо</a>
+                    </div>
+                    <a href="https://www.instagram.com/tojikacademy"   class="block-img">
+                        <img src="{{ asset('images/insta.png') }}" alt="">
+                    </a>
+                </div>
+
+                <div class="long-cart col-lg-6 col-sm-12" data-0="left: -1000px; transition: 0.4s" data-700="left: 0">
+                    <div class="text-cart">
+                        <a href="{{ route('english') }}"><h3 class="cart-title">Забони Англисӣ</h3></a>
+                        <p>
+                            Як аз корҳои ассоси мо ин дарсҳои забони Англисӣ мебошад.
+                            Мо дарсҳои онлайни дорем, ки шумо метавонед биомузед ва талаффузи калимаҳоро
+                            гуш кунед. Луғат омузи ва ибора омузи айни ҳол омода  барои истифода аст.
+                        </p>
+                        <div class="d-flex" style="z-index: 111;">
+                            <a href="{{ route('english-words') }}" class="btn-a ang">Омузиши Луғатҳо</a>
+                            <a href="{{ route('english') }}" class="btn-a ang">Омузиши Ибораҳо</a>
+                        </div>
+                    </div>
+                    <a href="{{ route('english') }}"   class="block-img">
+                        <img src="{{ asset('images/english.png') }}" alt="">
+                    </a>
+                </div>
+
+                <div class="long-cart col-lg-6 col-sm-12" data-center-center="opacity: 1; top: 0;  transition: 0.5s" data-0-bottom="top: 1000px; opacity: 1; transition: 0.4s">
+                    <div class="text-cart">
+                        <a href="{{ route('russian') }}"><h3 class="cart-title">Забони Русӣ</h3></a>
+                        <p>
+                            Омузиши забони Русӣ дар сомонаи мо осон ва бо категорияҳои лозима сохта шудааст.
+                            Дар сомона луғатҳо ва ибораҳои забони Русиро онлайн ва бо машқҳо меомузед.
+                            Ҳангоми анҷом додани машқҳо шумо метавонед талаффузҳои калимаҳоро гуш кунед.
+                        </p>
+                        <div class="d-flex" style="z-index: 111;">
+                            <a href="{{ route('russian') }}" class="btn-a ru">Омузиши Луғатҳо</a>
+                            <a href="{{ route('russian-words') }}" class="btn-a ru">Омузиши Ибораҳо</a>
+                        </div>
+                    </div>
+                    <a href="#youtube"   class="block-img">
+                        <img src="{{ asset('images/russian.png') }}" alt="">
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    {{--    Serive (our work)--}}
-    <section class="service" id="service">
-        <div class="container max-width">
-            <h2>Корҳои мо</h2>
-            <div class="long-cart" data-0="left: -1000px; transition: 0.4s" data-700="left: 0">
-                <div class="text-cart">
-                    <a href="https://www.youtube.com/c/tojikacademy"><h3 class="cart-title">Мо дар <span class="imp">youtube</span> бисёр дарсҳои ҷолибу корбурд дорем.</h3></a>
-                    <p>Моро дар ютуб зиёда аз 5020 нафар тамошо мекунад ва бениҳоят  рози ҳастанд аз дарсҳои  мо. Ту низ бо  мо бош ва аз дарсҳои мо бохабар бош. Ба тугмаи поён зеп кунеду ба канали мо равед.</p>
-                    <a href="https://www.youtube.com/channel/UCgoPupJNkZPnAUPJvtPasdw" class="btn-a">Youtube-и мо</a>
-                </div>
-                <a href="https://www.youtube.com/c/tojikacademy"   class="block-img">
-                    <img src="https://www.kindpng.com/picc/m/277-2770831_icon-social-media-and-icono-youtube-logo-png.png" alt="">
-                </a>
-            </div>
-
-            <div class="long-cart" data-100="left: 1000px;  transition: 0.4s" data-1000="left: 0px; transition: 0.4s">
-                <div class="text-cart" >
-                    <a href="#youtube"><h3 class="cart-title">Мо дар <span class="imp">instagram</span> низ бисёр дарсҳо ва аксҳои  хубу дорем.</h3></a>
-                    <p>Дар инстаграмм мо видеоҳои хурди дарси ва аксҳои дарси ки сохти худамон ҳаст пешниҳод мекунем.
-                        Бисёр вақт луғатҳои нав меомузед бо мисол ва фаҳмондани хуб. Бо мо бош ва биомуз! Ссылкаи поён
-                    </p>
-                    <a href="#youtube" class="btn-a ins">instagram-и мо</a>
-                </div>
-                <a href="#youtube"   class="block-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDUBN_66LSw_yGYwuBWBCqIqCFHMA5b-e8oA&usqp=CAU" alt="">
-                </a>
-            </div>
-
-            <div class="long-cart" data-0="left: -1000px; transition: 0.4s" data-700="left: 0">
-                <div class="text-cart">
-                    <a href="#youtube"><h3 class="cart-title">Яке аз асоси тарин дарсҳои мо ин дарси <span class="imp">Англиси</span> мебошад</h3></a>
-                    <p>Мо дарсҳои Англиси бисёр хуб омода мекунем фаҳмо ва одди, аксари истифода барандагони шабакаи мо аз дарсҳо
-                        бисёр рози ҳастанд. Мо зуд-зуд дар шабакаи <a href="#youtube"><span class="imp">youtube</span></a> худамон видео мегузорем ва низ дар инстаграму ин сайт</a>
-                    </p>
-                    <a href="#youtube" class="btn-a ang">Саҳифаи Аслӣ</a>
-                </div>
-                <a href="#youtube"   class="block-img">
-                    <img src="https://m.media-amazon.com/images/S/aplus-media/vc/d2f0f91c-00c7-4345-bc04-2b792f6659b0.__CR0,0,970,300_PT0_SX970_V1___.png" alt="">
-                </a>
-            </div>
-
-            <div class="long-cart" data-center-center="opacity: 1; top: 0;  transition: 0.5s" data-0-bottom="top: 1000px; opacity: 1; transition: 0.4s">
-                <div class="text-cart">
-                    <a href="#englsih"><h3 class="cart-title">Дарси забони <span class="imp">Руси</span> дар шабакаи мо</h3></a>
-                    <p>Ногуфта намонад забони Руси ин яке лозиматарин забон барои мардуми мо мебошад барои кору тиҷораташон ва ҳамин хел мо низ барои
-                        шумо дарсҳои руси омода кардаем одди ва лозими. Шумо дарсҳои моро метавонед дарю ютуб ва ҳам дар сайт бихонед ва биомузед.
-                    </p>
-                    <a href="#youtube" class="btn-a ru">Саҳифаи Аслӣ</a>
-                </div>
-                <a href="#youtube"   class="block-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcxv7d5T6VfTEnAjb_KXtD1lb7Uz8b6EDMmDcbl8u64csLhxNv4isKKIKbhEUxNPv7o1Q&usqp=CAU" alt="">
-                </a>
-            </div>
-        </div>
-    </section>
-
-    {{--   OUR SPONSOR  --}}
+    {{--   OUR SPONSORS  --}}
     <section class="dark">
-        <div class="container max-width">
-            <h2>Спонсрҳои мо:)</h2>
-            <p class="des">Дустоне ки барои пешрафти шабакаи дарси саҳми худро мегузоранд!</p>
+        <div class="container">
+            <h2 class="section-title">Сарпарастони мо</h2>
+            <p  class="white">Дустоне ки барои пешрафти шабакаи дарси саҳми худро мегузоранд!</p>
             <br>
             <div class="content">
                 <div class="owl-carousel owl-theme">
@@ -121,7 +252,7 @@
     {{--    Client say about us--}}
     <section class="clients-sey">
         <div class="container max-width">
-            <h2>Истифода барандагони  мо чи мегуянд</h2>
+            <h2 class="section-title">Истифода барандагони  мо чи мегуянд</h2>
             <div class="content">
                 @for($i = 0; $i < 4; $i++)
                     <div class="told">
@@ -138,18 +269,30 @@
 
     {{--    Мавзуъҳо--}}
     <section class="articles">
-        <div class="container max-width">
-            <h2>Мавзуъҳо</h2>
-            <div class="content">
+        <div class="container">
+            <h2 class="section-title">Хабарҳои нав</h2>
+            <div class="content row">
                 @forelse($articles as $article)
-                    <div class="article">
-                        <div class="img" style="border-bottom: 1px solid #ccc">
-                            <a href="/articles/{{ $article->slug }}"><img src="{{ $article->smallImage() }}" alt="{{ $article->title }}"></a>
-                        </div>
-                       <div class="text p-7">
-                           <a href="/articles/{{ $article->slug }}" class="title upper mb-6"><h4>{{ $article->title }}</h4></a>
-                           <p class="des">{{ $article->description }}</p>
-                       </div>
+                    <div class="col-lg-6">
+                        @foreach($article as $articleData)
+                            <div class="article row">
+                                <div class="img col-lg-3 col-md-5"
+                                     style="border-right: 1px solid #ccc; padding: 0;"
+                                >
+                                    <a href="/articles/{{ $articleData->slug }}">
+                                        <img src="{{ $articleData->smallImage() }}" alt="{{ Str::limit($articleData->title, 50, '...') }}">
+                                    </a>
+                                </div>
+                                <div class="text col-lg-9 col-md-7 p-0">
+                                    <a href="/articles/{{ $articleData->slug }}" class="article-title upper mb-6"><h4>{{ $articleData->title }}</h4></a>
+                                    <p class="des">{{ Str::limit($articleData->description, 100, '...') }}</p>
+                                    <div class="d-flex justify-between p-5 mt-6">
+                                        <a href="/articles/{{ $articleData->slug }}" class="btn-article">Муфассал</a>
+                                        <small>{{ $articleData->date->format('d-m-Y') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 @empty
                     <p>Ҳоло мавзуъҳо нест</p>

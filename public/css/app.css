@@ -1,3 +1,85 @@
+
+#description-site {
+    min-height: 200px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background: #fafeff;
+    padding: 20px 0;
+}
+
+#description-site .title-welcome{
+    font-size: 33px;
+    padding: 15px;
+}
+
+#description-site .text{
+    font-size: 22px;
+    text-align: justify;
+    color: #0e111c;
+}
+
+section.products{
+    background: #fafeff;
+    padding-bottom: 30px;
+}
+
+section.products h3{
+    padding: 8px 0;
+}
+section.products .boxes {
+    display: flex;
+    flex-wrap: wrap;
+}
+section.products .card{
+    background: white;
+    padding: 10px;
+    margin: 4px;
+    max-width: 24%;
+    box-shadow: 1px 1px 10px #dcdcdc;
+}
+
+section.products .card:hover{
+    background: #fafeff;
+}
+
+section.products .card p{
+    text-align: justify;
+    color: #0e111c;
+}
+
+section.products .card .links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+}
+
+section.products .card .links .link, .link-1{
+    text-align: center;
+    color: #eef2ff;
+    background: #0f1e46;
+    width: max-content;
+    border-radius: 5px;
+    margin: 2px;
+    padding: 2px;
+}
+
+section.products .card .links .link-1 {
+    text-align: center;
+    padding: 10px;
+}
+
+section.products .card .link-1:hover,
+section.products .card .link:hover{
+    background: #00618d;
+}
+
+section.products .card p{
+    padding: 3px;
+}
+
+
 .change-login{
     display: block;
     margin: 10px 4px 4px;
@@ -38,8 +120,8 @@
 
 .menu{
     width: 100%;
-    height: 80px;
-    background-color: #262629;
+    height: 64px;
+    background: var(--main-bg-color);C
     color: rgb(239, 236, 236);
     top: 0;
     z-index: 999999;
@@ -285,58 +367,8 @@ header .mobile-menu{
 
 
 
-/*default Sections*/
-section .container{
-    padding: 1rem 0;
-}
-
-section h2{
-    border-bottom: 3px solid var(--main-color-text);
-    display: inline-block;
-    padding: 5px;
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
-
-section h3 {
-    margin: 10px 0;
-}
 
 
-/*home page*/
-section.home {
-    display: flex;
-    flex-flow: column nowrap;
-    color: var(--color-in-dark);
-    text-align: center;
-    transition: height .3s ease;
-    background: #000;
-    background: url("../storage/main-page.jpg") no-repeat ;
-    background-size: cover;
-    background-position: 100% 100%;
-    height: 100vh;
-    z-index: -999;
-}
-section.home .opacity{
-    background: #000;
-    height: 100%;
-    opacity: 0.7;
-}
-section.home > .opacity .container {
-    flex-grow: 1;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    padding: 10px;
-    height: 100%;
-}
-
-section.home > .opacity .container p{
-    font-size: 25px;
-    line-height: 2.5rem;
-}
 
 #service{
     padding: 10px;
@@ -344,14 +376,14 @@ section.home > .opacity .container p{
 .long-cart{
     display: flex;
     align-items: stretch;
-    justify-content: center;
-    width: 100%;
-    height: 350px;
+    justify-content: space-between;
+    height: 310px;
     box-shadow: 0 0.5rem 0.5rem 0 rgb(21 21 30 / 5%);
     background: white;
-    padding: 30px;
-    margin: 20px 0;
+    padding: 10px;
+    margin: 10px 0;
     position: relative;
+    border: 1.4px solid #e7e7e7;
 }
 
 
@@ -368,14 +400,12 @@ section.home > .opacity .container p{
     transform: scale3d(1.02, 1.02, 1.02);
 }
 
-
-
 .long-cart .text-cart .btn-a{
-    display: inline-block;
     background: #FF0000;
     color: var(--color-in-dark);
     border: 1px solid #fcf7f3;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    max-width: max-content;
 }
 
 .long-cart .text-cart .btn-a.ins{
@@ -433,7 +463,6 @@ section.home > .opacity .container p{
 }
 
 .owl-carousel .sponsor a.btn-a{
-    display: block;
     background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
     color: var(--color-in-dark);
     margin-top: 15px;
@@ -465,7 +494,8 @@ section.home > .opacity .container p{
 
 .dark .content .all-sponsor-btn a{
     margin-top: 10px;
-    display: inline-block;
+    max-width: max-content;
+    margin: auto;
 }
 
 /* what clieants sey about us section */
@@ -534,11 +564,21 @@ section.home > .opacity .container p{
 }
 
 .articles .content .article {
-    max-width: 30%;
     margin: 10px 10px 10px 0 ;
     background: white;
     border-radius: 4px;
     border: 1px solid #cccccc;
+}
+
+.article-title{
+    display: block;
+    color: #0f1c59;
+    margin: 10px 0  15px 0;
+}
+
+.article-title:hover{
+    color: #0332ee;
+    transition: color 0.2s ease-in-out;
 }
 
 .articles .content .article img{
@@ -640,17 +680,6 @@ a.ques {
     position: relative;
     text-decoration: none !important;
 }
-
-/*Links in home section*/
-.links{
-    padding: 40px 0;
-}
-
-.links a{
-    display: inline-block;
-    margin-top: 20px;
-}
-
 
 .btn-tsk{
     padding: 10px 20px;

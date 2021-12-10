@@ -45,8 +45,8 @@ $(document).ready(function(){
         autoplayTimeout: 1300,
         autoplayHoverPause: true,
         responsive: {
-            0: {
-                items: 3,
+            300: {
+                items: 1,
             },
             500: {
                 items: 2

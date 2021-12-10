@@ -1,7 +1,7 @@
 <section id="questions" class="question">
     <div class="container max-width">
-        <div class="w-100 text left-t">
-            <h2>{{ isset($text) ? $text : 'Саволҳои охирин' }}</h2>
+        <div class="w-100  left-t">
+            <h2 class="section-title">{{ isset($text) ? $text : 'Саволҳои охирин' }}</h2>
         </div>
         <div class="content">
             @forelse($questions as $question)

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root{
-    --main-bg-color:  #15151d;
+    --main-bg-color: #04041e;
     --main-color-text: #2b2020;
     --color-link: rgb(165, 149, 1);
     --color-link-hover: rgba(42,218,255,0.63);
@@ -12,11 +12,12 @@
 
 
 html{
-    font-size: 1.1rem;
     scroll-behavior: smooth;
-    font-family: 'Roboto', sans-serif;
 }
 
+body{
+    font-family: effra,Helvetica,Arial,sans-serif;
+}
 
 html, body, p, h1, h2, h3, h4, h5, h6, a, div, input, textarea, section, article, small, strong, footer{
     box-sizing: border-box;
@@ -27,8 +28,16 @@ html, body, p, h1, h2, h3, h4, h5, h6, a, div, input, textarea, section, article
     padding: 0;
 }
 
+#main > section {
+    padding: 20px 0;
+}
+
 pre{
     white-space: pre-wrap;
+}
+
+p, span, .text{
+    color: #60657b;
 }
 
 .max-width{
@@ -55,6 +64,20 @@ pre{
 
 .hidden{
     display: none;
+}
+
+.section-title{
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.section-title:before{
+    content: ' ';
+    display: inline-block;
+    height: 25px;
+    width: 7px;
+    border-left: 4px #b70083 solid;
 }
 
 .hidden-imp{
@@ -113,6 +136,13 @@ pre{
     margin-right: 7px;
 }
 
+.btn-article{
+    padding: 4px;
+    background: #0e111c;
+    color: white;
+    border-radius: 2px;
+}
+
 /* btn-a */
 .btn-a{
     min-width: 11rem;
@@ -126,6 +156,9 @@ pre{
     border-radius: 1.25rem;
     transition: 0.3s;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn{

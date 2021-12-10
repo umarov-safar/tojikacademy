@@ -4,17 +4,6 @@ like this "home page, register page, question page etc"
 
 /*media 1280*/
 @media (max-width: 1280px) {
-    /* home page */
-    section.home > .opacity .container  h1 {
-        font-size: 2.5rem;
-        line-height: 3rem;
-    }
-
-    section.home > .container  h3 {
-        font-size: 1.8rem;
-        line-height: 2.2rem;
-    }
-
     /*register page in 1280*/
     #register .content{
         width: 80% !important;
@@ -57,27 +46,34 @@ like this "home page, register page, question page etc"
     .mobile-menu{
         width: 50% !important;
     }
+
+
+    #description-site .title-welcome{
+        font-size: 30px;
+        padding: 15px;
+    }
+
+    #description-site .text{
+        font-size: 19px;
+    }
+
+    /*  home page  */
+    section.products .card{
+        max-width:  32%;
+    }
 }
 
 /*media 920*/
 @media (max-width: 920px) {
-    /* home page */
-    section.home >  .opacity .container p{
-        font-size: 20px;
-        line-height: 2rem;
-    }
 
-    section  .opacity h2{
-        border-bottom: 2px solid var(--main-color-text);
+    .logo-welcome{
+        display: none;
     }
 
     .clients-sey .content .told{
-        width: 30% !important;
+        width: 35% !important;
     }
 
-    .articles .content .article{
-        max-width: 50% !important;
-    }
 
     /* english page */
     .english .desc{
@@ -113,41 +109,21 @@ like this "home page, register page, question page etc"
     .answer-level-2{
         margin-left: 4%;
     }
+
+
 }
 
 
 /*media 842*/
 @media (max-width: 842px) {
-    * p{
-        font-size: 15px;
-    }
 
-    /* home page */
-    section.home .opacity .container{
-        padding: 10px 0;
+    /*  home page  */
+    section.products .card{
+        max-width:  47%;
     }
-
-    .opacity .scroll {
-        display: none;
-    }
-
-    .home .links .btn-a{
-        margin: 7px 0;
-    }
-    .home .links .btn-a:hover {
-        color: var(--color-link);
-    }
-
-    .home   .opacity p{
-        font-size: 16px;
-    }
-    .home  .opacity h1{
-        line-height: 2rem;
-    }
-
     .long-cart {
         flex-wrap: wrap;
-        height: auto !important;
+        height: 100% !important;
     }
 
     .long-cart .text-cart{
@@ -159,8 +135,8 @@ like this "home page, register page, question page etc"
     }
 
     .long-cart .block-img{
-        width: 100% !important;
-        height: 100%;
+        width: 300px;
+        margin: auto;
         margin-top: 10px;
     }
 
@@ -189,11 +165,7 @@ like this "home page, register page, question page etc"
 @media (max-width: 800px) {
     /* home page */
     .clients-sey .content .told{
-        width: 45% !important;
-    }
-
-    .clients-sey .content .told .name-img{
-        display: block;
+        width: 47% !important;
     }
 
     .articles .content .article{
@@ -267,6 +239,9 @@ like this "home page, register page, question page etc"
     .mobile-menu{
         width: 80% !important;
     }
+    .clients-sey .content .told{
+        width: 100% !important;
+    }
 
 }
 
@@ -277,6 +252,24 @@ like this "home page, register page, question page etc"
     /*register page in 690*/
     #register .content{
         width: 90%;
+    }
+
+    /*  home page  */
+    section.products .card{
+        max-width: 100%;
+    }
+    section.products .card .links .link{
+        padding: 10px;
+    }
+
+}
+
+
+
+/*media 590*/
+@media (max-width: 500px) {
+    #description-site .title-welcome{
+        font-size: 25px;
     }
 
 }

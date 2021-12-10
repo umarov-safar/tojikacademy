@@ -5,6 +5,13 @@
 ### Changed:
 ### Fixed:
 
+## [1.24.0]- 10-12-2021
+### Added
+- CategoryArticle model
+- Articles to home page
+### Changed 
+- New styles in home page
+
 ## [1.23.0]- 05-12-2021
 ### Added
 - Seo tags and description to Article plugin
