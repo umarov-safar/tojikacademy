@@ -121,7 +121,7 @@ section.products .card p{
 .menu{
     width: 100%;
     height: 64px;
-    background: var(--main-bg-color);C
+    background: var(--main-bg-color);
     color: rgb(239, 236, 236);
     top: 0;
     z-index: 999999;
@@ -543,6 +543,7 @@ header .mobile-menu{
 }
 
 .clients-sey .content .told:hover{
+    color: white;
     background: var(--main-bg-color);
     cursor: pointer;
 }
@@ -555,15 +556,8 @@ header .mobile-menu{
     color: var(--color-link-hover);
 }
 
-.articles .content{
-    display: flex;
-    justify-content: space-around;
-    align-items: stretch;
-    flex-wrap: wrap;
-    margin-top: 10px;
-}
 
-.articles .content .article {
+.articles  .article {
     margin: 10px 10px 10px 0 ;
     background: white;
     border-radius: 4px;
@@ -581,8 +575,10 @@ header .mobile-menu{
     transition: color 0.2s ease-in-out;
 }
 
-.articles .content .article img{
-    width: 100%;
+.articles  .article img{
+    width: 100px;
+    float: left;
+    padding: 5px;
 }
 
 .articles .content .article  .title{
@@ -929,10 +925,9 @@ footer{
 }
 
 .questions-page .categories ul{
-    margin: 0;
     padding: 0;
     list-style: none;
-    margin-top: 2rem;
+    margin: 2rem 0 0;
 }
 
 .questions-page .categories ul li a{
@@ -1107,6 +1102,34 @@ small.des, small.ans {
 }
 
 
+/* news page */
+.news-page .title{
+    margin:  0.5rem 0;
+}
+
+.news-page .categories ul{
+    padding: 0;
+    list-style: none;
+    margin: 2rem 0 0;
+}
+
+.news-page .categories ul li a{
+    display: block;
+    border: 1px solid #ccc;
+    padding: 10px 7px;
+    width: 100%;
+    color: #292828;
+    cursor: pointer;
+}
+
+.news-page .categories ul li a.text{
+    background-color: hsl(180deg 8% 97%);
+    padding: 15px 10px;
+    font-size: 20px;
+    cursor: initial;
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+}
 
 /* footer page */
 footer .content{

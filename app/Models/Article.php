@@ -29,7 +29,6 @@ class Article extends \Backpack\NewsCRUD\app\Models\Article
 
 
 
-
     protected static function boot()
     {
         parent::boot();
@@ -41,7 +40,7 @@ class Article extends \Backpack\NewsCRUD\app\Models\Article
 
 
     /**
-     * Samll image for list
+     * Small image for list
      */
     public function smallImage()
     {
@@ -51,5 +50,9 @@ class Article extends \Backpack\NewsCRUD\app\Models\Article
             return $image['400x300'];
         }
     }
+
+    /**
+     * Getting all Tutorial category
+     */
 
 }

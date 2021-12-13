@@ -11,6 +11,7 @@ use App\Http\Controllers\RussianController;
 use App\Http\Controllers\WordController;
 use \App\Http\Controllers\RussianWordController;
 use \App\Http\Controllers\EnglishWordController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,3 +78,14 @@ Route::get('words/russian', [RussianWordController::class, 'categories'])->name(
 Route::get('words/russian/{slug}', [RussianWordController::class, 'learn']);
 Route::get('words/english', [EnglishWordController::class, 'categories'])->name('english-words');
 Route::get('words/english/{slug}', [EnglishWordController::class, 'learn']);
+
+
+// News pages
+Route::get('news', [ArticleController::class, 'news']);
+Route::get('/news/{slug}', [ArticleController::class, 'newsContent']);
+
+
+//Tutorials routs
+Route::get('/tutorials', [ArticleController::class, 'tutorials']);
+Route::get('/tutorials/{category}', [ArticleController::class, 'category']);
+Route::get('/tutorials/{category}/{slug}', [ArticleController::class, 'tutorial']);

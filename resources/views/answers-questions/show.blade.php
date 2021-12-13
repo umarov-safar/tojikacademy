@@ -1,5 +1,11 @@
 @extends('layout.app')
 
+
+@section('title', $question->title )
+@section('keywords', 'Савол ҷавоб, савол чавоб, чихел кунем, чигуна, аз кучо')
+@section('description', Str::limit(strip_tags($question->title), 100, '...'))
+
+
 @section('css')
     <link href="{{ asset('packages/summernote/dist/summernote-lite.min.css') }}" rel="stylesheet">
 @endsection

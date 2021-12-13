@@ -7,6 +7,12 @@
 
 ## [1.24.0]- 10-12-2021
 ### Added
+- Created content news page
+- Added debugbar package
+- 
+
+## [1.24.0]- 10-12-2021
+### Added
 - CategoryArticle model
 - Articles to home page
 ### Changed 

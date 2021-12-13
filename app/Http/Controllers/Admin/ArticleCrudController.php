@@ -45,6 +45,10 @@ class ArticleCrudController extends \Backpack\NewsCRUD\app\Http\Controllers\Admi
 
         });
 
+        $this->crud->operation(['list'], function() {
+            $this->crud->addColumn('id')->beforeColumn('title');
+        });
+
     }
 
 

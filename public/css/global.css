@@ -36,8 +36,8 @@ pre{
     white-space: pre-wrap;
 }
 
-p, span, .text{
-    color: #60657b;
+p{
+    color: #3b3f4b;
 }
 
 .max-width{
@@ -64,6 +64,10 @@ p, span, .text{
 
 .hidden{
     display: none;
+}
+
+.article-title {
+    margin: 1rem 0;
 }
 
 .section-title{
