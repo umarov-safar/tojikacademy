@@ -161,7 +161,7 @@ header .main-link{
     align-items: center;
     justify-content: space-between;
     width: 80%;
-    z-index: 111111;
+    z-index: 111;
     height: 100%;
 }
 
@@ -218,7 +218,7 @@ header .main-link  .menu-items
     position: absolute;
     top: 100%;
     left: -20px;
-    width: 260px;
+    width: 290px;
     max-height: 0;
     padding: 0 30px;
     overflow: hidden;
@@ -268,7 +268,7 @@ header .main-link  .menu-items
 .catalog-menu  .child-items .link-list li{
     position: relative;
     display: block;
-    padding: 15px 0;
+    padding: 10px 0;
     text-decoration: none;
 }
 
@@ -283,8 +283,6 @@ header .main-link  .menu-items
     background: rgba(107, 97, 97, 0.672);
 }
 
-
-
 #bar {
     display: none ;
     font-size: 30px !important;
@@ -298,7 +296,7 @@ header .mobile-menu{
     width: 40%;
     min-height: 100vh;
     max-height: 100vh;
-    top: 80px;
+    top: 64px;
     left: -100%;
     background: #262629;
     transition: left 0.3s;
@@ -1103,17 +1101,17 @@ small.des, small.ans {
 
 
 /* news page */
-.news-page .title{
+.news-page .title, .tt-page .title{
     margin:  0.5rem 0;
 }
 
-.news-page .categories ul{
+.news-page .categories ul, .tt-page .categories ul{ 
     padding: 0;
     list-style: none;
     margin: 2rem 0 0;
 }
 
-.news-page .categories ul li a{
+.news-page .categories ul li a, .tt-page .categories ul li a{
     display: block;
     border: 1px solid #ccc;
     padding: 10px 7px;
@@ -1122,7 +1120,7 @@ small.des, small.ans {
     cursor: pointer;
 }
 
-.news-page .categories ul li a.text{
+.news-page .categories ul li a.text, .tt-page .categories ul li a.text{
     background-color: hsl(180deg 8% 97%);
     padding: 15px 10px;
     font-size: 20px;
@@ -1130,6 +1128,7 @@ small.des, small.ans {
     border-radius: 10px 10px 0 0;
     font-weight: bold;
 }
+
 
 /* footer page */
 footer .content{

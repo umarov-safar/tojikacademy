@@ -35,11 +35,13 @@
                     </div>
 
                     {{--     title    --}}
-                    <a href="/questions/{{$question->slug}}" class="ques">{{ $question->title }}</a>
-                    <div class="d-flex justify-between align-center">
+                    <a href="{{ route('show-question', ['category' => $question->category->slug, 'slug' => $question->slug]) }}" class="ques">
+                        {{ $question->title }}
+                    </a>
+                    <div class="d-flex justify-between align-center  flex-wrap">
                         <div class="icons d-flex align-center">
                             @if(Auth::check())
-                                <div class="d-flex  align-center">
+                                <div class="d-flex align-center">
                                     {{--  if user liked --}}
                                     @if($question->userLiked(Auth::id()))
                                         <form action="{{ route('destroy_like', $question->getIdLikedByUser(Auth::id())->id) }}" method="POST" class="form-like">
@@ -101,13 +103,15 @@
                             @endif
 
 
-                            <a href="{{ route('questions.show', $question->slug)  }}" class="comment">
+                            <a href="{{ route('show-question', ['category' => $question->category->slug, 'slug' => $question->slug]) }}" class="comment">
                                 <i class="fas fa-comment"></i>
                                 <small class="answers-count">{{ $question->answers->count() }}</small>
                             </a>
-                            <a class="answer-btn" href="{{ route('questions.show', $question->slug) }}">Ҷавоб додан</a>
+                            <a class="answer-btn" href="{{ route('show-question', ['category' => $question->category->slug, 'slug' => $question->slug]) }}">
+                                Ҷавоб додан
+                            </a>
                         </div>
-                        <a href="{{ route('question_category', $question->category->slug) }}">#{{ $question->category->name }}</a>
+                        <a href="{{ route('question-category', $question->category->slug) }}">#{{ $question->category->name }}</a>
                     </div>
                 </div>
             @empty

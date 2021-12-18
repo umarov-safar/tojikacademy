@@ -223,7 +223,7 @@
 <section class="dark">
     <div class="container">
         <h2 class="section-title">Сарпарастони мо</h2>
-        <p class="white">Дустоне ки барои пешрафти шабакаи дарси саҳми худро мегузоранд!</p>
+        <p class="white">Дӯстоне ки барои пешрафти сомоно саҳми худро гузоштанд!</p>
         <br />
         <div class="content">
             <div class="owl-carousel owl-theme">
@@ -277,25 +277,31 @@
         <div class="content row">
             <div class="col-lg-6">
                 <h2 class="section-title">Хабарҳои нав</h2>
-                @forelse($articles as $article)
+                @forelse($news as $article)
                     <div class="article row">
                         <div class="text p-0">
-                            <a href="/news/{{ $article->slug }}" class="article-title upper mb-6"><h4>{{ $article->title }}</h4></a>
+                            <a href="{{ route('news-content', ['category' => $article->cat_slug, 'slug' => $article->slug ]) }}" 
+                                class="article-title upper mb-6">
+                                <h4>{{ $article->title }}</h4>
+                            </a>
                             <div>
-                                <a href="/news/{{ $article->slug }}">
-                                    <img src="{{ $article->smallImage() }}" alt="{{ Str::limit($article->title, 50, '...') }}" />
+                                @php
+                                    $image  = json_decode($article->image_sizes, true);
+                                @endphp
+                                <a href="{{ route('news-content', ['category' => $article->cat_slug, 'slug' => $article->slug ]) }}">
+                                    <img src="/{{ $image['200x200'] ?? $article->image }}" alt="{{ Str::limit($article->title, 50, '...') }}" />
                                 </a>
 
                                 <p class="des">{{ Str::limit($article->description, 100, '...') }}</p>
                             </div>
                             <div class="d-flex justify-between p-5 mt-6">
-                                <a href="/news/{{ $article->slug }}" class="btn-article">Муфассал</a>
-                                <small>{{ $article->date->format('d-m-Y') }}</small>
+                                <a href="{{ route('news-content', ['category' => $article->cat_slug, 'slug' => $article->slug ]) }}" class="btn-article">Муфассал</a>
+                                <small>{{ $article->date }}</small>
                             </div>
                         </div>
                     </div>
                 @empty
-                    <p>Ҳоло мавзуъҳо нест</p>
+                    <p>Ҳоло хабаре нест</p>
                 @endforelse
             </div>
 
@@ -307,14 +313,14 @@
                             <a href="/tutorials/{{ $tutorial->category->slug }}/{{ $tutorial->slug }}" class="article-title upper mb-6"><h4>{{ $tutorial->title }}</h4></a>
                             <div>
                                 <a href="/tutorials/{{ $tutorial->category->slug }}/{{ $tutorial->slug }}">
-                                    <img src="/{{ $tutorial->smallImage() }}" alt="{{ Str::limit($tutorial->title, 50, '...') }}" />
+                                    <img src="/{{ $tutorial->image_sizes['200x200'] ?? $tutorial->image }}" alt="{{ Str::limit($tutorial->title, 50, '...') }}" />
                                 </a>
 
                                 <p class="des">{{ Str::limit($tutorial->description, 100, '...') }}</p>
                             </div>
                             <div class="d-flex justify-between p-5 mt-6">
                                 <a href="/tutorials/{{ $tutorial->category->slug }}/{{ $tutorial->slug }}" class="btn-article">Муфассал</a>
-                                <small>{{ $tutorial->date->format('d-m-Y') }}</small>
+                                <small>{{ $tutorial->date }}</small>
                             </div>
                         </div>
                     </div>

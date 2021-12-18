@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\Traits;
 
 use App\Models\Like;
@@ -28,7 +27,7 @@ trait LikeTrait
     }
 
 
-    //two method for deleting like with by passing  user id and get like  then delete it
+    //two method for deleting like by passing  user id and get like  then delete it
     public function getIdLikedByUser($id)
     {
         return $this->likes->where('user_id', $id)->first();

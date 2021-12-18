@@ -1,8 +1,8 @@
 @extends('layout.app')
 
-@section('title', 'Мавзуҳои Дарси гуногун')
+@section('title', 'Дарсҳои ' . $category->name )
 @section('keywords', 'Дарсоҳои тоҷики, дарсҳои руси, дарҳои тест')
-@section('description', 'Дарсҳои сода аз  сомонаи Тоҷик Академия.')
+@section('description', 'Дарсҳои сода аз ' . $category->name . ' дар сомонаи Тоҷик Академия.')
 
 
 @section('content')
@@ -10,7 +10,7 @@
     <div class="container">
         <div class="content row">
             <div class="col-lg-8">
-                <h2 class="section-title">Дарсҳои Гуногун</h2>
+                <h2 class="section-title">Дарсҳо аз {{ $category->name }}</h2>
                 @forelse($tutorials as $tutorial)
                 <div class="article row">
                     <div class="text p-0">
@@ -18,7 +18,7 @@
                             <h4>{{ $tutorial->title }}</h4>
                         </a>
                         <div>
-                            @php
+                             @php
                                 $image = json_decode($tutorial->image_sizes, true);
                             @endphp
                             <a href="/tutorials/{{ $tutorial->cat_slug }}/{{ $tutorial->slug }}">

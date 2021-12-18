@@ -5,11 +5,22 @@
 ### Changed:
 ### Fixed:
 
+## [1.25.0]- 18-12-2021
+- This commit has error with image size i commit it for using repository pattern
+### Added
+- Sizes for image
+- Create Articles pages
+### Changed 
+- Question with category
+- news urls
+- and more
+
+
 ## [1.24.0]- 10-12-2021
 ### Added
 - Created content news page
 - Added debugbar package
-- 
+
 
 ## [1.24.0]- 10-12-2021
 ### Added

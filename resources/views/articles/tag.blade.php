@@ -1,8 +1,8 @@
 @extends('layout.app')
 
-@section('title', 'Мавзуҳои Дарси гуногун')
+@section('title', 'Тагҳои дарси ва хабарҳо аз ' . $tag->name)
 @section('keywords', 'Дарсоҳои тоҷики, дарсҳои руси, дарҳои тест')
-@section('description', 'Дарсҳои сода аз  сомонаи Тоҷик Академия.')
+@section('description', 'Тагҳо аз ' . $tag->name . ' дар сомонаи Тоҷик Академия.')
 
 
 @section('content')
@@ -10,35 +10,33 @@
     <div class="container">
         <div class="content row">
             <div class="col-lg-8">
-                <h2 class="section-title">Дарсҳои Гуногун</h2>
+                <h2 class="section-title">Тагҳо аз {{ $tag->name }}</h2>
+                    
                 @forelse($tutorials as $tutorial)
                 <div class="article row">
                     <div class="text p-0">
-                        <a href="/tutorials/{{ $tutorial->cat_slug }}/{{ $tutorial->slug }}" class="article-title upper mb-6">
+                        <a href="/tutorials/{{ $tutorial->category->slug }}/{{ $tutorial->slug }}" class="article-title upper mb-6">
                             <h4>{{ $tutorial->title }}</h4>
                         </a>
                         <div>
                             @php
                                 $image = json_decode($tutorial->image_sizes, true);
                             @endphp
-                            <a href="/tutorials/{{ $tutorial->cat_slug }}/{{ $tutorial->slug }}">
+                            <a href="/tutorials/{{ $tutorial->category->slug }}/{{ $tutorial->slug }}">
                                 <img src="/{{ $image['200x200'] ?? $tutorial->image }}" alt="{{ Str::limit($tutorial->title, 50, '...') }}" />
                             </a>
 
                             <p class="des">{{ Str::limit($tutorial->description, 100, '...') }}</p>
                         </div>
                         <div class="d-flex justify-between p-5 mt-6">
-                            <a href="/tutorials/{{ $tutorial->cat_slug }}/{{ $tutorial->slug }}" class="btn-article">Муфассал</a>
-                            <small>{{ $tutorial->date }}</small>
+                            <a href="/tutorials/{{ $tutorial->category->slug }}/{{ $tutorial->slug }}" class="btn-article">Муфассал</a>
+                            <small>{{ $tutorial->date->format('d-m-Y') }}</small>
                         </div>
                     </div>
                 </div>
                 @empty
                 <p>Ҳоло дарсе нест!</p>
                 @endforelse
-                <div class='paginate-quesiton d-flex justify-center'>
-                    {{ $tutorials->links('vendor.pagination.default') }}
-                </div>
             </div>
 
             {{-- category of tutorials --}}
@@ -51,7 +49,7 @@
                         <li>
                             <a href="/tutorials/{{ $child->slug }}">{{ $child->name }}</a>
                         </li>
-                     @endforeach
+                    @endforeach
                     </ul>
                 </div>
             </div>

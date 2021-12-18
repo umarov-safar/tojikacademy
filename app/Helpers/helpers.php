@@ -3,9 +3,20 @@ use Intervention\Image\Facades\Image;
 use Nette\Utils\Json;
 use App\Models\Answer;
 use App\Models\Question;
+use Backpack\MenuCRUD\app\Models\MenuItem;
 
-if(!function_exists('upload_image'))
-{
+// menu for header
+if(!function_exists('menuHeader')) {
+    
+    function menuHeader() {
+        $menu = MenuItem::find(14);
+        return $menu->children;
+    }
+
+}
+
+
+if(!function_exists('upload_image')){
     /**
      * @param $file
      * @return string
@@ -48,6 +59,7 @@ if(!function_exists('upload_image'))
     if(!function_exists('saveImageSizes'))
     {
         /**
+         * this function is for saveing multiple images like gallery
          * @param $mainImage
          * @param $galleries
          * @param string $model
@@ -100,7 +112,7 @@ if(!function_exists('upload_image'))
          * @param string $configSizes
          * @return array;
          */
-        function imageResizer(string $imagePath, string $configSizes, $toFolder = '') : array
+        function imageResizer(string $imagePath, string $configSizes, string $toFolder = '', string $prefix = null) : array
         {
 
             $paths = [];
@@ -114,22 +126,29 @@ if(!function_exists('upload_image'))
 
             foreach ($imageSizes as $key => $size)
             {
-
+                if(!file_exists(public_path($imagePath))) {
+                    return [];
+                }
                 $img =  Image::make(public_path($imagePath));
                 $img->resize($size['w'], $size['h']);
                 if($size['w'] > 400) {
-                    $waterMark = Image::make(public_path('uploads/watermark.jpg'));
-                    $waterMark->resize(200, 200);
+                    $waterMark = Image::make(public_path('images/watermark.png'));
+                    $waterMark->resize(200, 100);
                 } else {
-                    $waterMark = Image::make(public_path('uploads/watermark.jpg'));
-                    $waterMark->resize(80, 80);
+                    $waterMark = Image::make(public_path('images/watermark.png'));
+                    $waterMark->resize(100, 50);
                 }
 
                 $img->insert($waterMark, 'bottom-right');
 
-                $newImageName = date('y-m-H-s') . '-' . $imageName;
+                $newImageName = date('ymHs') . '-' . $imageName;
                 $uploadFolder = 'uploads/' . $toFolder . '/' . $key . '/';
                 $publicPath = public_path($uploadFolder);
+
+                if($prefix)
+                {
+                    $newImageName = $prefix . $newImageName;
+                }
 
                 if(!file_exists($publicPath) && mkdir($publicPath))
                 {

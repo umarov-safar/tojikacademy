@@ -37,7 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     //Question routes
-    Route::resource('questions', QuestionController::class);
+    Route::resource('questions', QuestionController::class)->except('show');
 
     //Answer routes
     Route::resource('answers', AnswerController::class);
@@ -64,9 +64,12 @@ Route::group(['middleware' => ['guest']], function() {
 
 
 //Question routes
+Route::get('questions/{category}', [QuestionController::class, 'category'])->name('question-category');
 Route::resource('questions', QuestionController::class)->only('index', 'show', 'create');
-Route::resource('answers', QuestionController::class)->only('index', 'show', 'create');
-Route::get('questions/category/{slug}', [QuestionController::class, 'questionsWithCategory'])->name('question_category');
+Route::get('questions/{category}/{slug}', [QuestionController::class, 'show'])->name('show-question');
+
+
+Route::resource('answers', QuestionController::class)->only('index',  'create');
 
 //sentences languages routes
 Route::get('english', [EnglishController::class, 'index'])->name('english');
@@ -74,18 +77,21 @@ Route::get('russian', [RussianController::class, 'index'])->name('russian');
 
 //words languages routes
 Route::get('words', [WordController::class, 'index'])->name('words');
-Route::get('words/russian', [RussianWordController::class, 'categories'])->name('russian-words');
-Route::get('words/russian/{slug}', [RussianWordController::class, 'learn']);
-Route::get('words/english', [EnglishWordController::class, 'categories'])->name('english-words');
-Route::get('words/english/{slug}', [EnglishWordController::class, 'learn']);
+Route::get('russian/words', [RussianWordController::class, 'categories'])->name('russian-words');
+Route::get('russian/words/{slug}', [RussianWordController::class, 'learn']);
+Route::get('english/words', [EnglishWordController::class, 'categories'])->name('english-words');
+Route::get('english/words/{slug}', [EnglishWordController::class, 'learn']);    
 
 
 // News pages
-Route::get('news', [ArticleController::class, 'news']);
-Route::get('/news/{slug}', [ArticleController::class, 'newsContent']);
+Route::get('news', [ArticleController::class, 'news'])->name('news');
+Route::get('/news/{category}', [ArticleController::class, 'news'])->name('news-category');
+Route::get('news/{category}/{slug}', [ArticleController::class, 'newsContent'])->name('news-content');
 
 
 //Tutorials routs
-Route::get('/tutorials', [ArticleController::class, 'tutorials']);
-Route::get('/tutorials/{category}', [ArticleController::class, 'category']);
-Route::get('/tutorials/{category}/{slug}', [ArticleController::class, 'tutorial']);
+Route::get('/tutorials', [ArticleController::class, 'tutorials'])->name('tutorials');
+Route::get('/tutorials/{category}', [ArticleController::class, 'category'])->name('tutorial-category');
+Route::get('/tutorials/tags/{slug}', [ArticleController::class, 'tags'])->name('tags');
+
+Route::get('/tutorials/{category}/{slug}', [ArticleController::class, 'tutorial'])->name('tutorial');

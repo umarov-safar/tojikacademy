@@ -65,7 +65,7 @@ class QuestionController extends Controller
             }
         }
 
-        return Question::orderBy('created_at', 'desc')->paginate(10);
+        return Question::orderBy('created_at', 'desc')->paginate(30);
 
     }
 
@@ -115,9 +115,9 @@ class QuestionController extends Controller
      *
      * @param  string  $slug
      */
-    public function show($slug)
+    public function show(Request $request)
     {
-        $question = Question::where('slug', $slug)->firstOrFail();
+        $question = Question::where('slug', $request->slug)->firstOrFail();
         $questions=[];
         return view('answers-questions.show', compact('question', 'questions'));
     }
@@ -195,16 +195,18 @@ class QuestionController extends Controller
      * Get category questions
      * @param string $slug
      */
-    public function questionsWithCategory($slug)
+    public function category($slug)
     {
-
+        
         $category = QuestionCategory::where('slug', $slug)->get()->firstOrFail();
+
+        $categories = QuestionCategory::all();
 
         $questions = Question::where('question_category_id', $category->id)
                                 ->orderBy('created_at', 'desc')
                                 ->paginate(2);
 
-        return view('answers-questions.category_with_questions', compact('category', 'questions'));
+        return view('answers-questions.category_with_questions', compact('category', 'categories', 'questions'));
     }
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="tg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -27,6 +27,11 @@
     @yield('js_head')
 </head>
 
+{{-- menu of header the function is in the helpers.php file --}}
+@php
+    $menuTree = menuHeader();
+@endphp
+
 <body>
 <div class="wrapper">
     <div class="menu-wrapper">
@@ -44,50 +49,31 @@
                         </div>
                         <nav class="ml-4 nav-menu">
                             <ul class="d-flex menu-items">
-                                <li class="catalog-menu">
-                                    <a href="" class="parent-item">Англиси <i class="fas fa-angle-down"></i></a>
-                                    <div class="child-items">
-                                        <ul class="link-list">
-                                            <li class="item"><a href="{{ route('english') }}">Машқҳо</a></li>
-                                            <li class="item"><a href="{{ route('english-words') }}">Омузиши луғатҳо</a></li>
-                                            <li class="item"><a href="#">Дарсҳо</a></li>
-                                            <li class="item"><a href="#">Видеоҳо</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="catalog-menu ">
-                                    <a href="" class="parent-item">Руси <i class="fas fa-angle-down"></i></a>
-                                    <div class="child-items">
-                                        <ul class="link-list">
-                                            <li class="item"><a href="{{ route('russian') }}">Машқҳо</a></li>
-                                            <li class="item"><a href="{{ route('russian-words')  }}">Омузиши луғатҳо</a></li>
-                                            <li class="item"><a href="#">Дарсҳо</a></li>
-                                            <li class="item"><a href="#">Видеоҳо</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="catalog-menu ">
-                                    <a href="#" class="parent-item">Савол ва Ҷавоб<i class="fas fa-angle-down"></i></a>
-                                    <div class="child-items">
-                                        <ul class="link-list">
-                                            <li class="item"><a href="{{ route('questions.index') }}">Саволҳо</a></li>
-                                            <li class="item"> <a href="{{ route('questions.create') }}">Савол додан</a></li>
-                                            <li class="item"><a href="#">Дарсҳо</a></li>
-                                            <li class="item"><a href="#">Видеоҳо</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
+                                @foreach ($menuTree as $menu)
+                                    <li class="catalog-menu">
+                                        <a  href="#" class="parent-item">{{ $menu->name }} <i class="fas fa-angle-down"></i></a>
+                                        <div class="child-items">
+                                            <ul class="link-list">
+                                                @foreach ($menu->children as $item)
+                                                    <li class="item"><a href="{{ $item->url() }}">{{ $item->name }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </li>
+                                @endforeach
+
+                                {{--
                                 <li class="catalog-menu ">
                                     <a href="#" class="parent-item">Дарсҳои охирин <i class="fas fa-angle-down"></i></a>
                                     <div class="child-items">
                                         <ul class="link-list">
-                                            <li class="item"><a href="#">Машқҳо</a></li>
+                                            <li class="item"><a href="{{ route('tutorials') }}">Мавзуҳои Дарси</a></li>
                                             <li class="item"><a href="#">Омузиши луғатҳо</a></li>
                                             <li class="item"><a href="#">Дарсҳо</a></li>
                                             <li class="item"><a href="#">Видеоҳо</a></li>
                                         </ul>
                                     </div>
-                                </li>
+                                </li> --}}
                             </ul>
                         </nav>
                     </div>
@@ -104,6 +90,8 @@
                         </div>
                     </nav>
                 </div>
+
+                {{-- mobile menu --}}
                 <div class="mobile-menu w-80">
                     <ul class="menu-items-mobile" >
                         @auth
@@ -116,58 +104,32 @@
                         @endauth
                         @guest
                             <li class="catalog-menu-mobile">
-                                <a class="parent-item-mobile mb-3" href="">Воридшудан<i class="fas fa-sign-in-alt"></i></a>
+                                <a class="parent-item-mobile mb-3" href="{{ route('login') }}">Воридшудан<i class="fas fa-sign-in-alt"></i></a>
                             </li>
                             <li class="catalog-menu-mobile mb-3">
-                                <a class="parent-item-mobile" href="">Бақайдгири<i class="fas fa-user-plus"></i></a>
+                                <a class="parent-item-mobile" href="{{ route('register') }}">Бақайдгири<i class="fas fa-user-plus"></i></a>
                             </li>
                         @endguest
                     </ul>
                     <br>
                     <ul class="menu-items-mobile" >
-                        <li class="catalog-menu-mobile">
-                            <a class="parent-item-mobile upper">
-                                <span>Англиси</span>
-                                <i class="fas fa-angle-right"></i>
-                            </a>
-                            <div class="child-items-mobile">
-                                <ul class="link-list-mobile">
-                                    <li class="item-mobile"><a href="">Машқҳо</a></li>
-                                    <li class="item-mobile"><a href="#">Омузиши луғатҳо</a></li>
-                                    <li class="item-mobile"><a href="#">Дарсҳо</a></li>
-                                    <li class="item-mobile"><a href="#">Видеоҳо</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="catalog-menu-mobile">
-                            <a href="#" class="parent-item-mobile upper">
-                                <span>Русси</span>
-                                <i class="fas fa-angle-right"></i>
-                            </a>
-                            <div class="child-items-mobile">
-                                <ul class="link-list-mobile">
-                                    <li class="item-mobile"><a href="">Машқҳо</a></li>
-                                    <li class="item-mobile"><a href="#">Омузиши луғатҳо</a></li>
-                                    <li class="item-mobile"><a href="#">Дарсҳо</a></li>
-                                    <li class="item-mobile"><a href="#">Видеоҳо</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="catalog-menu-mobile">
-                            <a href="#" class="parent-item-mobile upper">
-                                <span>Саволу Ҷавоб</span>
-                                <i class="fas fa-angle-right"></i>
-                            </a>
-                            <div class="child-items-mobile">
-                                <ul class="link-list-mobile">
-                                    <li class="item-mobile"><a href="{{ route('questions.index') }}">Саволҳо</a></li>
-                                    <li class="item-mobile"> <a href="{{ route('questions.create') }}">Савол додан</a></li>
-                                    <li class="item-mobile"><a href="">Саволҳо аз англиси</a></li>
-                                    <li class="item-mobile"><a href="#">Видеоҳо</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="catalog-menu-mobile">
+                        @foreach ($menuTree as $menu)
+                            <li class="catalog-menu-mobile">
+                                <a class="parent-item-mobile upper">
+                                    <span>{{ $menu->name }}</span>
+                                    <i class="fas fa-angle-right"></i>
+                                </a>
+                                <div class="child-items-mobile">
+                                    <ul class="link-list-mobile">
+                                        @foreach ($menu->children as $item)
+                                            <li class="item-mobile"><a href="{{ $item->url() }}">{{ $item->name }}</a></li>
+                                         @endforeach
+                                    </ul>
+                                </div>
+                            </li>
+                        @endforeach
+
+                        {{--<li class="catalog-menu-mobile">
                             <a href="#" class="parent-item-mobile upper">
                                 <span>Дарсҳои охирин</span>
                                 <i class="fas fa-angle-right"></i>
@@ -194,7 +156,7 @@
                                     <li class="item-mobile"><a href="#">Видеоҳо</a></li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </header>

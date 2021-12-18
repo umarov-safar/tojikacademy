@@ -27,7 +27,7 @@ class Article extends \Backpack\NewsCRUD\app\Models\Article
         'meta_keywords',
     ];
 
-
+    protected $casts = ['image_sizes' => 'array'];
 
     protected static function boot()
     {
@@ -37,22 +37,5 @@ class Article extends \Backpack\NewsCRUD\app\Models\Article
             $article->image_sizes = json_encode($arrPaths);
         });
     }
-
-
-    /**
-     * Small image for list
-     */
-    public function smallImage()
-    {
-        if($this->image_sizes)
-        {
-            $image = json_decode($this->image_sizes, true);
-            return $image['400x300'];
-        }
-    }
-
-    /**
-     * Getting all Tutorial category
-     */
-
+    
 }

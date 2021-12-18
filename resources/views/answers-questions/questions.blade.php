@@ -9,7 +9,7 @@
                        <li><a class="text">Категорияи саволҳо</a></li>
                        @foreach ($categories as $category)
                        <li>
-                           <a href="{{ route('question_category', $category->slug) }}">{{ $category->name }}</a>
+                           <a href="{{ route('question-category', $category->slug) }}">{{ $category->name }}</a>
                        </li>
                        @endforeach
                     </ul>
@@ -19,8 +19,8 @@
             <br>
             <div class="d-flex justify-between content-top">
                 <div class="orders">
-                    <a href="{{ route('questions.index') }}/?orderWith=desc">Саволҳо аз нав</a>
-                    <a href="{{ route('questions.index') }}/?orderWith=asc">Саволҳои аз куҳна</a>
+                    <a href="{{ route('questions.index') }}/?orderWith=desc">Саволҳои нав</a>
+                    <a href="{{ route('questions.index') }}/?orderWith=asc">Саволҳои куҳна</a>
                     <a href="{{ route('questions.index') }}/?orderWith=month">Саволҳои ин моҳ</a>
                     <a href="{{ route('questions.index') }}/?orderWith=day">Саволҳои имруз</a>
                 </div>
