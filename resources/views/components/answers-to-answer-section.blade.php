@@ -1,5 +1,5 @@
 <article id="answers" class="question">
-    <div class="container max-width" style="padding-bottom: 0% !important; ">
+    <div style="padding-bottom: 0% !important; ">
         <div class="content">
             @foreach($answers as $answer)
                 <div class="asked">
@@ -34,11 +34,17 @@
                     {{--     body    --}}
                     <div>
                         <div class="answer-body">
-                            {{ $parent->user->name }}
+                            <div style="padding: 0 0 7px 0 ">
+                                <p>
+                                   <strong>
+                                       Ҷавоб ба: <a href="/users/profile/{{ $parent->user->id }}">{{ $parent->user->fullName() }}</a>
+                                   </strong>
+                                </p>
+                            </div>
                             {!! $answer->answer !!}
                         </div>
                         <div class="comment-form">
-                            <form action="{{ route('answers.store') }}" method="POST" enctype="multipart/form-data" class="hidden col-md-8">
+                            <form action="{{ route('answers.store') }}" method="POST" enctype="multipart/form-data" class="hidden">
                             @csrf
                                 <div class="form-item">
                                     <label class="input-label" for="answer"><p class="bold" >Ҷавоби шумо:</p></label>

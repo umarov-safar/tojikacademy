@@ -11,26 +11,25 @@
         <div class="content row">
             <div class="col-lg-8">
                 <h2 class="section-title">Тагҳо аз {{ $tag->name }}</h2>
-                    
-                @forelse($tutorials as $tutorial)
+                @forelse($articles as $article)
                 <div class="article row">
                     <div class="text p-0">
-                        <a href="/tutorials/{{ $tutorial->category->slug }}/{{ $tutorial->slug }}" class="article-title upper mb-6">
-                            <h4>{{ $tutorial->title }}</h4>
+                        <a href="/{{ $parentSlug }}/{{ $article->category->slug }}/{{ $article->slug }}" class="article-title upper mb-6">
+                            <h4>{{ $article->title }}</h4>
                         </a>
                         <div>
                             @php
-                                $image = json_decode($tutorial->image_sizes, true);
+                                $image = json_decode($article->image_sizes, true);
                             @endphp
-                            <a href="/tutorials/{{ $tutorial->category->slug }}/{{ $tutorial->slug }}">
-                                <img src="/{{ $image['200x200'] ?? $tutorial->image }}" alt="{{ Str::limit($tutorial->title, 50, '...') }}" />
+                            <a href="/{{ $parentSlug }}/{{ $article->category->slug }}/{{ $article->slug }}">
+                                <img src="/{{ $image['200x200'] ?? $article->image }}" alt="{{ $article->title }}" />
                             </a>
 
-                            <p class="des">{{ Str::limit($tutorial->description, 100, '...') }}</p>
+                            <p class="des">{{ Str::limit($article->description, 100, '...') }}</p>
                         </div>
                         <div class="d-flex justify-between p-5 mt-6">
-                            <a href="/tutorials/{{ $tutorial->category->slug }}/{{ $tutorial->slug }}" class="btn-article">Муфассал</a>
-                            <small>{{ $tutorial->date->format('d-m-Y') }}</small>
+                            <a href="/{{ $parentSlug }}/{{ $article->category->slug }}/{{ $article->slug }}" class="btn-article">Муфассал</a>
+                            <small>{{ $article->date->format('d-m-Y') }}</small>
                         </div>
                     </div>
                 </div>

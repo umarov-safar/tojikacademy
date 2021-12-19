@@ -11,7 +11,7 @@
                 <h1 class="text-page">Омузиши луғатҳои забони руси дар бораи {{ $category->name }}</h1>
             </div>
             <div class="content">
-                <h4 class="fs-24">
+                <h4 class="fs-24" id="end-message">
                     <span id="demo-text"></span>
                     <i class="fa fa-volume-up listen pointer"></i>
                 </h4>
@@ -29,10 +29,9 @@
                 <br><br>
                 {{--    links to others lessons      --}}
                 <div class="links">
-                    <a href="#">Аз нав</a>
-                    <a href="#">Дигар категория луғатҳо</a>
-                    <a href="#">Видеоҳои забони руси</a>
-                    <a href="#">Омузиши ибораҳои забони руси</a>
+                    <a href="{{ route('russian-words') }}">Интихоби дигар категория</a>
+                    <a href="https://youtube.com/c/tojikacademy">Видеоҳои Руси</a>
+                    <a href="{{ route('english') }}">Омузиши ибораҳои з.Руси</a>
                 </div>
             </div>
         </div>

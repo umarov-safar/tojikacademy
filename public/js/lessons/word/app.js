@@ -12,7 +12,6 @@ let demoTranslates = $('#random-demo-words');
 
 
 
-
 class Word {
 
     /**
@@ -88,7 +87,11 @@ class Word {
         this.count++;
 
         if (this.count >= this.words.length) {
-            $('#russian-exercise .content').html(`<h1>Круто вы изучали ${this.count} слова </h1>`);
+            $('#end-message').html(`<h3>Офарин! Шумо ${this.count} лағат омухтед.</h3>`);
+
+            demoTranslates.find('.word').removeClass('word');
+
+            return null;
         }
 
         demoTranslates.html('');

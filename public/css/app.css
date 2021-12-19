@@ -1015,6 +1015,10 @@ footer{
     overflow: hidden;
 }
 
+#rcm-questions .container {
+    padding: unset;
+}
+
 small.des, small.ans {
     color: #7e7e7e;
 }
@@ -1081,10 +1085,13 @@ small.des, small.ans {
 }
 
 #russian-word .links a {
-    padding: 5px;
-    background:  rgb(109 185 245 / 22%);
+    background: rgb(56 46 56);
     border-radius: 5px;
     width: 40%;
+    margin: 2px;
+    padding: 10px !important;
+    color: #ffffff;
+    box-shadow: 3px 3px 10px 3px #dfdfdf52;
 }
 
 #russian-word .correct-answer{
@@ -1105,7 +1112,7 @@ small.des, small.ans {
     margin:  0.5rem 0;
 }
 
-.news-page .categories ul, .tt-page .categories ul{ 
+.news-page .categories ul, .tt-page .categories ul{
     padding: 0;
     list-style: none;
     margin: 2rem 0 0;

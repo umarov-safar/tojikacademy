@@ -34,8 +34,9 @@ class Article extends \Backpack\NewsCRUD\app\Models\Article
         parent::boot();
         self::saving(function ($article) {
             $arrPaths = imageResizer($article->image, 'articles', 'articles');
-            $article->image_sizes = json_encode($arrPaths);
+            $article->image_sizes = $arrPaths;
         });
+
     }
-    
+
 }

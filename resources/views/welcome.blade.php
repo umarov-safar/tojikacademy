@@ -280,7 +280,7 @@
                 @forelse($news as $article)
                     <div class="article row">
                         <div class="text p-0">
-                            <a href="{{ route('news-content', ['category' => $article->cat_slug, 'slug' => $article->slug ]) }}" 
+                            <a href="{{ route('news-content', ['category' => $article->cat_slug, 'slug' => $article->slug ]) }}"
                                 class="article-title upper mb-6">
                                 <h4>{{ $article->title }}</h4>
                             </a>
@@ -289,7 +289,7 @@
                                     $image  = json_decode($article->image_sizes, true);
                                 @endphp
                                 <a href="{{ route('news-content', ['category' => $article->cat_slug, 'slug' => $article->slug ]) }}">
-                                    <img src="/{{ $image['200x200'] ?? $article->image }}" alt="{{ Str::limit($article->title, 50, '...') }}" />
+                                    <img src="/{{ $image['200x200'] ?? $article->image }}" alt="{{ $article->title }}" />
                                 </a>
 
                                 <p class="des">{{ Str::limit($article->description, 100, '...') }}</p>
@@ -313,7 +313,7 @@
                             <a href="/tutorials/{{ $tutorial->category->slug }}/{{ $tutorial->slug }}" class="article-title upper mb-6"><h4>{{ $tutorial->title }}</h4></a>
                             <div>
                                 <a href="/tutorials/{{ $tutorial->category->slug }}/{{ $tutorial->slug }}">
-                                    <img src="/{{ $tutorial->image_sizes['200x200'] ?? $tutorial->image }}" alt="{{ Str::limit($tutorial->title, 50, '...') }}" />
+                                    <img src="/{{ $tutorial->image_sizes['200x200'] ?? $tutorial->image }}" alt="{{ $tutorial->title }}" />
                                 </a>
 
                                 <p class="des">{{ Str::limit($tutorial->description, 100, '...') }}</p>

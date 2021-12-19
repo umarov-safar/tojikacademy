@@ -43,7 +43,7 @@
                                             </div>
                                             <div class="form-item">
                                                 <label class="input-label" for="summernote">Шарҳи савол</label>
-                                                <textarea name="body" id="summernote" data-editor="sumernote" class="textarea" cols="30"  placeholder="Шарҳи савол..." rows="7">{{ $question->body }}</textarea>
+                                                <textarea name="body" id="summernote" data-editor="summernote" class="textarea" cols="30"  placeholder="Шарҳи савол..." rows="7">{{ $question->body }}</textarea>
                                             </div>
                                             <div class="form-item">
                                                  <label class="input-label" for="category">Савол дар бораи: </label>

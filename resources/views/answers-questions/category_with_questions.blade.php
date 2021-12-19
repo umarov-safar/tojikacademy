@@ -10,11 +10,12 @@
                 <div class="col-lg-4 tt-page">
                     <div class="categories">
                         <ul>
-                           <li><a class="text">Категорияи саволҳо</a></li>
-                           @foreach ($categories as $category)
-                           <li>
+                            <li><a class="text">Категорияи саволҳо</a></li>
+                            <li><a href="{{ route('questions.index') }}">Ҳамаи саволҳо</a></li>
+                        @foreach ($categories as $category)
+                            <li>
                                <a href="{{ route('question-category', $category->slug) }}">{{ $category->name }}</a>
-                           </li>
+                            </li>
                            @endforeach
                         </ul>
                      </div>

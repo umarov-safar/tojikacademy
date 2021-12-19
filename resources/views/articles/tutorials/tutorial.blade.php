@@ -13,22 +13,22 @@
                 <h1 class="title">{{ $tutorial->title }}</h1>
                 <p class="p-4">{{ $tutorial->description }}</p>
                 <article>
-                    <img src="/{{ $tutorial->image }}" alt="" />
+                    <img src="/{{ $tutorial->image_sizes['1100x800'] ?? $tutorial->image }}" alt="{{ $tutorial->title }}" />
                     {!! $tutorial->content !!}
                 </article>
-                
+
                 <br>
                 <div class='tags'>
                    @if (count($tutorial->tags) > 0)
-                    <h4>Тагҳои ҳамонанд</h4>
+                    <h3 class="p-4">Тагҳои ҳамонанд</h3>
                     <div class="d-flex" style="gap: 5px;">
                         @foreach ($tutorial->tags as $tag)
-                            <a href="{{ route('tags', $tag->slug) }}" class="tag">{{ $tag->name }}</a>
+                            <a href="{{ route('tags', ['parent' => 'tutorials', 'slug' => $tag->slug]) }}" class="tag">{{ $tag->name }}</a>
                         @endforeach
                     </div>
                    @endif
                 </div>
-                
+
                 {{-- recomended news --}}
                 <br>
                     @if (count($reletedTutotrials) > 0)
@@ -65,7 +65,7 @@
                         <li><a class="text">Рӯйхати мавзӯҳои дарсӣ</a></li>
                      @foreach($tutorialCategory->children as $child)
                         <li>
-                            <a href="/tutorials/{{ $child->slug }}">{{ $child->name }}</a>
+                            <a href="{{ route('tutorial-category', $child->slug) }}">{{ $child->name }}</a>
                         </li>
                     @endforeach
                     </ul>
@@ -78,7 +78,10 @@
                         @forelse($recommendedTutorials as $article)
                             <div class="article row">
                                 <div class="text p-0">
-                                    <a href="/tutorials/{{ $article->category->slug }}/{{ $article->slug }}" class="article-title upper mb-6"><h4>{{ $article->title }}</h4></a>
+                                    <a href="{{ route('tutorial', ['category'=>$article->category->slug, 'slug' => $article->slug]) }}"
+                                         class="article-title upper mb-6">
+                                         <h4>{{ $article->title }}</h4>
+                                        </a>
                                     <div>
                                         <a href="/tutorials/{{ $article->category->slug }}/{{ $article->slug }}">
                                             <img src="/{{  $article->image_sizes['200x200'] ?? $article->image  }}" alt="{{ Str::limit($article->title, 50, '...') }}" width="100"/>

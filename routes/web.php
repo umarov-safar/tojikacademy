@@ -80,18 +80,23 @@ Route::get('words', [WordController::class, 'index'])->name('words');
 Route::get('russian/words', [RussianWordController::class, 'categories'])->name('russian-words');
 Route::get('russian/words/{slug}', [RussianWordController::class, 'learn']);
 Route::get('english/words', [EnglishWordController::class, 'categories'])->name('english-words');
-Route::get('english/words/{slug}', [EnglishWordController::class, 'learn']);    
+Route::get('english/words/{slug}', [EnglishWordController::class, 'learn']);
 
+
+//Article tags
+//parent is like tutorials, news or blog
+Route::get('/{parent}/tags/{slug}', [ArticleController::class, 'tags'])->name('tags');
 
 // News pages
 Route::get('news', [ArticleController::class, 'news'])->name('news');
-Route::get('/news/{category}', [ArticleController::class, 'news'])->name('news-category');
+Route::get('/news/{category}', [ArticleController::class, 'newsCategory'])->name('news-category');
 Route::get('news/{category}/{slug}', [ArticleController::class, 'newsContent'])->name('news-content');
 
 
 //Tutorials routs
 Route::get('/tutorials', [ArticleController::class, 'tutorials'])->name('tutorials');
-Route::get('/tutorials/{category}', [ArticleController::class, 'category'])->name('tutorial-category');
-Route::get('/tutorials/tags/{slug}', [ArticleController::class, 'tags'])->name('tags');
-
+Route::get('/tutorials/{category}', [ArticleController::class, 'tutorialCategory'])->name('tutorial-category');
 Route::get('/tutorials/{category}/{slug}', [ArticleController::class, 'tutorial'])->name('tutorial');
+
+
+

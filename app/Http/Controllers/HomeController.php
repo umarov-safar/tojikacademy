@@ -6,7 +6,6 @@ use App\Models\Article;
 use App\Models\CategoryArticle;
 use App\Models\Question;
 use DB;
-use DebugBar\DebugBar;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

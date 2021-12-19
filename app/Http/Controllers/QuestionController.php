@@ -117,9 +117,17 @@ class QuestionController extends Controller
      */
     public function show(Request $request)
     {
+
         $question = Question::where('slug', $request->slug)->firstOrFail();
-        $questions=[];
-        return view('answers-questions.show', compact('question', 'questions'));
+
+        $questions= Question::where('question_category_id', $question->question_category_id)
+                            ->where('id', '!=', $question->id)
+                            ->limit(5)
+                            ->get();
+
+        $categories = QuestionCategory::all();
+
+        return view('answers-questions.show', compact('question', 'questions', 'categories'));
     }
 
     /**
@@ -197,7 +205,7 @@ class QuestionController extends Controller
      */
     public function category($slug)
     {
-        
+
         $category = QuestionCategory::where('slug', $slug)->get()->firstOrFail();
 
         $categories = QuestionCategory::all();

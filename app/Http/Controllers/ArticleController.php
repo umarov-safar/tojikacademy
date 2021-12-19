@@ -3,15 +3,31 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\CategoryArticle;
+use App\Repositories\ArticleInterfaceRepository;
 use Illuminate\Http\Request;
 use Backpack\NewsCRUD\app\Models\Tag;
 use DB;
 
 class ArticleController extends Controller
 {
+
+    protected $articleRepository;
+
+    public function __construct(ArticleInterfaceRepository $articleRepository)
+    {
+        $this->articleRepository = $articleRepository;
+    }
+
     public function news()
     {
-        return 111;
+        $parentCategory = CategoryArticle::where('slug', 'news')->get()->first();
+
+        $allNews = $this->articleRepository->getFromSubCategories($parentCategory);
+
+        return view('articles.news.index', [
+            'allNews' => $allNews,
+            'tutorialCategory' => $parentCategory,
+        ]);
     }
 
     /**
@@ -20,44 +36,51 @@ class ArticleController extends Controller
     */
     public function newsContent(Request $request)
     {
+        $news = $this->articleRepository->getBySlug($request->slug);
 
-        $news = Article::whereSlug($request->slug)->get()->first();
+        $relatedNews = $this->articleRepository->getRelationArticles($news);
 
-        $recommendedNews = Article::where('id', '!=', $news->id)
-                                        ->where('category_id', $news->category_id)
-                                        ->orderBy('created_at', 'desc')
-                                        ->limit(8)
-                                        ->get();
+        $newsCategory = CategoryArticle::whereSlug('news')->get()->first();
 
-        $recommendedTutorials = Article::where('category_id', '!=', $news->id)
-                                        ->limit(8)
-                                        ->get();                                
+        $recommendedNews = $this->articleRepository->recommendedArticles($news, $newsCategory->children->pluck('id'), 6);
 
-       $tutorialCategory = CategoryArticle::whereSlug('tutorials')->get()->first();
+        $tutorialCategory = CategoryArticle::where('slug', 'tutorials')->get()->first();
+
+        $recommendedTutorials = $this->articleRepository->recommendedArticles($news, $tutorialCategory->children->pluck('id'), 5);
 
        return view('articles.news.content', [
            'news' => $news,
+           'relatedNews' => $relatedNews,
+           'newsCategory' => $newsCategory,
            'recommendedNews' => $recommendedNews,
-           'tutorialCategory' => $tutorialCategory,
            'recommendedTutorials' => $recommendedTutorials,
        ]);
     }
 
+    public function newsCategory($slug)
+    {
+        $category = CategoryArticle::whereSlug($slug)->get()->first();
+
+        $newsS = $this->articleRepository->category($category);
+
+        $newsCategory = CategoryArticle::whereSlug('news')->get()->first();
+
+        return view('articles.news.category', [
+            'category' => $category,
+            'newsS' => $newsS,
+            'tutorialCategory' => $newsCategory,
+        ]);
+    }
 
     public function tutorials()
     {
-        $tutorialCategory = CategoryArticle::where('slug', 'tutorials')->get()->first();
-      
-        $tutorials = DB::table('articles')
-                        ->select(['*', 'categories.slug as cat_slug', 'articles.slug as slug'])
-                        ->join('categories', function($join) use ($tutorialCategory) {
-                                $join->on('categories.id', '=', 'articles.category_id')
-                                ->where('categories.parent_id', $tutorialCategory->id);
-            })->paginate(15);
-        
+        $parentCategory = CategoryArticle::where('slug', 'tutorials')->get()->first();
+
+        $tutorials = $this->articleRepository->getFromSubCategories($parentCategory);
+
         return view('articles.tutorials.index', [
             'tutorials' => $tutorials,
-            'tutorialCategory' => $tutorialCategory,
+            'tutorialCategory' => $parentCategory,
         ]);
     }
 
@@ -66,16 +89,11 @@ class ArticleController extends Controller
      * @param Request $request
      *
      */
-    public function category($slug)
+    public function tutorialCategory($slug)
     {
         $category = CategoryArticle::whereSlug($slug)->get()->first();
 
-        $tutorials = DB::table('articles')
-                        ->select(['*', 'categories.slug as cat_slug', 'articles.slug as slug'])
-                        ->join('categories', function($join) use ($category) {
-                            $join->on('categories.id', '=', 'articles.category_id')
-                            ->where('categories.id', $category->id);
-            })->paginate(15);
+        $tutorials = $this->articleRepository->category($category);
 
         $tutorialCategory = CategoryArticle::whereSlug('tutorials')->get()->first();
 
@@ -92,27 +110,19 @@ class ArticleController extends Controller
      */
     public function tutorial(Request $request)
     {
+        // tutorial content
+        $tutorial = $this->articleRepository->getBySlug($request->slug);
 
-        //Tutorial wich getted by slug
-        $tutorial = Article::whereSlug($request->slug)->get()->first();
+        //Tutorials in the same category
+        $reletedTutotrials = $this->articleRepository->getRelationArticles($tutorial);
 
 
-        //The tutorials in the same category
-        $reletedTutotrials = Article::where('id', '!=', $tutorial->id)
-                            ->where('category_id', $tutorial->category_id)
-                            ->orderBy('created_at', 'desc')
-                            ->limit(8)
-                            ->get();
-
-        //Another tutorials for more                    
-        $recommendedTutorials = Article::where('id', '!=', $tutorial->id)
-                                    ->where('category_id', '!=', $tutorial->category_id)
-                                    ->orderBy('created_at', 'desc')
-                                    ->limit(8)
-                                    ->get();
-
-        //Category of tutorials                            
+        //Category of tutorials
         $tutorialCategory = CategoryArticle::whereSlug('tutorials')->get()->first();
+
+        //Another tutorials for more
+        $recommendedTutorials = $this->articleRepository->recommendedArticles($tutorial, $tutorialCategory->children->pluck('id'));
+
 
         return view('articles.tutorials.tutorial', [
             'tutorial' => $tutorial,
@@ -123,23 +133,32 @@ class ArticleController extends Controller
     }
 
 
-    public function tags(Request $request) 
-    {       
-        $tag = Tag::whereSlug($request->slug)->get()->first();
-        
+    public function tags(Request $request)
+    {
 
-        //Category of tutorials                            
-        $tutorialCategory = CategoryArticle::whereSlug('tutorials')->get()->first();
+        $tag = Tag::whereSlug($request->slug)->get()->first();
+
+        $slug = 'tutorials';
+
+        if($request->parent == 'news')
+        {
+            $slug = 'news';
+        } else if($request->parent == 'blogs') {
+            $slug = 'blogs';
+        }
+        //Parent categories
+        $tutorialCategory = CategoryArticle::whereSlug($slug)->get()->first();
 
         //ids of tutorials
         $ids = $tutorialCategory->children->pluck('id');
 
-        $tutorials = $tag->articles()->whereIn('category_id', $ids)->get();
+        $articles = $tag->articles()->whereIn('category_id', $ids)->get();
 
-        return view('articles.tag', [
+        return view('articles.tags', [
             'tag' => $tag,
-            'tutorials' => $tutorials,
+            'articles' => $articles,
             'tutorialCategory' => $tutorialCategory,
+            'parentSlug' => $slug,
         ]);
     }
 

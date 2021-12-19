@@ -1,6 +1,7 @@
 <section id="answers" class="question">
-    <div class="container max-width">
-        <h3>Ҷавобҳо</h3>
+    <div>
+        <br>
+        <h2>Ҷавобҳо</h2>
         <div class="content">
             @forelse($answers as $answer)
 
@@ -40,7 +41,7 @@
                             {!! $answer->answer !!}
                         </div>
                             <div class="comment-form">
-                                <form action="{{ route('answers.store') }}" method="POST" enctype="multipart/form-data" class="hidden col-md-8">
+                                <form action="{{ route('answers.store') }}" method="POST" enctype="multipart/form-data" class="hidden">
                                 @csrf
                                     <div class="form-item">
                                         <label class="input-label" for="answer"><p class="bold" >Ҷавоби шумо:</p></label>

@@ -106,20 +106,24 @@ function closeAnswerToAnswerForm(el){
 
 //reach text for question anb answer page
 $(document).ready(function(){
-    $('textarea[data-editor="summernote"]').summernote({
-        placeholder: 'Ҷавоби шумо ...',
-        tabsize: 2,
-        height: 250,
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview']]
-        ]
-    });
+
+    let summernotes = $('textarea[data-editor="summernote"]');
+    if(summernotes.length > 0){
+        summernotes.summernote({
+            placeholder: 'Ҷавоби шумо ...',
+            tabsize: 2,
+            height: 250,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview']]
+            ]
+        });
+    }
 });
 
 
