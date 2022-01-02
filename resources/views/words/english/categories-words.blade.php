@@ -9,7 +9,7 @@
                 <p>Интихоб  кунед дар бораи чи  луғат меомузед</p>
             </div>
             <br>
-            <div class="w-50 m-auto" id="word-categories-parent">
+            <div class="col-lg-7 m-auto" id="word-categories-parent">
                 <div class="word-categories">
                     @foreach($wordCategories as $wordCategory)
                         <div class="category">

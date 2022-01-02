@@ -12,7 +12,7 @@ use App\Http\Controllers\WordController;
 use \App\Http\Controllers\RussianWordController;
 use \App\Http\Controllers\EnglishWordController;
 use App\Http\Controllers\ArticleController;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('account/logout', [LoginController::class, 'logout'])->name('logout');
 
+    Route::put('account/register/{id}', [RegisterController::class, 'update'])->name('updateUser');
 
     //Question routes
     Route::resource('questions', QuestionController::class)->except('show');
@@ -61,6 +62,9 @@ Route::group(['middleware' => ['guest']], function() {
     Route::post('account/login', [LoginController::class, 'check']);
 
 });
+
+
+Route::resource('account/users', UserController::class);
 
 
 //Question routes

@@ -5,10 +5,19 @@
 ### Changed:
 ### Fixed:
 
+## [1.27.0]- 03-01-2022
+### Added
+- User page and controller
+- Middleware for admin panel
+- `image_sizes` column to users table
+### Changed
+- User images
+
+
 ## [1.26.0]- 20-12-2021
 ### Added
 - Repository pattern for article
-- tags page
+- Tags page
 ### Changed
 - Url to articles
 - Question page
@@ -16,7 +25,7 @@
 - Word page
 
 ## [1.25.0]- 18-12-2021
-- This commit has error with image size I commit it for using repository pattern
+- This commit has error with image size I committed it for using repository pattern
 ### Added
 - Sizes for image
 - Create Articles pages

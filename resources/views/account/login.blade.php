@@ -25,7 +25,7 @@
                         <button type="submit" id="register-btn" class="btn-b">Обуна шудан</button>
                     </div>
                 </form>
-                <a href="{{ route('register') }}"  class="change-login" id="login">Ба қайд гирифтан</a>
+                <a href="{{ route('register') }}"  class="change-login" id="login">Бақайдгирӣ</a>
                 <div  class="p-10">
                     <div class="d-flex justify-center"><p>Дигар шабакаҳои мо</p></div>
                     <div class="socials">

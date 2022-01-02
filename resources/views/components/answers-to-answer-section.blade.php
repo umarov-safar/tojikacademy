@@ -6,10 +6,10 @@
                     {{--    Full name, img date     --}}
                     <div class="name-img d-flex justify-between">
                         <div class="d-flex align-center">
-                            <img style="border-radius: 30% !important;" src="{{ asset($answer->user->imageSizes('100x100')) }}" alt="{{ $answer->title  }}" class="mr-3">
+                            <img style="border-radius: 30% !important;" src="{{ asset(@$answer->user->image_sizes['100x100'] ?? $answer->user->avatar) }}" alt="{{ $answer->title  }}" class="mr-3">
                             <div class="name">
                                 <h4 class="mb-3">
-                                    <a href="account/users/{{ $answer->user->id }}">
+                                    <a href="{{  route('users.show', $answer->user->id) }}">
                                         {{ $answer->user->fullName() }}
                                     </a>
                                 </h4>
@@ -37,7 +37,7 @@
                             <div style="padding: 0 0 7px 0 ">
                                 <p>
                                    <strong>
-                                       Ҷавоб ба: <a href="/users/profile/{{ $parent->user->id }}">{{ $parent->user->fullName() }}</a>
+                                       Ҷавоб ба: <a href="{{  route('users.show', $parent->user->id) }}">{{ $parent->user->fullName() }}</a>
                                    </strong>
                                 </p>
                             </div>

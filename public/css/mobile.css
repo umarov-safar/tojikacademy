@@ -158,6 +158,11 @@ like this "home page, register page, question page etc"
     .word-categories .category  img{
         border: 2px solid #f29a5a
     }
+
+    .word-categories .category img{
+        width: 120px !important;
+        height: 120px !important;
+    }
 }
 
 

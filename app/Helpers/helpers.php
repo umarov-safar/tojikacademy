@@ -7,7 +7,7 @@ use Backpack\MenuCRUD\app\Models\MenuItem;
 
 // menu for header
 if(!function_exists('menuHeader')) {
-    
+
     function menuHeader() {
         $menu = MenuItem::find(14);
         return $menu->children;
@@ -16,14 +16,15 @@ if(!function_exists('menuHeader')) {
 }
 
 
-if(!function_exists('upload_image')){
+if(!function_exists('upload_images')){
     /**
      * @param $file
-     * @return string
+     * @return array
      */
-    function upload_image($file, $configFolderSize, $folder = '/') : string
+    function upload_images($file, $configFolderSize, $folder = '/'): array
     {
-        $userFolder = 'uploads' . $folder;
+        $userFolder = 'uploads/' . $folder;
+
 
         $image = Image::make($file);
 
@@ -40,17 +41,19 @@ if(!function_exists('upload_image')){
         foreach ($sizes as $folder => $size) {
 
             $userImageSizePath = $userFolder . $folder; //folder from config
-            !file_exists(public_path($userImageSizePath)) ? mkdir(public_path($userImageSizePath)) : 0; //folder not exists than creat
+
+
+            !file_exists(public_path($userImageSizePath)) ? mkdir(public_path($userImageSizePath)) : null; //folder not exists than creat
 
             $image->resize($size['w'], $size['h']); // size from config filesystem
 
-            $userImage = $userImageSizePath . DIRECTORY_SEPARATOR . $readyImage; // doing real path
+            $userImage = $userImageSizePath . '/' . $readyImage; // doing real path
 
             $image->save(public_path($userImage));
             $imageSizes[$folder] = $userImage;
         }
 
-        return json_encode($imageSizes);
+        return $imageSizes;
     }
 
 

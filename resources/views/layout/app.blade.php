@@ -79,14 +79,33 @@
                     </div>
                     <nav>
                         <div class="d-flex align-center justify-center">
-                            @auth
-                                <a class="btn-account" href="/account/profile"><i class="far fa-user-circle"></i> <span>{{ auth()->user()->name }}</span></a>
-                                <a class="btn-account p-3 mr-6" href="{{ route('logout') }}"><i class="fas fa-sign-in-alt"></i> </a>
-                            @endauth
-                            @guest
-                                <a class="btn-account p-3 mr-6" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> </a>
-                                <a class="btn-account p-3 ml-6" href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a>
-                            @endguest
+                            <ul class="d-flex menu-items">
+                                <li class="catalog-menu">
+                                    @auth()
+                                        <a href="#"><span class="far fa-user-circle"></span> {{ auth()->user()->fullName() }}</a>
+                                    @endauth
+                                    @guest
+                                            <a href="#" ><span class="fas fa-sign-in-alt"></span> Утоқи шахсӣ</a>
+                                    @endguest
+                                    <div class="child-items">
+                                        <ul class="link-list">
+                                            @auth
+                                                <li class="item"><a href="{{ route('users.show', [auth()->id()]) }}" >Утоқи шахсӣ</a></li>
+                                                <li class="item"><a href="{{ route('logout') }}">Баромадан</a></li>
+                                            @endauth
+                                            @guest
+                                                <li class="item">
+                                                    <a href="{{ route('login') }}"> <span class="fas fa-sign-in-alt"></span> Ворид шудан</a>
+                                                </li>
+                                                <li class="item">
+                                                    <a href="{{ route('register') }}"><span class="fas fa-user-plus"></span> Ба қайдгири</a>
+                                                </li>
+                                            @endguest
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+
                         </div>
                     </nav>
                 </div>
@@ -96,7 +115,7 @@
                     <ul class="menu-items-mobile" >
                         @auth
                             <li class="catalog-menu-mobile mb-3">
-                                <a class="parent-item-mobile" href="/account/profile"><span>{{ auth()->user()->name }}</span><i class="far fa-user-circle"></i></a>
+                                <a class="parent-item-mobile" href="{{ route('users.show', [auth()->id()]) }}"><span>{{ auth()->user()->fullName() }}</span><i class="far fa-user-circle"></i></a>
                             </li>
                             <li class="catalog-menu-mobile mb-3">
                                 <a class="parent-item-mobile" href="/account/logout"><span>Баромадан</span><i class="fas fa-door-open"></i></a>

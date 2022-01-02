@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\ArticleRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Spatie\Permission\Models\Role;
 
 /**
  * Class ArticleCrudController
@@ -19,6 +20,7 @@ class ArticleCrudController extends \Backpack\NewsCRUD\app\Http\Controllers\Admi
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
+
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      *
@@ -29,6 +31,7 @@ class ArticleCrudController extends \Backpack\NewsCRUD\app\Http\Controllers\Admi
     {
         parent::setup();
         CRUD::setModel(\App\Models\Article::class);
+
 
         $this->crud->operation(['create', 'update'], function() {
             $this->crud->setValidation(ArticleRequest::class);
@@ -42,7 +45,6 @@ class ArticleCrudController extends \Backpack\NewsCRUD\app\Http\Controllers\Admi
                 ['name' => 'meta_description', 'type' => 'textarea'],
                 ['name' => 'meta_keywords'],
             ]);
-
         });
 
         $this->crud->operation(['list'], function() {

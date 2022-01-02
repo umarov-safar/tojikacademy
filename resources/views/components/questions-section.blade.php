@@ -9,10 +9,10 @@
                     {{--    Full name, img date     --}}
                     <div class="name-img d-flex justify-between">
                         <div class="d-flex align-center">
-                            <img style="border-radius: 30% !important;" src="{{ asset($question->user->imageSizes('100x100')) }}" alt="{{ $question->title  }}" class="mr-3">
+                            <img style="border-radius: 30% !important;" src="{{ asset($question->user->image_sizes['100x100'] ?? $question->user->avatar)}}" alt="{{ $question->title  }}" class="mr-3">
                             <div class="name">
                                 <h4 class="mb-3">
-                                    <a href="account/users/{{ $question->user->id }}">
+                                    <a href="{{ route('users.show', $question->user->id)}}">
                                         {{ $question->user->fullName() }}
                                     </a>
                                 </h4>

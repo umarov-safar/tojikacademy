@@ -26,7 +26,7 @@ class RegisterRequest extends FormRequest
         return [
             'name' => 'required|string|min:3',
             'last_name' => 'required|string|min:3',
-            'email' => 'required|unique:users,email',
+            'email' => 'required|unique:users,email,' . $this->id,
             'password' => 'required|confirmed|min:4',
             'password_confirmation' => 'required',
             'avatar' => 'nullable|mimes:jpg,png,jpeg,webp|max:5048'

@@ -209,6 +209,9 @@ img {
     color: white;
 }
 
+.radius-10{
+    border-radius: 10px;
+}
 
 /*label img*/
 .label-btn{

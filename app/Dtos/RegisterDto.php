@@ -25,10 +25,14 @@ class RegisterDto {
     protected $password;
 
     /**
-     * @var string|null $avatar
+     * @var array|null $avatar
      */
     protected $avatar;
 
+    /**
+     * @var array
+     */
+    protected array $image_sizes;
 
 
     public function __construct(
@@ -36,7 +40,8 @@ class RegisterDto {
         string  $lastName,
         string $email,
         string $password,
-        ?string $avatar
+        ?string $avatar,
+        array $image_sizes
     )
     {
         $this->name = $name;
@@ -44,6 +49,7 @@ class RegisterDto {
         $this->email = $email;
         $this->password = $password;
         $this->avatar = $avatar;
+        $this->image_sizes = $image_sizes;
     }
 
 
@@ -80,14 +86,19 @@ class RegisterDto {
     }
 
     /**
-     * @return string|null
+     * @return array|null
      */
     public function getAvatar(): ?string
     {
         return $this->avatar;
     }
 
-
-
+    /**
+     * @return array
+     */
+    public function getImageSizes(): array
+    {
+        return $this->image_sizes;
+    }
 
 }

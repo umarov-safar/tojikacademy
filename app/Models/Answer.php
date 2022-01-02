@@ -60,7 +60,7 @@ class Answer extends Model
      */
     public function question()
     {
-        return $this->belongsTo(Question::class, 'answerable_id', 'id');
+        return $this->morphOne(Answer::class, 'answers', 'answerable_id', 'id');
     }
 
     /**

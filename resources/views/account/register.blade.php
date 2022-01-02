@@ -13,21 +13,21 @@
                     @error('message') <p class="red d-block">{{ $message }}</p> @enderror
                     @csrf
                     <div class="form-item">
-                        <label for="name" class="input-label">Номи шумо</label>
+                        <label for="name" class="input-label">Номи корбарӣ</label>
                         <input type="text" id="name" class="input @error('name') border-red @enderror" value="{{ old('name') }}" name="name" placeholder="Номатонро нависед..." >
                         @error('name')
                         <p class="red">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-item">
-                        <label for="lastname" class="input-label">Насаби шумо</label>
+                        <label for="lastname" class="input-label">Насаб</label>
                         <input type="text" class="input @error('last_name') border-red @enderror" name="last_name" id="lastname" value="{{ old('last_name') }}" placeholder="Насабаторо нависед..." >
                         @error('last_name')
                         <p class="red">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-item">
-                        <label for="email" class="input-label">Почтаи электронии шумо</label>
+                        <label for="email" class="input-label">Почтаи электронӣ</label>
                         <input type="email" class="input @error('email') border-red @enderror" name="email" id="email" value="{{ old('email')}}" placeholder="example@gmail.com">
                         @error('email')
                         <p class="red">{{ $message }}</p>
@@ -41,7 +41,7 @@
                         @enderror
                     </div>
                     <div class="form-item">
-                        <label for="password_confirmation" class="input-label">Рамзи такрори</label>
+                        <label for="password_confirmation" class="input-label">Рамзи такрор нависед</label>
                         <input type="password" class="input @error('password_confirmation') border-red @enderror" name="password_confirmation" id="password_confirmation" placeholder="Рамзро дубора нависед" >
                         @error('password_confirmation')
                         <p class="red">{{ $message }}</p>

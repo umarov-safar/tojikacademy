@@ -15,18 +15,18 @@ Route::group([
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
-    Route::crud('question', 'QuestionCrudController');
-    Route::crud('question-category', 'QuestionCategoryCrudController');
+        Route::crud('question', 'QuestionCrudController');
+        Route::crud('question-category', 'QuestionCategoryCrudController');
 
-    Route::crud('answer', 'AnswerCrudController');
-    Route::crud('english', 'EnglishCrudController');
-    Route::crud('language-category', 'LanguageCategoryCrudController');
-    Route::crud('russian', 'RussianCrudController');
-    Route::crud('quiz', 'QuizCrudController');
-    Route::crud('quiz-category', 'QuizCategoryCrudController');
-    Route::crud('like', 'LikeCrudController');
-    Route::crud('word-category', 'WordCategoryCrudController');
-    Route::crud('russian-word', 'RussianWordCrudController');
-    Route::crud('english-word', 'EnglishWordCrudController');
-    Route::crud('article', 'ArticleCrudController');
+        Route::crud('answer', 'AnswerCrudController');
+        Route::crud('english', 'EnglishCrudController');
+        Route::crud('language-category', 'LanguageCategoryCrudController');
+        Route::crud('russian', 'RussianCrudController');
+        Route::crud('quiz', 'QuizCrudController');
+        Route::crud('quiz-category', 'QuizCategoryCrudController');
+        Route::crud('like', 'LikeCrudController');
+        Route::crud('word-category', 'WordCategoryCrudController');
+        Route::crud('russian-word', 'RussianWordCrudController');
+        Route::crud('english-word', 'EnglishWordCrudController');
+        Route::crud('article', 'ArticleCrudController');
 }); // this should be the absolute last line of this file
