@@ -26,7 +26,6 @@ if(!function_exists('upload_images')){
         $userFolder = 'uploads/' . $folder;
 
 
-        $image = Image::make($file);
 
         //the user's image size in config
         $sizes = config('filesystems.image_sizes.'.$configFolderSize);
@@ -39,17 +38,26 @@ if(!function_exists('upload_images')){
 
         $imageSizes = [];
         foreach ($sizes as $folder => $size) {
+            $image = Image::make($file);
+
 
             $userImageSizePath = $userFolder . $folder; //folder from config
 
 
             !file_exists(public_path($userImageSizePath)) ? mkdir(public_path($userImageSizePath)) : null; //folder not exists than creat
 
-            $image->resize($size['w'], $size['h']); // size from config filesystem
+            $image->resize($size['w'], $size['h']);// size from config filesystem
+
+            if($size['w'] > 400) {
+                $waterMark = Image::make(public_path('images/watermark.png'));
+                $waterMark->resize(200, 100);
+                $image->insert($waterMark, 'bottom-right');
+            }
+
 
             $userImage = $userImageSizePath . '/' . $readyImage; // doing real path
 
-            $image->save(public_path($userImage));
+            $image->save(public_path($userImage), 100, 'webp');
             $imageSizes[$folder] = $userImage;
         }
 

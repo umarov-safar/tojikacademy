@@ -1,9 +1,9 @@
 @extends('layout.app')
 
-@section('title', 'Хабарҳои Тоҷикисто ва Ҷаҳон аз Тоҷик Академия')
+@section('title', 'Хабарҳои муҳими Тоҷикисто, Ҷаҳон ва илму техналогия аз Тоҷик Академия')
 @section('keywords', 'Дарсоҳои тоҷики, дарсҳои руси, дарҳои тест')
-@section('description', 'Дарсҳои сода аз  сомонаи Тоҷик Академия.')
-
+@section('description', 'Дар сомонаи Тоҷик Академия хабарҳои тоза ва лозима гузошта мешавад барои мардуми тоҷик')
+@section('url', url('news'))
 
 @section('content')
 <section class="articles tt-page">

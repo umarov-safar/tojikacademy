@@ -1,9 +1,9 @@
 @extends('layout.app')
 
-@section('title', 'Мавзуҳои Дарси гуногун')
-@section('keywords', 'Дарсоҳои тоҷики, дарсҳои руси, дарҳои тест')
-@section('description', 'Дарсҳои сода аз  сомонаи Тоҷик Академия.')
-
+@section('title', 'Мавзуҳои Дарси дар сомонаи Тоҷик Академия')
+@section('keywords', 'Дарсоҳои тоҷики, дарсҳои руси, дарҳои англиси,  тестҳои онлайн')
+@section('description', 'Дарсҳои сода ва пуркорбурд дар сомонаи Тоҷик Академия. Мо зуд зуд дарс мегузорем дар сомона барои шумо.')
+@section('url', url('tutorials'))
 
 @section('content')
 <section class="articles tt-page">

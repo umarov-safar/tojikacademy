@@ -1,5 +1,13 @@
 @extends('layout.app')
 
+@section('title', 'Омузиши забони англиси Онлайн - Ибораҳои забони Англиси барои нав омузон')
+@section('description', ' Онлайн омузиши забони Англиси бо талафузи калимаҳо осон ва сода. Ибораҳои забони Англиси барои суҳбат кардан')
+@section('keywords', 'Омузишӣ забони Англисӣ, Забонӣ Англисӣ, Дарсҳои забони Англиси, Онлайн забони англиси')
+@section('image', asset('images/english.png'))
+@section('url', route('english'))
+
+
+
 @section('content')
             {{-- description section --}}
             <section id="english-description" class="english page" >

@@ -1,9 +1,9 @@
 @extends('layout.app')
 
-@section('title', 'Тагҳои дарси ва хабарҳо аз ' . $tag->name)
-@section('keywords', 'Дарсоҳои тоҷики, дарсҳои руси, дарҳои тест')
-@section('description', 'Тагҳо аз ' . $tag->name . ' дар сомонаи Тоҷик Академия.')
-
+@section('title', 'Тагҳои дарси ва хабари аз ' . $tag->name)
+@section('keywords', 'Дарсоҳои тоҷики, дарсҳои руси, дарҳои тест, хабарҳои нави тоҷикистон ва ҷаҳон')
+@section('description', 'Тагҳо аз ' . $tag->name . ' дар сомонаи Тоҷик Академия. Дар сайти мо аз ' . $tag->name . ' дарсҳо ва хабарҳои зиёд аст.')
+@section('url',url($parentSlug . '/' . $tag->slug))
 
 @section('content')
 <section class="articles tt-page">

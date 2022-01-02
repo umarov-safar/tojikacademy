@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-json": "*",
         "backpack/crud": "4.1.*",
         "backpack/filemanager": "^1.1",
         "backpack/logmanager": "^4.0",
@@ -15,10 +16,10 @@
         "backpack/permissionmanager": "^6.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.7",
         "laravel/framework": "^8.12",
         "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5",
-      "ext-json": "*"
+        "laravel/tinker": "^2.5"
     },
     "require-dev": {
         "backpack/generators": "^3.1",

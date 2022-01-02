@@ -1,9 +1,12 @@
 $(window).scroll(function () {
-    let scroll = $(this).scrollTop();
-    if(scroll > 60){
-        $('#desktop-menu').addClass('menu-fixed');
-    } else if(scroll == 0) {
-        $('#desktop-menu').removeClass('menu-fixed');
+    if($(document).innerHeight() > 1050)
+    {
+        let scroll = $(this).scrollTop();
+        if(scroll > 60){
+            $('#desktop-menu').addClass('menu-fixed');
+        } else if(scroll == 0) {
+            $('#desktop-menu').removeClass('menu-fixed');
+        }
     }
 });
 

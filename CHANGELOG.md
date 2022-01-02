@@ -5,6 +5,10 @@
 ### Changed:
 ### Fixed:
 
+## [1.27.1]- 03-01-2022
+### Added
+- Seo for all pages
+
 ## [1.27.0]- 03-01-2022
 ### Added
 - User page and controller

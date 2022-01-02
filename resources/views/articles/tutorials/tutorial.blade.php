@@ -1,9 +1,9 @@
 @extends('layout.app')
 
-@section('title', $tutorial->title )
-@section('keywords', 'Савол ҷавоб, савол чавоб, чихел кунем, чигуна, аз кучо')
+@section('title', $tutorial->meta_title ?? $tutorial->title )
 @section('description', $tutorial->meta_description ?? $tutorial->description)
-
+@section('url', url('/tutorials/'. $tutorial->category->slug . '/' . $tutorial->slug))
+@section('image', asset($tutorial->image_sizes['1100x800'] ?? $tutorial->image))
 @section('content')
 
     <div class="container tt-page">
@@ -13,7 +13,7 @@
                 <h1 class="title">{{ $tutorial->title }}</h1>
                 <p class="p-4">{{ $tutorial->description }}</p>
                 <article>
-                    <img src="/{{ $tutorial->image_sizes['1100x800'] ?? $tutorial->image }}" alt="{{ $tutorial->title }}" />
+                    <img src="{{ asset($tutorial->image_sizes['1100x800'] ?? $tutorial->image) }}" alt="{{ $tutorial->title }}" />
                     {!! $tutorial->content !!}
                 </article>
 

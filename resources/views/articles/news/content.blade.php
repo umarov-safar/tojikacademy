@@ -1,9 +1,9 @@
 @extends('layout.app')
 
-@section('title', $news->title )
-@section('keywords', 'Савол ҷавоб, савол чавоб, чихел кунем, чигуна, аз кучо')
+@section('title', $news->meta_title ?? $news->title)
 @section('description', $news->meta_description ?? $news->description)
-
+@section('url', url('news/'. $news->category->slug . '/' . $news->slug ))
+@section('image', asset($news->image_sizes['1100x800'] ?? $news->image))
 @section('content')
 
 <div class="container news-page">
@@ -13,7 +13,7 @@
                 <h1 class="title">{{ $news->title }}</h1>
                 <p class="p-4">{{ $news->description }}</p>
                 <article>
-                    <img src="/{{ $news->image_sizes['1100x800'] ?? $news->image }}" alt="" />
+                    <img src="{{ asset($news->image_sizes['1100x800'] ?? $news->image) }}" alt="" />
                     {!! $news->content !!}
                 </article>
 

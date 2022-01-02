@@ -1,5 +1,11 @@
 @extends('layout.app')
 
+@section('title', 'Омузиши забони Руси Онлайн - Ибораҳои забони Руси барои нав омузон')
+@section('description', ' Онлайн омузиши забони Руси бо талафузи калимаҳо осон ва сода. Шумо бо машқ забони русиро мемузед. Ибораҳои забони Руси барои суҳбат кардан. ')
+@section('keywords', 'Омузишӣ забони Русӣ, Забонӣ Руси, Дарсҳои забони Руси, Онлайн забони русӣ')
+@section('image', asset('images/russian.png'))
+@section('url', route('russian'))
+
 @section('content')
     <section id="russian-description" class="english page">
     <div class="container max-width">

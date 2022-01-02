@@ -7,13 +7,22 @@
     <meta name="csrf-token" content="{{ Session::token() }}">
 
 
-    <meta name="keywords" content="@yield('keywords','Омузиши забони руси, омузиши забони англиси, тоҷикистон')">
-    <meta name="description" content="@yield('description', 'Тоҷик Академия шабакаи дарси')">
+    <title>@yield('title', 'Тоҷик Академия - сомонаи дарсии Тоҷикон')</title>
+
+
+    <meta name="description" content="@yield('description', 'Тоҷик Академия - яке аз бузургтарин сомонаи дарсии Тоҷикон мебошад. Дар ин сомона шумо метавонед дарсҳои хуб ва пешрафтро биомузед бо роҳҳои осон.')">
+    <meta name="keywords" content="@yield('keywords','Тоҷик Академия, Точик Академия, Омузиши забони руси, омузиши забони англиси, дарсҳои Тоҷики, Тестҳои ММТ, тоҷикистон')">
     <meta name="author" content="@yield('author', 'Баҳромзода Сафарбек')">
-    <meta name="page-type" content="Blogging">
 
-    <title>@yield('title', 'Тоҷик Академия')</title>
+    @yield('metas')
 
+    <meta property="og:image" content="@yield('image', asset('uploads/logo.jpg'))">
+    <meta property="og:title" content="@yield('title', 'Тоҷик Академия - сомонаи дарсии Тоҷикон')">
+    <meta property="og:url" content="@yield('url', 'http://www.tojikacademy.com')">
+    <meta property="og:description" content="@yield('description', 'Тоҷик Академия - яке аз бузургтарин сомонаи дарсии Тоҷикон мебошад. Дар ин сомона шумо метавонед дарсҳои хуб ва пешрафтро биомузед бо роҳҳои осон.')">
+    <meta property="og:site_name" content="Тоҷик Академия">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="tg_Tj">
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">

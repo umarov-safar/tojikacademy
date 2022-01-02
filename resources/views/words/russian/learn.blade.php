@@ -1,8 +1,10 @@
 @extends('layout.app')
 
-@section('title', 'Омузи луғатҳои забони руси аз ' . $category->name)
-@section('keywords', 'Омузиши забони руси, омузиши луғатҳои руси, луғатҳои мактаб')
+@section('title', 'Омузиши луғатҳои забони руси аз категорияи ' . $category->name)
+@section('keywords', 'Омузиши забони руси, омузиши луғатҳои руси, луғатҳои мактаби, луғатҳои ' . $category->name)
 @section('description', $category->descriptioin)
+@section('image', asset('images/russian.png'))
+@section('url', route('russian'))
 
 @section('content')
     <section class="learning" id="russian-word">

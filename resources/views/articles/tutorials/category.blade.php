@@ -1,9 +1,9 @@
 @extends('layout.app')
 
-@section('title', 'Дарсҳои ' . $category->name )
+@section('title', 'Дарсҳо аз ' . $category->name .' дар сомонаи Тоҷик Академия' )
 @section('keywords', 'Дарсоҳои тоҷики, дарсҳои руси, дарҳои тест')
-@section('description', 'Дарсҳои сода аз ' . $category->name . ' дар сомонаи Тоҷик Академия.')
-
+@section('description', 'Дарсҳои сода аз ' . $category->name . ' дар сомонаи Тоҷик Академия бо кайфияти оли.')
+@section('url', url('tutorials/' . $category->slug))
 
 @section('content')
 <section class="articles tt-page">

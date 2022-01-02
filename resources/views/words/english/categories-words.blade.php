@@ -1,5 +1,12 @@
 @extends('layout.app')
 
+
+@section('title', 'Луғатҳои забони Англиси бо категория лозими | Тоҷик Академия' )
+@section('keywords', 'Ҳамаи луғатҳои руси, омузиши луғатҳои руси, луғатҳои бо категория')
+@section('description', 'Мехоҳед луғатҳои забони Англисиро биомузед аммо намеонед аз чи шуруъ кунед? Талафузаш душвор аст? Мо ба шумо кумак мекунем ҳамаи луғатҳо дар категория хоси худ мебошад бо талафузаш.')
+@section('image', asset('images/english.png'))
+@section('url', route('english-words'))
+
 @section('content')
     <section id="russian-words" class="english page">
         <div class="container max-width">
