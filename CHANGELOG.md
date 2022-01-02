@@ -5,7 +5,10 @@
 ### Changed:
 ### Fixed:
 
-## [1.27.1]- 03-01-2022
+## [1.29.0]- 03-01-2022
+### Added
+- Static page from admin panel
+## [1.28.0]- 03-01-2022
 ### Added
 - Seo for all pages
 

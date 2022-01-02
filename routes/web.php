@@ -104,3 +104,5 @@ Route::get('/tutorials/{category}/{slug}', [ArticleController::class, 'tutorial'
 
 
 
+Route::get('{page}/{subs?}', [\App\Http\Controllers\PageController::class, 'index'])
+    ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);
