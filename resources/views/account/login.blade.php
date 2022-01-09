@@ -11,6 +11,11 @@
                 <br>
                 <form id="register-form" method="POST" action="{{ route('login') }}">
                     @error('error') <span class="red">{{ $message }}</span> @enderror
+                    @if(Session::has('email_verify'))
+                        <div class="bg-info p-10">
+                            <p class="white">{{ Session::get('email_verify') }}</p>
+                        </div>
+                    @endif
                     @csrf
                     <div class="form-item">
                         <label for="email" class="input-label">Почтаи электронии:</label>

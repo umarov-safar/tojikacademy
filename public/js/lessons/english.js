@@ -107,10 +107,12 @@ class EnglishHtml{
     * */
     prepareWordHhtml(task, num) {
         for(let i = 0; i < task.randomWordEn.length; i++ ) {
-            let button = this.createElement('button', false,'word');
-            button.setAttribute('onclick', 'speech(this)');
-            button.innerHTML += `<span class="text listen">${task.randomWordEn[i]}</span>`;
-            demoRandomWords.append(button);
+            if(task.randomWordEn[i] && task.randomWordEn[i] !== ''){
+                let button = this.createElement('button', false,'word');
+                button.setAttribute('onclick', 'speech(this)');
+                button.innerHTML += `<span class="text listen">${task.randomWordEn[i]}</span>`;
+                demoRandomWords.append(button);
+            }
         }
         demoTajikWord.text(num  + task.tjSentence);
         this.addToDemoWord();
@@ -224,7 +226,7 @@ class EnglishHtml{
                                     <p class="success"><span class="under-l">Асоси:</span> ${data[i].englishAnswer}</p>
                                 </div>
                                 <div class="your">
-                                    <p class="${classAnswer}"><span class="under-l">Шумо:</span> ${data[i].englishUser}</p>
+                                    <p class="${classAnswer}"><span class="under-l">Шумо:</span> ${data[i].userAnswer}</p>
                                 </div>
                      </div>` )
         }
@@ -330,30 +332,30 @@ class  English extends  EnglishHtml{
         }
 
         //the user's answer
-        let englishUser = this.getSentenceText().toLowerCase();
+        let userAnswer = this.getSentenceText().toLowerCase();
 
         //db data
         let englishMain = this.data[this.count - 1];
-        let translate1 = englishMain.translate1 ? englishMain.translate1.toLowerCase() : '';
-        let translate2 = englishMain.translate2 ? englishMain.translate2.toLowerCase() : '';
-        let translate3 = englishMain.translate3 ? englishMain.translate3.toLowerCase() : '';
+        let translate1 = englishMain.translate1 ? this.removeSpaceFromSentence(englishMain.translate1.toLowerCase()) : '';
+        let translate2 = englishMain.translate2 ? this.removeSpaceFromSentence(englishMain.translate2.toLowerCase()) : '';
+        let translate3 = englishMain.translate3 ? this.removeSpaceFromSentence(englishMain.translate3.toLowerCase()) : '';
 
         //For showing all answer after finishing
         let tajikSent = this.data[this.count - 1].sentence;
 
-        if (englishUser === translate1) {
+        if (userAnswer === translate1) {
             this.sayMessage(messageWords, '<span class="success">Офарин! Шумо дуруст ҷавоб  додед!</span>', 1);
-            this.addAnswerUser(tajikSent, this.firstLetterToUpper(translate1), this.firstLetterToUpper(englishUser), true);
-        } else if (englishUser === translate2) {
+            this.addAnswerUser(tajikSent, this.firstLetterToUpper(translate1), this.firstLetterToUpper(userAnswer), true);
+        } else if (userAnswer === translate2) {
             this.sayMessage(messageWords, '<span class="success">Офарин! Шумо дуруст ҷавоб  додед!</span>', 1);
-            this.addAnswerUser(tajikSent, this.firstLetterToUpper(translate2), this.firstLetterToUpper(englishUser), true);
-        } else if (englishUser === translate3) {
+            this.addAnswerUser(tajikSent, this.firstLetterToUpper(translate2), this.firstLetterToUpper(userAnswer), true);
+        } else if (userAnswer === translate3) {
             this.sayMessage(messageWords, '<span class="success">Офарин! Шумо дуруст ҷавоб  додед!</span>', 1);
-            this.addAnswerUser(tajikSent, this.firstLetterToUpper(translate2), this.firstLetterToUpper(englishUser), true);
+            this.addAnswerUser(tajikSent, this.firstLetterToUpper(translate2), this.firstLetterToUpper(userAnswer), true);
         } else {
-            this.sayMessage(messageWords, `<p>Ooops! Шумо нодуруст ҷовоб додед!</p>
+            this.sayMessage(messageWords, `<p class="danger">Ooops! Шумо нодуруст ҷовоб додед!</p>
                                                 <p class='green'>Ҷавоби дуруст: <strong>${this.firstLetterToUpper(translate1)}</strong></p>`, 1);
-            this.addAnswerUser(tajikSent, this.firstLetterToUpper(translate1), this.firstLetterToUpper(englishUser), false);
+            this.addAnswerUser(tajikSent, this.firstLetterToUpper(translate1), this.firstLetterToUpper(userAnswer), false);
         }
 
         this.clearClickWordTop();
@@ -382,7 +384,7 @@ class  English extends  EnglishHtml{
         this.answers.push({
             tajik: tajik,
             englishAnswer: answer,
-            englishUser: userAnswer,
+            userAnswer: userAnswer,
             isCorrect: isCorrect
         });
     }
@@ -436,14 +438,14 @@ class  English extends  EnglishHtml{
 
         //db data
         let englishMain = data;
-        let translate1 = englishMain.translate1 ? englishMain.translate1.toLowerCase() : '';
-        let translate2 = englishMain.translate2 ? englishMain.translate2.toLowerCase() : '';
-        let translate3 = englishMain.translate3 ? englishMain.translate3.toLowerCase() : '';
+        let translate1 = englishMain.translate1 ? this.removeSpaceFromSentence(englishMain.translate1.toLowerCase()) : '';
+        let translate2 = englishMain.translate2 ? this.removeSpaceFromSentence(englishMain.translate2.toLowerCase()) : '';
+        let translate3 = englishMain.translate3 ? this.removeSpaceFromSentence(englishMain.translate3.toLowerCase()) : '';
 
 
-        let englishUser = this.getSentenceText().toLowerCase();
+        let userAnswer = this.getSentenceText().toLowerCase();
 
-        if(englishUser === translate1 || englishUser === translate2 || englishUser === translate3) {
+        if(userAnswer === translate1 || userAnswer === translate2 || userAnswer === translate3) {
             this.sayMessage(messageWords, '<span class="success">Офарин! Шумо дуруст ҷавоб  додед!</span>', 1);
         } else {
             this.sayMessage(messageWords, `<p>Ooops! Шумо нодуруст ҷовоб додед!</p>
@@ -461,6 +463,28 @@ class  English extends  EnglishHtml{
     firstLetterToUpper(text){
         return text.charAt(0).toUpperCase() + text.slice(1);
     }
+
+    /**
+     * Remove all space from sentence;
+     * @param sentence
+     * @return string|null;
+     */
+    removeSpaceFromSentence(sentence)
+    {
+        if(sentence) {
+            sentence = sentence.split(' ');
+            let newSentence = [];
+            for(let i in sentence) {
+                if(sentence[i] !== '' && sentence[i] !== null){
+                   newSentence.push(sentence[i]);
+                }
+            }
+            return newSentence.join(' ');
+        }
+        return sentence;
+    }
+
+
 }
 
 

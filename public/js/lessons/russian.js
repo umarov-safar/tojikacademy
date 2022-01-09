@@ -107,10 +107,12 @@ class RuHtml{
     * */
     prepareWordHhtml(task, num) {
         for(let i = 0; i < task.randomWordRu.length; i++ ) {
-            let button = this.createElement('button', false,'word');
-            button.setAttribute('onclick', 'speech(this)');
-            button.innerHTML = `<span class="text listen">${task.randomWordRu[i]}</span>`;
-            demoRandomWords.append(button);
+            if(task.randomWordRu[i] && task.randomWordRu[i] !== '') {
+                let button = this.createElement('button', false,'word');
+                button.setAttribute('onclick', 'speech(this)');
+                button.innerHTML = `<span class="text listen">${task.randomWordRu[i]}</span>`;
+                demoRandomWords.append(button);
+            }
         }
         demoTajikWord.text(num  + task.tjSentence);
         this.addToDemoWord();
@@ -327,9 +329,9 @@ class  Russian extends  RuHtml{
 
         //db data
         let russianMain = this.data[this.count - 1];
-        let translate1 = russianMain.translate1 ? russianMain.translate1.toLowerCase() : '';
-        let translate2 = russianMain.translate2 ? russianMain.translate2.toLowerCase() : '';
-        let translate3 = russianMain.translate3 ? russianMain.translate3.toLowerCase() : '';
+        let translate1 = russianMain.translate1 ? this.removeSpaceFromSentence(russianMain.translate1.toLowerCase()) : '';
+        let translate2 = russianMain.translate2 ? this.removeSpaceFromSentence(russianMain.translate2.toLowerCase()) : '';
+        let translate3 = russianMain.translate3 ? this.removeSpaceFromSentence(russianMain.translate3.toLowerCase()) : '';
 
         //For showing all answer after finishing
         let tajikSent = this.data[this.count - 1].sentence;
@@ -427,9 +429,9 @@ class  Russian extends  RuHtml{
 
         let russianMain = data;
 
-        let translate1 = russianMain.translate1 ? russianMain.translate1.toLowerCase() : '';
-        let translate2 = russianMain.translate2 ? russianMain.translate2.toLowerCase() : '';
-        let translate3 = russianMain.translate3 ? russianMain.translate3.toLowerCase() : '';
+        let translate1 = russianMain.translate1 ? this.removeSpaceFromSentence(russianMain.translate1.toLowerCase()) : '';
+        let translate2 = russianMain.translate2 ? this.removeSpaceFromSentence(russianMain.translate2.toLowerCase()) : '';
+        let translate3 = russianMain.translate3 ? this.removeSpaceFromSentence(russianMain.translate3.toLowerCase()) : '';
 
 
         let russianUser = this.getSentenceText().toLowerCase();
@@ -452,6 +454,27 @@ class  Russian extends  RuHtml{
     firstLetterToUpper(text){
         return text.charAt(0).toUpperCase() + text.slice(1);
     }
+
+    /**
+     * Remove all space from sentence;
+     * @param sentence
+     * @return string|null;
+     */
+    removeSpaceFromSentence(sentence)
+    {
+        if(sentence) {
+            sentence = sentence.split(' ');
+            let newSentence = [];
+            for(let i in sentence) {
+                if(sentence[i] !== '' && sentence[i] !== null){
+                    newSentence.push(sentence[i]);
+                }
+            }
+            return newSentence.join(' ');
+        }
+        return sentence;
+    }
+
 }
 
 

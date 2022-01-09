@@ -1,3 +1,4 @@
+
 #Changelog
 [version]
 ## Unreleased:
@@ -5,9 +6,19 @@
 ### Changed:
 ### Fixed:
 
+## [1.30.0]- 10-01-2022
+### Added
+- Email verifycation 
+- Using language from local
+### Changed
+- Some text from language folder
+### Fixed
+- Removed unnecessary spaces in sentence 
+
 ## [1.29.0]- 03-01-2022
 ### Added
 - Static page from admin panel
+
 ## [1.28.0]- 03-01-2022
 ### Added
 - Seo for all pages

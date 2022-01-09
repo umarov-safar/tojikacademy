@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Dtos\EmailVerifyDto;
 use App\Dtos\RegisterDto;
 use App\Http\Requests\RegisterRequest;
+use App\Mail\EmailVerify;
 use App\Models\User;
+use App\Services\EmailVerifyService;
 use App\Services\RegisterService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -19,6 +23,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->service = new RegisterService();
+
     }
 
     public function register()
@@ -62,8 +67,23 @@ class RegisterController extends Controller
         $user = $this->service->create($dto);
 
         if($user) {
-            Auth::login($user);
-            return redirect('/');
+            $token = \Str::random(64);
+            $email_verify = new EmailVerifyDto(
+                $user->id,
+                $token,
+            );
+
+            $saved_email_verify = (new EmailVerifyService())->create($email_verify);
+
+            if($saved_email_verify) {
+
+                Mail::to($user)->send(new EmailVerify($user, $token));
+
+                return redirect(url('account/login'))->with('email_verify', __('login.email_verify_message'));
+
+            } else {
+                return back()->withInput()->withErrors(['message' => 'Бо кадом мушкилие ба қайд гирифта нашуд']);
+            }
         }
 
         return back()->withInput()->withErrors(['message' => 'Бо кадом мушкилие ба қайд гирифта нашуд']);

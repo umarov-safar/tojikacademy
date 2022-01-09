@@ -30,8 +30,11 @@ class LoginController extends Controller
     {
        $logged =  Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
-       if($logged) {
+       if($logged && Auth::user()->is_email_verified) {
            return redirect()->intended();
+       } else if($logged) {
+           Auth::logout();
+           return redirect(route('login'))->with('email_verify', __('login.email_verify_message'));
        }
 
        return back()->withErrors(['error' => 'Почтаи электрони ё рамз нодуруст аст!']);

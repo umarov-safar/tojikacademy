@@ -28,6 +28,93 @@ html, body, p, h1, h2, h3, h4, h5, h6, a, div, input, textarea, section, article
     padding: 0;
 }
 
+
+
+
+/* Bootstrap colors */
+.primary{
+    color: #007bff !important;
+}
+
+.secondary{
+    color: #6c757d !important;
+}
+
+.success{
+    color: #28a745 !important;
+}
+
+.danger{
+    color: #dc3545 !important;
+}
+
+.warning{
+    color: #ffc107 !important;
+}
+
+.info{
+    color: #17a2b8 !important;
+}
+
+.light{
+    color:#f8f9fa !important;
+}
+
+.dark{
+    color: #343a40 !important;
+}
+
+.muted{
+    color: #6c757d !important;
+}
+
+.white{
+    color: #ffffff !important;
+}
+
+
+
+/* Bootstrap bg-colors */
+.bg-primary{
+    background: #007bff !important;
+}
+
+.bg-secondary{
+    background: #6c757d !important;
+}
+
+.bg-success{
+    background: #28a745 !important;
+}
+
+.bg-danger{
+    background: #dc3545 !important;
+}
+
+.bg-warning{
+    background: #ffc107 !important;
+}
+
+.bg-info{
+    background: #17a2b8 !important;
+}
+
+.bg-light{
+    background: #f8f9fa !important;
+}
+
+.bg-dark{
+    background: #343a40 !important;
+}
+
+.bg-muted{
+    background: #6c757d !important;
+}
+
+.bg-white{
+    background: #ffffff !important;
+}
+
 #main > section {
     padding: 20px 0;
 }
@@ -490,13 +577,6 @@ img {
 .p-10{
     padding: 10px;
 }
-/*color*/
-.bg-danger{
-    background: #d43b3b;
-}
-.bg-white{
-    background: white;
-}
 
 .white{
     color: white !important;
@@ -536,10 +616,6 @@ img {
 }
 
 
-
-.danger{
-    color: red;
-}
 
 .form-item{
     text-align: left;

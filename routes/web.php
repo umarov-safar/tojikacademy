@@ -31,7 +31,7 @@ Route::get('/',[\App\Http\Controllers\HomeController::class, 'index']);
 
 
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'is_email_verify']], function () {
 
     Route::get('account/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -61,7 +61,11 @@ Route::group(['middleware' => ['guest']], function() {
     Route::get('account/login', [LoginController::class, 'login'])->name('login');
     Route::post('account/login', [LoginController::class, 'check']);
 
+    //email verify
+    Route::get('/account/verify', [\App\Http\Controllers\VerifyEmailController::class, 'index']);
+    Route::get('/account/verify/{token}', [\App\Http\Controllers\VerifyEmailController::class, 'emailVerify'])->name('verify_email');
 });
+
 
 
 Route::resource('account/users', UserController::class);
