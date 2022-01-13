@@ -33,22 +33,27 @@ class EnglishWordController extends Controller
 
         $words = $category->englishWords;
 
+        //filtering data
         $wordsArray = [];
-        foreach ($words as $key => $entry)
-        {
-            $word = [];
+        foreach ($words as $word) {
 
-            $word['correct'] = $entry->toArray();
+            $entity = [];
 
-            $word['incorrectWords'][] = $entry->translate;
+            $entity['word'] = $word->english;
 
-            foreach ($entry->words as $k => $incWord)
-            {
-                $word['incorrectWords'][] = $incWord->translate;
+            //correct answer
+            $entity['correct'] = $word->tj;
+
+            $entity['incorrectWords'][] = $word->tj;
+
+            foreach ($word->incorrect_answers[0] as $incorrect_answer => $key) {
+                $entity['incorrectWords'][] = $key;
             }
 
-            $wordsArray[] = $word;
+            $wordsArray[] = $entity;
+
         }
+
 
         return view('words.english.learn', compact('wordsArray', 'category'));
     }

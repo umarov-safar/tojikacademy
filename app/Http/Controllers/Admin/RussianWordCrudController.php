@@ -70,15 +70,7 @@ class RussianWordCrudController extends CrudController
 
         CRUD::setFromDb(); // fields
 
-        $this->crud->addField([
-            'label'             => 'Words',
-            'type'              => 'select2_multiple',
-            'name'              => 'words', // the method that defines the relationship in your Model
-            'entity'            => 'words', // the method that defines the relationship in your Model
-            'attribute'         => 'word', // foreign key attribute that is shown to user
-            'model'             => RussianWord::class,
-            'pivot'             => true, // on create&update, do you need to add/delete pivot table entries?
-        ]);
+        CRUD::removeField('incorrect_answers');
 
         $this->crud->addField([
             'label'             => 'Categories',
@@ -89,6 +81,35 @@ class RussianWordCrudController extends CrudController
             'model'             => WordCategory::class,
             'pivot'             => true, // on create&update, do you need to add/delete pivot table entries?
         ]);
+
+
+        $this->crud->addField([
+            'name' => 'incorrect_answers',
+            'Label' => 'Ҷавобҳои нодурст!',
+            'type' => 'repeatable',
+            'fields' => [
+                [
+                    'name' => 'incorrect_english_1',
+                    'label' => 'Чавоби нодуруст',
+                    'type' => 'text',
+                    'wrapper' => [
+                        'class' => 'form-group col-md-6'
+                    ],
+                ],
+                [
+                    'name' => 'incorrect_english_2',
+                    'label' => 'Чавоби нодуруст',
+                    'type' => 'text',
+                    'wrapper' => [
+                        'class' => 'form-group col-md-6'
+                    ],
+                ]
+            ],
+            // optional
+            'min_rows' => 1, // minimum rows allowed, when reached the "delete" buttons will be hidden
+            'max_rows' => 1,
+        ]);
+
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
@@ -114,10 +135,10 @@ class RussianWordCrudController extends CrudController
 
 
         $dto = new RussianWordDto(
-            $request->word,
-            $request->translate,
+            $request->russian,
+            $request->tj,
             $request->categories,
-            $request->words
+            $request->incorrect_answers
         );
 
         $word = $this->russianWordService->store($dto);
@@ -143,10 +164,10 @@ class RussianWordCrudController extends CrudController
         $request = $this->crud->getRequest();
 
         $dto = new RussianWordDto(
-            $request->word,
-            $request->translate,
+            $request->russian,
+            $request->tj,
             $request->categories,
-            $request->words,
+            $request->incorrect_answers
         );
 
         $word = $this->russianWordService->update($dto, $request->id);

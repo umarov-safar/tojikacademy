@@ -98,10 +98,15 @@ class EnglishCrudController extends CrudController
         $this->crud->setRequest($this->crud->validateRequest());
         $request =  $this->crud->getRequest();
 
+        //removing spaces
+        $sentenceTj = preg_replace('/\s+/', ' ', $request->sentence);
+        $translate1 = preg_replace('/\s+/', ' ', $request->translate1);
+        $translate2 = preg_replace('/\s+/', ' ', $request->translate2);
+
         $dto = new EnglishDto(
-            $request->sentence,
-            $request->translate1,
-            $request->translate2,
+            $sentenceTj,
+            $translate1,
+            $translate2,
             $request->category
         );
 
@@ -127,10 +132,15 @@ class EnglishCrudController extends CrudController
         $this->crud->setRequest($this->crud->validateRequest());
         $request =  $this->crud->getRequest();
 
+        //removing spaces
+        $sentenceTj = preg_replace('/\s+/', ' ', $request->sentence);
+        $translate1 = preg_replace('/\s+/', ' ', $request->translate1);
+        $translate2 = preg_replace('/\s+/', ' ', $request->translate2);
+
         $dto = new EnglishDto(
-            $request->sentence,
-            $request->translate1,
-            $request->translate2,
+            $sentenceTj,
+            $translate1,
+            $translate2,
             $request->category
         );
 

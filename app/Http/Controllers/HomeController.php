@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\CategoryArticle;
+use App\Models\EnglishWord;
 use App\Models\Question;
 use DB;
 use Illuminate\Http\Request;
@@ -13,7 +14,6 @@ class HomeController extends Controller
 
     public function index()
     {
-
         //Last questions
         $questions = Question::limit(10)->orderBy('created_at', 'desc')->get();
 

@@ -52,16 +52,6 @@ class EnglishWordCrudController extends CrudController
         CRUD::setFromDb(); // columns
 
         $this->crud->addField([
-            'label'             => 'Words',
-            'type'              => 'select2_multiple',
-            'name'              => 'words', // the method that defines the relationship in your Model
-            'entity'            => 'words', // the method that defines the relationship in your Model
-            'attribute'         => 'word', // foreign key attribute that is shown to user
-            'model'             => EnglishWord::class,
-            'pivot'             => true, // on create&update, do you need to add/delete pivot table entries?
-        ]);
-
-        $this->crud->addField([
             'label'             => 'Categories',
             'type'              => 'select2_multiple',
             'name'              => 'categories', // the method that defines the relationship in your Model
@@ -89,15 +79,7 @@ class EnglishWordCrudController extends CrudController
 
         CRUD::setFromDb(); // fields
 
-        $this->crud->addField([
-            'label'             => 'Words',
-            'type'              => 'select2_multiple',
-            'name'              => 'words', // the method that defines the relationship in your Model
-            'entity'            => 'words', // the method that defines the relationship in your Model
-            'attribute'         => 'word', // foreign key attribute that is shown to user
-            'model'             => EnglishWord::class,
-            'pivot'             => true, // on create&update, do you need to add/delete pivot table entries?
-        ]);
+        CRUD::removeField('incorrect_answers');
 
         $this->crud->addField([
             'label'             => 'Categories',
@@ -108,6 +90,35 @@ class EnglishWordCrudController extends CrudController
             'model'             => WordCategory::class,
             'pivot'             => true, // on create&update, do you need to add/delete pivot table entries?
         ]);
+
+        $this->crud->addField([
+            'name' => 'incorrect_answers',
+            'Label' => 'Ҷавобҳои нодурст!',
+            'type' => 'repeatable',
+            'fields' => [
+                [
+                    'name' => 'incorrect_english_1',
+                    'label' => 'Чавоби нодуруст',
+                    'type' => 'text',
+                    'wrapper' => [
+                        'class' => 'form-group col-md-6'
+                    ],
+                ],
+                [
+                    'name' => 'incorrect_english_2',
+                    'label' => 'Чавоби нодуруст',
+                    'type' => 'text',
+                    'wrapper' => [
+                        'class' => 'form-group col-md-6'
+                    ],
+                ]
+            ],
+            // optional
+            'min_rows' => 1, // minimum rows allowed, when reached the "delete" buttons will be hidden
+            'max_rows' => 1, // maximum rows allowed, when reached the "new item" button will be hidden
+        ]);
+
+
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
@@ -134,10 +145,10 @@ class EnglishWordCrudController extends CrudController
 
 
         $dto = new EnglishWordDto(
-            $request->word,
-            $request->translate,
+            $request->english,
+            $request->tj,
             $request->categories,
-            $request->words
+            $request->incorrect_answers
         );
 
         $word = $this->englishWordService->store($dto);
@@ -163,10 +174,10 @@ class EnglishWordCrudController extends CrudController
         $request = $this->crud->getRequest();
 
         $dto = new EnglishWordDto(
-            $request->word,
-            $request->translate,
+            $request->english,
+            $request->tj,
             $request->categories,
-            $request->words,
+            $request->incorrect_answers
         );
 
         $word = $this->englishWordService->update($dto, $request->id);

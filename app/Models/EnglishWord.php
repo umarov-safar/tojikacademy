@@ -24,6 +24,8 @@ class EnglishWord extends Model
     // protected $hidden = [];
     // protected $dates = [];
 
+    protected $casts = ['incorrect_answers' => 'array'];
+
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
@@ -39,10 +41,6 @@ class EnglishWord extends Model
      * relationship for word
      * @return BelongsToMany
      */
-    public function words() : BelongsToMany
-    {
-        return $this->belongsToMany(EnglishWord::class, 'english_pivot_word', 'word_id', 'related_word_id');
-    }
 
 
     /**

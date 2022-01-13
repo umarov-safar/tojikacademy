@@ -5,19 +5,15 @@ namespace App\Dtos;
 class EnglishWordDto {
 
     /**
-     * @var string $word
+     * @var string $english
      */
-    protected string $word;
+    protected string $english;
 
     /**
-     * @var string $translate
+     * @var string $tj
      */
-    protected string $translate;
+    protected string $tj;
 
-    /**
-     * @var int $language_id
-     */
-    protected int $language_id;
 
     /**
      * @var array $categories
@@ -26,50 +22,41 @@ class EnglishWordDto {
 
 
     /**
-     * @var array $words
+     * @var array $incorrect_answers
      *
      */
-    protected array $words;
+    protected array $incorrect_answers;
 
 
 
     public function __construct(
-        string $word,
-        string $translate,
+        string $english,
+        string $tj,
         array $categories,
-        array $words
+        array $incorrect_answers
     )
     {
-        $this->word = $word;
-        $this->translate = $translate;
+        $this->english = $english;
+        $this->tj = $tj;
         $this->categories = $categories;
-        $this->words = $words;
+        $this->incorrect_answers = $incorrect_answers;
     }
-
 
     /**
      * @return string
      */
-    public function getWord(): string
+    public function getEnglish(): string
     {
-        return $this->word;
+        return $this->english;
     }
 
-    /**
-     * @return array
-     */
-    public function getWords(): array
-    {
-        return $this->words;
-    }
     /**
      * @return string
      */
-    public function getTranslate(): string
+    public function getTj(): string
     {
-        return $this->translate;
+        return $this->tj;
     }
-
 
     /**
      * @return array
@@ -78,6 +65,16 @@ class EnglishWordDto {
     {
         return $this->categories;
     }
+
+    /**
+     * @return array
+     */
+    public function getIncorrectAnswers(): array
+    {
+        return $this->incorrect_answers;
+    }
+
+
 
 
 

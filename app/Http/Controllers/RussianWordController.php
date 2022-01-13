@@ -26,28 +26,32 @@ class RussianWordController extends Controller
     {
         $category = WordCategory::with(['russianWords' => function(BelongsToMany $query) {
                                     return $query->inRandomOrder()->limit(100);
-                                }])
-                                ->whereSlug($slug)
-                                ->get()
-                                ->first();
+                                }])->whereSlug($slug)
+                                    ->get()
+                                    ->first();
 
         $words = $category->russianWords;
 
         $wordsArray = [];
-        foreach ($words as $key => $entry)
-        {
-            $word = [];
+        foreach ($words as $word) {
 
-            $word['correct'] = $entry->toArray();
+            $entity = [];
 
-            $word['incorrectWords'][] = $entry->translate;
+            //set russian word
+            $entity['word'] = $word->russian;
 
-            foreach ($entry->words as $k => $incWord)
-            {
-                $word['incorrectWords'][] = $incWord->translate;
+            //set correct answer
+            $entity['correct'] = $word->tj;
+
+            // adding correct word to incorrect words
+            $entity['incorrectWords'][] = $word->tj;
+
+            foreach ($word->incorrect_answers[0] as $incorrect_answer => $key) {
+                $entity['incorrectWords'][] = $key;
             }
 
-            $wordsArray[] = $word;
+            $wordsArray[] = $entity;
+
         }
 
         return view('words.russian.learn', compact('wordsArray', 'category'));

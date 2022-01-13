@@ -6,19 +6,15 @@ class RussianWordDto {
 
 
     /**
-     * @var string $word
+     * @var string $russain
      */
-    protected string $word;
+    protected string $russian;
 
     /**
-     * @var string $translate
+     * @var string $tj
      */
-    protected string $translate;
+    protected string $tj;
 
-    /**
-     * @var int $language_id
-     */
-    protected int $language_id;
 
     /**
      * @var array $categories
@@ -30,47 +26,39 @@ class RussianWordDto {
      * @var array $words
      *
      */
-    protected array $words;
+    protected array $incorrect_answer;
 
 
 
     public function __construct(
-        string $word,
-        string $translate,
+        string $russain,
+        string $tj,
         array $categories,
-        array $words
+        array $incorrect_answer
     )
     {
-        $this->word = $word;
-        $this->translate = $translate;
+        $this->russian = $russain;
+        $this->tj = $tj;
         $this->categories = $categories;
-        $this->words = $words;
+        $this->incorrect_answer = $incorrect_answer;
     }
 
 
     /**
      * @return string
      */
-    public function getWord(): string
+    public function getRussian(): string
     {
-        return $this->word;
+        return $this->russian;
     }
 
-    /**
-     * @return array
-     */
-    public function getWords(): array
-    {
-        return $this->words;
-    }
     /**
      * @return string
      */
-    public function getTranslate(): string
+    public function getTj(): string
     {
-        return $this->translate;
+        return $this->tj;
     }
-
 
     /**
      * @return array
@@ -78,6 +66,14 @@ class RussianWordDto {
     public function getCategories(): array
     {
         return $this->categories;
+    }
+
+    /**
+     * @return array
+     */
+    public function getIncorrectAnswers(): array
+    {
+        return $this->incorrect_answer;
     }
 
 

@@ -1,3 +1,4 @@
+REMOVE COMMENT FROM ADMIN MIDDLEWARE
 
 #Changelog
 [version]
@@ -5,6 +6,10 @@
 ### Added:
 ### Changed:
 ### Fixed:
+
+## [1.30.1]- 13-01-2022
+### Changed 
+- Words in one table
 
 ## [1.30.0]- 10-01-2022
 ### Added

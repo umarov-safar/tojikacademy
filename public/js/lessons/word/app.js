@@ -32,10 +32,10 @@ class Word {
      * initialize learning for user
      */
     initialize() {
-        let correct = this.words[this.count].correct;
+        let object = this.words[this.count];
         let incorrectWords = this.words[this.count].incorrectWords;
-        demoText.text(correct.word);
-        this.prepareIncorrectWords(correct.translate, incorrectWords);
+        demoText.text(object.word);
+        this.prepareIncorrectWords(object.correct, incorrectWords);
     }
 
     /**
@@ -50,7 +50,7 @@ class Word {
             let html;
             if(incorrectWords[iW].toLowerCase() == correct.toLowerCase())
             {
-               html = `<button class="word correct">
+                html = `<button class="word correct">
                    <span class="text">${incorrectWords[iW]}</span>
                 </button>`;
             } else {
@@ -69,15 +69,15 @@ class Word {
      * @returns {*}
      */
     doRandomIncorrectWords (incorrectWord) {
-         let tmp, current, top = incorrectWord.length;
-         if(top) {
-             while(--top) {
-                 current = Math.floor(Math.random() * (top + 1));
-                 tmp = incorrectWord[current];
-                 incorrectWord[current] = incorrectWord[top];
-                 incorrectWord[top] = tmp;
-             }
-         }
+        let tmp, current, top = incorrectWord.length;
+        if(top) {
+            while(--top) {
+                current = Math.floor(Math.random() * (top + 1));
+                tmp = incorrectWord[current];
+                incorrectWord[current] = incorrectWord[top];
+                incorrectWord[top] = tmp;
+            }
+        }
         return incorrectWord;
     }
 
@@ -87,7 +87,7 @@ class Word {
         this.count++;
 
         if (this.count >= this.words.length) {
-            $('#end-message').html(`<h3>Офарин! Шумо ${this.count} лағат омухтед.</h3>`);
+            $('#end-message').html(`<h3>Офарин! Шумо ${this.count} луғат омухтед.</h3>`);
 
             demoTranslates.find('.word').removeClass('word');
 
@@ -96,10 +96,10 @@ class Word {
 
         demoTranslates.html('');
 
-        let correct = this.words[this.count].correct;
+        let object = this.words[this.count];
         let incorrectWords = this.words[this.count].incorrectWords;
-        demoText.text(correct.word);
-        this.prepareIncorrectWords(correct.translate, incorrectWords);
+        demoText.text(object.word);
+        this.prepareIncorrectWords(object.correct, incorrectWords);
 
         this.showAnswerEvent();
     }
@@ -128,9 +128,8 @@ word.initialize();
 word.showAnswerEvent();
 
 $('#next').click(function() {
-   if($(this).hasClass('activeBtn')){
+    if($(this).hasClass('activeBtn')){
         word.nextWord();
         $(this).removeClass('activeBtn');
     }
 })
-

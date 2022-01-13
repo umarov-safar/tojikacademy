@@ -24,6 +24,7 @@ class RussianWord extends Model
     // protected $hidden = [];
     // protected $dates = [];
 
+    protected $casts = ['incorrect_answers' => 'array'];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS

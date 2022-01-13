@@ -15,15 +15,13 @@ class EnglishWordService {
     {
         $word = new EnglishWord();
 
-        $word->word = $request->getWord();
-        $word->translate = $request->getTranslate();
+        $word->english = $request->getEnglish();
+        $word->tj = $request->getTj();
+        $word->incorrect_answers = $request->getIncorrectAnswers();
 
 
         if($word->save()){
-
-            $word->words()->sync($request->getWords());
             $word->categories()->sync($request->getCategories());
-
             return $word;
         }
 
@@ -41,12 +39,12 @@ class EnglishWordService {
     {
         $word = EnglishWord::find($id);
 
-        $word->word = $request->getWord();
-        $word->translate = $request->getTranslate();
+        $word->english = $request->getEnglish();
+        $word->tj = $request->getTj();
+        $word->incorrect_answers = $request->getIncorrectAnswers();
 
         if($word->update()){
 
-            $word->words()->sync($request->getWords());
             $word->categories()->sync($request->getCategories());
 
             return $word;

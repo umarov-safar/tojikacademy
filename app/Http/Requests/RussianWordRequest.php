@@ -20,20 +20,9 @@ class RussianWordRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        //remove correct word in wrong words
-        if($this->isMethod('PUT'))
-        {
-            $wordsID = $this->words;
-
-            if(is_array($wordsID) && in_array($this->id, $wordsID))
-            {
-                unset($wordsID[array_search($this->id, $wordsID)]);
-                $this->merge([
-                    'words' => $wordsID
-                ]);
-            }
-
-        }
+        $this->merge([
+            'incorrect_answers' => json_decode($this->incorrect_answers, true)
+        ]);
     }
 
 
@@ -45,10 +34,10 @@ class RussianWordRequest extends FormRequest
     public function rules()
     {
         return [
-            'word' => 'required',
-            'translate' => 'required',
+            'russian' => 'required',
+            'tj' => 'required',
             'categories' => 'required',
-            'words' => 'required|array|min:2|max:2',
+            'incorrect_answers' => 'required',
         ];
     }
 
