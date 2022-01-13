@@ -119,11 +119,8 @@ $(document).ready(function(){
             toolbar: [
                 ['style', ['style']],
                 ['font', ['bold', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview']]
+                ['para', ['ul', 'ol']],
+                ['insert', ['link', 'picture']],
             ]
         });
     }

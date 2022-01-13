@@ -22,8 +22,8 @@
 
 {{-- Some link to main products --}}
 <section class="products">
-    <div class="container">
-        <h2 class="section-title">Бо мо биомуз</h2>
+    <div class="container p-sm2-0" >
+        <h2 class="section-title ml-7">Бо мо биомуз</h2>
         <div class="boxes">
 
             <div class="card">

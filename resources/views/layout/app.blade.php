@@ -31,7 +31,6 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.layout.css') }}">
     @yield('css')
 
-
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('js_head')
 </head>
@@ -87,34 +86,15 @@
                         </nav>
                     </div>
                     <nav>
-                        <div class="d-flex align-center justify-center">
-                            <ul class="d-flex menu-items">
-                                <li class="catalog-menu">
-                                    @auth()
-                                        <a href="#"><span class="far fa-user-circle"></span> {{ auth()->user()->fullName() }}</a>
-                                    @endauth
-                                    @guest
-                                            <a href="#" ><span class="fas fa-sign-in-alt"></span> Утоқи шахсӣ</a>
-                                    @endguest
-                                    <div class="child-items">
-                                        <ul class="link-list">
-                                            @auth
-                                                <li class="item"><a href="{{ route('users.show', [auth()->id()]) }}" >Утоқи шахсӣ</a></li>
-                                                <li class="item"><a href="{{ route('logout') }}">Баромадан</a></li>
-                                            @endauth
-                                            @guest
-                                                <li class="item">
-                                                    <a href="{{ route('login') }}"> <span class="fas fa-sign-in-alt"></span> Ворид шудан</a>
-                                                </li>
-                                                <li class="item">
-                                                    <a href="{{ route('register') }}"><span class="fas fa-user-plus"></span> Ба қайдгири</a>
-                                                </li>
-                                            @endguest
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-
+                        <div class="d-flex align-center justify-center" id="account-icons">
+                            @auth()
+                                <a class="nav-icon" href="{{ route('users.show', [auth()->id()]) }}"><span class="far fa-user-circle"></span></a>
+                                <a class="nav-icon" href="{{ route('logout') }}"><i class="fas fa-door-open"></i></a>
+                            @endauth
+                            @guest
+                                    <a class="nav-icon" href="{{ route('register') }}" ><i class="fas fa-user-plus"></i></a>
+                                    <a class="nav-icon" href="{{ route('login') }}" ><i class="fas fa-sign-in-alt"></i></a>
+                            @endguest
                         </div>
                     </nav>
                 </div>

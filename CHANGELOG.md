@@ -7,6 +7,10 @@ REMOVE COMMENT FROM ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.30.2]- 13-01-2022
+### Changed
+- Some styles to home page
+
 ## [1.30.1]- 13-01-2022
 ### Changed 
 - Words in one table

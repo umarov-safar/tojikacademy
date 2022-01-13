@@ -1,4 +1,9 @@
 
+#account-icons .nav-icon {
+    margin: 5px;
+    font-size: 1.2rem;
+}
+
 #description-site {
     min-height: 200px;
     display: flex;
@@ -32,7 +37,6 @@ section.products .boxes {
     flex-wrap: wrap;
 }
 section.products .card{
-    background: white;
     padding: 10px;
     margin: 4px;
     max-width: 24%;
