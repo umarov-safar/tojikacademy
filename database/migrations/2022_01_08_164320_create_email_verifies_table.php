@@ -17,11 +17,16 @@ class CreateEmailVerifiesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('token');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
 
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('is_email_verified')->default(0)->after('remember_token');
         });
+
     }
 
     /**
