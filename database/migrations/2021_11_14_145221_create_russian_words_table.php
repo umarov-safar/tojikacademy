@@ -15,7 +15,7 @@ class CreateRussianWordsTable extends Migration
     {
         Schema::create('russian_words', function (Blueprint $table) {
             $table->id();
-            $table->string('russian');
+            $table->string('russian')->unique();
             $table->string('tj');
             $table->string('incorrect_answers'); // json
             $table->timestamps();
