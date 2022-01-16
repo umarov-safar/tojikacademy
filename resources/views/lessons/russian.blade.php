@@ -68,7 +68,7 @@
 
 
     {{-- question section --}}
-    <x-questions-section :questions="$questions"></x-questions-section>
+    <x-questions-section :questions="$questions" :text="'Саволҳо аз з. Русӣ'"></x-questions-section>
 
 @endsection
 

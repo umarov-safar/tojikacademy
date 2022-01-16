@@ -20,7 +20,7 @@ class ArticleController extends Controller
 
     public function news()
     {
-        $parentCategory = CategoryArticle::where('slug', 'news')->get()->first();
+        $parentCategory = CategoryArticle::where('slug', 'news')->get()->firstOrFail();
 
         $allNews = $this->articleRepository->getFromSubCategories($parentCategory);
 
@@ -40,11 +40,11 @@ class ArticleController extends Controller
 
         $relatedNews = $this->articleRepository->getRelationArticles($news);
 
-        $newsCategory = CategoryArticle::whereSlug('news')->get()->first();
+        $newsCategory = CategoryArticle::whereSlug('news')->get()->firstOrFail();
 
         $recommendedNews = $this->articleRepository->recommendedArticles($news, $newsCategory->children->pluck('id'), 6);
 
-        $tutorialCategory = CategoryArticle::where('slug', 'tutorials')->get()->first();
+        $tutorialCategory = CategoryArticle::where('slug', 'tutorials')->get()->firstOrFail();
 
         $recommendedTutorials = $this->articleRepository->recommendedArticles($news, $tutorialCategory->children->pluck('id'), 5);
 
@@ -59,7 +59,7 @@ class ArticleController extends Controller
 
     public function newsCategory($slug)
     {
-        $category = CategoryArticle::whereSlug($slug)->get()->first();
+        $category = CategoryArticle::whereSlug($slug)->get()->firstOrFail();
 
         $newsS = $this->articleRepository->category($category);
 
@@ -91,11 +91,11 @@ class ArticleController extends Controller
      */
     public function tutorialCategory($slug)
     {
-        $category = CategoryArticle::whereSlug($slug)->get()->first();
+        $category = CategoryArticle::whereSlug($slug)->get()->firstOrFail();
 
         $tutorials = $this->articleRepository->category($category);
 
-        $tutorialCategory = CategoryArticle::whereSlug('tutorials')->get()->first();
+        $tutorialCategory = CategoryArticle::whereSlug('tutorials')->get()->firstOrFail();
 
         return view('articles.tutorials.category', [
             'category' => $category,
@@ -118,7 +118,7 @@ class ArticleController extends Controller
 
 
         //Category of tutorials
-        $tutorialCategory = CategoryArticle::whereSlug('tutorials')->get()->first();
+        $tutorialCategory = CategoryArticle::whereSlug('tutorials')->get()->firstOrFail();
 
         //Another tutorials for more
         $recommendedTutorials = $this->articleRepository->recommendedArticles($tutorial, $tutorialCategory->children->pluck('id'));
@@ -136,7 +136,7 @@ class ArticleController extends Controller
     public function tags(Request $request)
     {
 
-        $tag = Tag::whereSlug($request->slug)->get()->first();
+        $tag = Tag::whereSlug($request->slug)->get()->firstOrFail();
 
         $slug = 'tutorials';
 
@@ -147,7 +147,7 @@ class ArticleController extends Controller
             $slug = 'blogs';
         }
         //Parent categories
-        $tutorialCategory = CategoryArticle::whereSlug($slug)->get()->first();
+        $tutorialCategory = CategoryArticle::whereSlug($slug)->get()->firstOrFail();
 
         //ids of tutorials
         $ids = $tutorialCategory->children->pluck('id');

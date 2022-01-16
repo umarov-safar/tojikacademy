@@ -7,6 +7,15 @@ REMOVE COMMENT FROM ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.31.0]- 13-01-2022
+- Sponsors
+- Message form
+### Changed
+- A lot of styles
+- Footer
+### Fixed
+- ItemNotFoundExeption to 404g
+
 ## [1.30.2]- 13-01-2022
 ### Changed
 - Some styles to home page

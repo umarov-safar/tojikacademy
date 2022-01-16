@@ -5,8 +5,8 @@
         <div id="register">
             <div class="content">
                 <div class="text center ">
-                    <p class="fs-27 bold m-4">Интихоби беҳтарин</p>
-                    <p class="fs-20 m-auto w-80">Бо обуна шудан ба сайти мо шумо ба ҳамаи ҷиз дар сайт дастраси меёбед.</p>
+                    <p class="fs-27 bold m-7">Интихоби беҳтарин</p>
+                    <p class="fs-20 m-auto w-80">Бо обуна шудан ба сомона шумо ба ҳамаи чиз даст раси меёбед!.</p>
                 </div>
                 <br>
                 <form id="register-form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
@@ -54,7 +54,7 @@
                         @enderror
                         <input type="file"  class="input hidden-imp" name="avatar" id="avatar" placeholder="Акасатонро интихоб кунед" >
                         <br>
-                        <img id="avatar-preview" class="m-10" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1024px-User_icon_2.svg.png" width="100" height="90" alt="">
+                        <img id="avatar-preview" class="m-10" src="{{ asset('images/user.png') }}" width="100" height="90" alt="">
                     </div>
                     <br>
                     <div class="form-item">
@@ -65,9 +65,9 @@
                 <div  class="p-10">
                     <div class="d-flex justify-center"><p>Дигар шабакаҳои мо</p></div>
                     <div class="socials">
-                        <a href="https://youtube.com/c/tojikacademy"><i class="fab fa-youtube youtube"></i></a>
+                        <a href="https://youtube.com/c/tojikacademy" target="_blank"><i class="fab fa-youtube youtube"></i></a>
+                        <a href="https://instagram.com/tojikacademy" target="_blank"><i class="fab fa-instagram instagram"></i></a>
                         <a href="#"><i class="fab fa-facebook-square facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram instagram"></i></a>
                         <a href="#"><i class="fab fa-odnoklassniki okclass"></i></a>
                         <a href="#"><i class="fab fa-vk vk"></i></a>
                     </div>

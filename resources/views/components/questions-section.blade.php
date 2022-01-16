@@ -9,7 +9,7 @@
                     {{--    Full name, img date     --}}
                     <div class="name-img d-flex justify-between">
                         <div class="d-flex align-center">
-                            <img style="border-radius: 30% !important;" src="{{ asset($question->user->image_sizes['100x100'] ?? $question->user->avatar)}}" alt="{{ $question->title  }}" class="mr-3">
+                            <img style="border-radius: 30% !important;" src="{{ asset($question->user->image_sizes['100x100'] ?? $question->user->avatar)}}" alt="{{'Савлдиҳанда '. $question->user->fullName() }}" class="mr-3">
                             <div class="name">
                                 <h4 class="mb-3">
                                     <a href="{{ route('users.show', $question->user->id)}}">
@@ -111,7 +111,7 @@
                                 Ҷавоб додан
                             </a>
                         </div>
-                        <a href="{{ route('question-category', $question->category->slug) }}">#{{ $question->category->name }}</a>
+                        <a class="question-category-link" href="{{ route('question-category', $question->category->slug) }}">#{{ $question->category->name }}</a>
                     </div>
                 </div>
             @empty

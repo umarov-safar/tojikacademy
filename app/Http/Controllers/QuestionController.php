@@ -184,7 +184,7 @@ class QuestionController extends Controller
     public function destroy(int $id)
     {
         // find and remove likes and answers to this answers
-       $question = Question::find($id);
+       $question = Question::findOrFail($id);
 
        $question->likes()->delete();
        $question->dislikes()->delete();

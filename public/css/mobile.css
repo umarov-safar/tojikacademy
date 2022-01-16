@@ -111,7 +111,7 @@ like this "home page, register page, question page etc"
     }
 
     .boxes{
-        background: linear-gradient( 40deg, #fde2f187, #faffc2c4, #fda5d6c7, #effcff1c);
+        background: linear-gradient(40deg, #25ffc329, #f1fff19e, #ffffffc7, #aae9f75c);
     }
 }
 
@@ -130,7 +130,6 @@ like this "home page, register page, question page etc"
 
     .long-cart .text-cart{
         width: 100% !important;
-
     }
     .long-cart .text-cart a.btn-a{
         margin-top: 18px;
@@ -189,18 +188,14 @@ like this "home page, register page, question page etc"
     /* english page | russian page */
     .learning .content .demo-real,
     .learning .content .demo-random{
-        min-width: unset;
-        width: 100%;
+        min-height: 55px;
+        height: auto;
     }
     .learning .content .demo-real  button span.text,
     .learning .content .demo-random button span.text {
         padding: 7px;
     }
-    .learning .content .demo-real,
-    .learning .content .demo-random {
-        min-height: 55px;
-        height: auto;
-    }
+
 
     /* register page */
     #register .content{
@@ -234,6 +229,13 @@ like this "home page, register page, question page etc"
         width: 97%;
         margin: auto;
     }
+
+    .section-title{
+        font-size: 1.4rem;
+    }
+    .section-title::before{
+        height: 17px !important;
+    }
 }
 
 /*media 690*/
@@ -251,6 +253,9 @@ like this "home page, register page, question page etc"
         width: 100% !important;
     }
 
+    .input, .textarea{
+        padding: 0.2rem 0.4rem;
+    }
 }
 
 
@@ -280,4 +285,11 @@ like this "home page, register page, question page etc"
         font-size: 25px;
     }
 
+}
+
+
+@media (max-width: 400px) {
+    .long-cart .text-cart > div{
+        display: unset;
+    }
 }

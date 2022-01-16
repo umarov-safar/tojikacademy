@@ -49,8 +49,8 @@ class RegisterController extends Controller
 
         } else {
             $image_sizes = [
-                '100x100' => 'uploads/users/user.png',
-                '460x460' => 'uploads/users/user.png'
+                '100x100' => 'images/user.png',
+                '460x460' => 'images/user.png'
             ];
         }
 

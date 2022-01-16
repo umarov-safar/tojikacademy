@@ -29,4 +29,6 @@ Route::group([
         Route::crud('russian-word', 'RussianWordCrudController');
         Route::crud('english-word', 'EnglishWordCrudController');
         Route::crud('article', 'ArticleCrudController');
+    Route::crud('message', 'MessageCrudController');
+    Route::crud('sponsor', 'SponsorCrudController');
 }); // this should be the absolute last line of this file

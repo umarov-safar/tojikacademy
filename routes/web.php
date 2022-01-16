@@ -67,9 +67,12 @@ Route::group(['middleware' => ['guest']], function() {
 });
 
 
+Route::get('sponsors', [\App\Http\Controllers\SponsorControoler::class, 'index'])->name('sponsors');
 
 Route::resource('account/users', UserController::class);
 
+//Sending message
+Route::post('message/send', [\App\Http\Controllers\MessageController::class, 'send'])->name('sendMessage');
 
 //Question routes
 Route::get('questions/{category}', [QuestionController::class, 'category'])->name('question-category');

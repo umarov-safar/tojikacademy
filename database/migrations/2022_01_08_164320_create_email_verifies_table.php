@@ -20,7 +20,7 @@ class CreateEmailVerifiesTable extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_email_verified')->default(0);
+            $table->boolean('is_email_verified')->default(0)->after('remember_token');
         });
     }
 

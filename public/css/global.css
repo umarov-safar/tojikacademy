@@ -121,6 +121,7 @@ pre{
 
 p{
     color: #3b3f4b;
+    line-height: 1.3rem;
 }
 
 .max-width{
@@ -302,7 +303,9 @@ img {
     background: rgb(35 32 39 / 81%);
     padding: 5px;
 }
-
+a.question-category-link {
+    color: #3e3e3e;
+}
 /*font-size*/
 .fs-17{
     font-size: 17px;
@@ -628,7 +631,7 @@ img {
 .input-label {
     display: block;
     margin-bottom: .1rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 500;
     line-height: 1.5;
     color: #212529;
@@ -639,7 +642,7 @@ img {
     display: block;
     width: 100%;
     padding: .375rem .75rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.5;
     color: #212529 !important;
     background-color: #fff;

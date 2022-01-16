@@ -12,7 +12,10 @@
                     <h1 class="m-3">{{ $user->fullName() }}</h1>
                     <span>Рузи бақайдгири: {{ $user->created_at->format('d-m-Y') }}</span>
                 </div>
-                <img src="/{{ @$user->image_sizes['650x650'] ?? $user->avatar }}" class='radius-10' alt="{{ $user->fullName() }}">
+                <img src="/{{ isset($user->image_sizes['650x650']) ? $user->image_sizes['650x650'] : $user->image_sizes['460x460'] }}"
+                     class='radius-10'
+                     width="500"
+                     alt="{{ $user->fullName() }}">
             </div>
             <div class="col-lg-6">
                 @if(auth()->check() && auth()->id() === $user->id)

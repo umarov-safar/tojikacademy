@@ -63,3 +63,7 @@
 
 
 
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('message') }}'><i class='nav-icon la la-question'></i> Messages</a></li>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('sponsor') }}'><i class='nav-icon la la-question'></i> Sponsors</a></li>

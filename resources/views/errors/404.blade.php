@@ -1,16 +1,12 @@
-@extends('errors.layout')
+@extends('errors::minimal')
 
-@php
-  $error_number = 404;
-@endphp
-
-@section('title')
-  Page not found.
+@section('title', 'Саҳифа ётф нашуд!')
+@section('code', '404')
+@section('message')
+    <div>
+        Ууупс! Саҳифа ёфт нашуд!!
+        <br>
+    </div>
+    <a href="/" style="text-transform: initial !important;"> >Ба саҳифаи асили боз гаштан</a>
 @endsection
 
-@section('description')
-  @php
-    $default_error_message = "Please <a href='javascript:history.back()''>go back</a> or return to <a href='".url('')."'>our homepage</a>.";
-  @endphp
-  {!! isset($exception)? ($exception->getMessage()?$exception->getMessage():$default_error_message): $default_error_message !!}
-@endsection

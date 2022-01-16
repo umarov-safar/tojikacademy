@@ -27,7 +27,7 @@
                         <input type="password" id="password" class="input" name="password" placeholder="Рамз барои ворид шудан ба сайт">
                     </div>
                     <div class="form-item">
-                        <button type="submit" id="register-btn" class="btn-b">Обуна шудан</button>
+                        <button type="submit" id="register-btn" class="btn-b">Воридшави</button>
                     </div>
                 </form>
                 <a href="{{ route('register') }}"  class="change-login" id="login">Бақайдгирӣ</a>

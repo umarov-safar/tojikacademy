@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\CategoryArticle;
 use App\Models\EnglishWord;
 use App\Models\Question;
+use App\Models\Sponsor;
 use DB;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,9 @@ class HomeController extends Controller
         $tutorials = Article::whereNotIn('category_id', $idsOfNews)->get();
 
 
-        return view('welcome', compact('questions', 'news', 'tutorials'));
+        $sponsors = Sponsor::limit(15)->get();
+
+        return view('welcome', compact('questions', 'news', 'tutorials', 'sponsors'));
     }
 
 

@@ -2,12 +2,15 @@
 /public/hot
 /public/storage
 /public/fonts
-/public/uploads/
+/public/uploads/questions/*
+/public/uploads/articles/*
+/public/uploads/users/*
+/public/uploads/word-categories/*
 /public/js/app.js
 /public/css/style.css
 /public/images/vendor
 /storage/*.key
-/storage/uploads
+/storage/uploads/
 /vendor
 .env
 .env.backup
