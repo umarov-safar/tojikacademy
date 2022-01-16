@@ -1,0 +1,295 @@
+/* for finding the blade`s  page styles you can search
+like this "home page, register page, question page etc"
+ */
+
+/*media 1280*/
+@media (max-width: 1280px) {
+    /*register page in 1280*/
+    #register .content{
+        width: 80% !important;
+    }
+
+
+
+}
+
+
+/*media 1200*/
+@media (max-width: 1200px) {
+     /* menu */
+    .nav-menu{
+        display: none !important;
+    }
+
+    .main-link{
+        justify-content: center;
+    }
+
+    #bar{
+        display: block;
+        font-size: 30px !important;
+    }
+
+    /* questions page */
+    .questions-page .questions{
+        width: 70%;
+    }
+
+    .questions-page .categories{
+        width: 30%;
+    }
+}
+
+
+/*media 1080*/
+@media (max-width: 1080px) {
+    .mobile-menu{
+        width: 50% !important;
+    }
+
+
+    #description-site .title-welcome{
+        font-size: 30px;
+        padding: 15px;
+    }
+
+    #description-site .text{
+        font-size: 19px;
+    }
+
+    /*  home page  */
+    section.products .card{
+        max-width:  32%;
+    }
+}
+
+/*media 920*/
+@media (max-width: 920px) {
+
+    .logo-welcome{
+        display: none;
+    }
+
+    .clients-sey .content .told{
+        width: 35% !important;
+    }
+
+
+    /* english page */
+    .english .desc{
+        font-size: 17px;
+        max-width: unset !important;
+        padding: 15px !important;
+    }
+
+    /* question page */
+    .question-page .question .question-img img{
+        max-width:100%;
+    }
+
+    .question #content * img{
+        float: unset !important;
+        width: 100% !important;
+    }
+
+    /* menu */
+    .header .main-link{
+        width: 95% !important;
+    }
+
+    .mobile-menu{
+        width: 60% !important;
+    }
+
+    .learning .content .counter{
+        width: 100%;
+    }
+
+/*answer to answer*/
+    .answer-level-2{
+        margin-left: 4%;
+    }
+
+    .boxes{
+        background: linear-gradient(40deg, #25ffc329, #f1fff19e, #ffffffc7, #aae9f75c);
+    }
+}
+
+
+/*media 842*/
+@media (max-width: 842px) {
+
+    /*  home page  */
+    section.products .card{
+        max-width:  47%;
+    }
+    .long-cart {
+        flex-wrap: wrap;
+        height: 100% !important;
+    }
+
+    .long-cart .text-cart{
+        width: 100% !important;
+    }
+    .long-cart .text-cart a.btn-a{
+        margin-top: 18px;
+    }
+
+    .long-cart .block-img{
+        margin: auto;
+        margin-top: 10px;
+    }
+
+    /* english page */
+    .showAllAnswer {
+        width: 95%;
+    }
+
+    /*  login form fixed  */
+    #auth-js .form-auth{
+        width: 80%;
+    }
+
+    /* Russian word page */
+    #word-categories-parent{
+        width: 90%;
+    }
+
+    .word-categories .category  img{
+        border: 2px solid #f29a5a
+    }
+
+    .word-categories .category img{
+        width: 120px !important;
+        height: 120px !important;
+    }
+}
+
+
+/*media 800*/
+@media (max-width: 800px) {
+    /* home page */
+    .clients-sey .content .told{
+        width: 47% !important;
+    }
+
+    .articles .content .article{
+        max-width: 100% !important;
+    }
+
+    .question .asked .name-img{
+        font-size: 16px;
+    }
+
+    .question .asked a{
+        font-size: 17px;
+    }
+
+    /* english page | russian page */
+    .learning .content .demo-real,
+    .learning .content .demo-random{
+        min-height: 55px;
+        height: auto;
+    }
+    .learning .content .demo-real  button span.text,
+    .learning .content .demo-random button span.text {
+        padding: 7px;
+    }
+
+
+    /* register page */
+    #register .content{
+        width: 90% !important;
+    }
+
+    .p-sm2-0{
+        padding: 0% !important;
+    }
+
+    #russian-word  .links a{
+        width: 90%;
+    }
+
+}
+
+
+/*media 744*/
+@media (max-width: 744px){
+    /*register page in 744*/
+    #register {
+        width: 100% !important;
+    }
+
+    /* questions page */
+    .questions-page .questions{
+        width: 100%;
+    }
+
+    .questions-page .categories{
+        width: 97%;
+        margin: auto;
+    }
+
+    .section-title{
+        font-size: 1.4rem;
+    }
+    .section-title::before{
+        height: 17px !important;
+    }
+}
+
+/*media 690*/
+@media (max-width: 690px) {
+    /* question page */
+
+    .question-page .question-body .title{
+        font-size: 28px;
+    }
+
+    .mobile-menu{
+        width: 80% !important;
+    }
+    .clients-sey .content .told{
+        width: 100% !important;
+    }
+
+    .input, .textarea{
+        padding: 0.2rem 0.4rem;
+    }
+}
+
+
+/*media 590*/
+@media (max-width: 590px) {
+
+    /*register page in 690*/
+    #register .content{
+        width: 90%;
+    }
+
+    /*  home page  */
+    section.products .card{
+        max-width: 100%;
+    }
+    section.products .card .links .link{
+        padding: 10px;
+    }
+
+}
+
+
+
+/*media 590*/
+@media (max-width: 500px) {
+    #description-site .title-welcome{
+        font-size: 25px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+    .long-cart .text-cart > div{
+        display: unset;
+    }
+}
