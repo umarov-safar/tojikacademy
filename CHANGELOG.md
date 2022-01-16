@@ -1,4 +1,3 @@
-REMOVE COMMENT FROM ADMIN MIDDLEWARE
 
 #Changelog
 [version]
@@ -7,14 +6,19 @@ REMOVE COMMENT FROM ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
-## [1.31.0]- 13-01-2022
+## [1.31.0]- 16-01-2022
+### Fixed
+- Email text
+- Emai verify on user cascade
+
+## [1.31.0]- 16-01-2022
 - Sponsors
 - Message form
 ### Changed
 - A lot of styles
 - Footer
 ### Fixed
-- ItemNotFoundExeption to 404g
+- ItemNotFoundExeption to 404
 
 ## [1.30.2]- 13-01-2022
 ### Changed
@@ -26,7 +30,7 @@ REMOVE COMMENT FROM ADMIN MIDDLEWARE
 
 ## [1.30.0]- 10-01-2022
 ### Added
-- Email verifycation 
+- Email verification 
 - Using language from local
 ### Changed
 - Some text from language folder

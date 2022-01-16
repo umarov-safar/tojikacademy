@@ -5,6 +5,7 @@
 /public/uploads/questions/*
 /public/uploads/articles/*
 /public/uploads/users/*
+/public/uploads/.tmb
 /public/uploads/word-categories/*
 /public/js/app.js
 /public/css/style.css
