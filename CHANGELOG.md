@@ -6,7 +6,11 @@
 ### Changed:
 ### Fixed:
 
-## [1.31.0]- 16-01-2022
+## [1.31.2]- 16-01-2022
+### Changed
+- Unique key to english and russian words table
+
+## [1.31.1]- 16-01-2022
 ### Fixed
 - Email text
 - Emai verify on user cascade
