@@ -88,10 +88,15 @@ Route::get('russian', [RussianController::class, 'index'])->name('russian');
 
 //words languages routes
 Route::get('words', [WordController::class, 'index'])->name('words');
+
 Route::get('russian/words', [RussianWordController::class, 'categories'])->name('russian-words');
 Route::get('russian/words/{slug}', [RussianWordController::class, 'learn']);
+Route::get('russian/words/specials/{slug}', [RussianWordController::class, 'learnSpecial']);
+
 Route::get('english/words', [EnglishWordController::class, 'categories'])->name('english-words');
 Route::get('english/words/{slug}', [EnglishWordController::class, 'learn']);
+Route::get('english/words/specials/{slug}', [EnglishWordController::class, 'learnSpecial']);
+//End words routes
 
 
 //Article tags

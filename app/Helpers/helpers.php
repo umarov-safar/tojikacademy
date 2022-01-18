@@ -8,8 +8,7 @@ use Backpack\MenuCRUD\app\Models\MenuItem;
 // menu for header
 if(!function_exists('menuHeader')) {
     function menuHeader() {
-        $menu = MenuItem::find(1);
-        return $menu->children;
+       return MenuItem::getTree();
     }
 
 }

@@ -18,6 +18,12 @@ class CreateRussianWordsTable extends Migration
             $table->string('russian')->unique();
             $table->string('tj');
             $table->string('incorrect_answers'); // json
+            $table->boolean('is_masculine')->default(0);
+            $table->boolean('is_feminine')->default(0);
+            $table->boolean('is_neutral')->default(0);
+            $table->boolean('is_noun')->default(0);
+            $table->boolean('is_verb')->default(0);
+            $table->boolean('is_adjective')->default(0);
             $table->timestamps();
         });
     }

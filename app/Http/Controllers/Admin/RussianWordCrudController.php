@@ -51,6 +51,8 @@ class RussianWordCrudController extends CrudController
     {
         CRUD::setFromDb(); // columns
 
+        CRUD::removeColumn('incorrect_answers');
+
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -68,46 +70,103 @@ class RussianWordCrudController extends CrudController
     {
         CRUD::setValidation(RussianWordRequest::class);
 
-        CRUD::setFromDb(); // fields
-
-        CRUD::removeField('incorrect_answers');
-
-        $this->crud->addField([
-            'label'             => 'Categories',
-            'type'              => 'select2_multiple',
-            'name'              => 'categories', // the method that defines the relationship in your Model
-            'entity'            => 'categories', // the method that defines the relationship in your Model
-            'attribute'         => 'name', // foreign key attribute that is shown to user
-            'model'             => WordCategory::class,
-            'pivot'             => true, // on create&update, do you need to add/delete pivot table entries?
-        ]);
-
-
-        $this->crud->addField([
-            'name' => 'incorrect_answers',
-            'Label' => 'Ҷавобҳои нодурст!',
-            'type' => 'repeatable',
-            'fields' => [
-                [
-                    'name' => 'incorrect_english_1',
-                    'label' => 'Чавоби нодуруст',
-                    'type' => 'text',
-                    'wrapper' => [
-                        'class' => 'form-group col-md-6'
-                    ],
-                ],
-                [
-                    'name' => 'incorrect_english_2',
-                    'label' => 'Чавоби нодуруст',
-                    'type' => 'text',
-                    'wrapper' => [
-                        'class' => 'form-group col-md-6'
-                    ],
-                ]
+        $this->crud->addFields([
+            [
+                'name' => 'russian',
+                'type' => 'text',
+                'label' => 'Луғати руси',
             ],
-            // optional
-            'min_rows' => 1, // minimum rows allowed, when reached the "delete" buttons will be hidden
-            'max_rows' => 1,
+            [
+                'name' => 'tj',
+                'type' => 'text',
+                'label' => 'Луғати тоҷики',
+            ],
+            [
+                'label'             => 'Категория луғатҳо',
+                'type'              => 'select2_multiple',
+                'name'              => 'categories', // the method that defines the relationship in your Model
+                'entity'            => 'categories', // the method that defines the relationship in your Model
+                'attribute'         => 'name', // foreign key attribute that is shown to user
+                'model'             => WordCategory::class,
+                'options' => (function($query) {
+                    return $query->whereNotIn('slug', WordCategory::SPECIALS_SLUGS)->get();
+                }),
+                'pivot'             => true, // on create&update, do you need to add/delete pivot table entries?
+            ],
+            [
+                'name' => 'incorrect_answers',
+                'label' => 'Ҷавобҳои нодурст!',
+                'type' => 'repeatable',
+                'fields' => [
+                    [
+                        'name' => 'incorrect_word_1',
+                        'label' => 'Чавоби нодуруст',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'class' => 'form-group col-md-6'
+                        ],
+                    ],
+                    [
+                        'name' => 'incorrect_word_2',
+                        'label' => 'Чавоби нодуруст',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'class' => 'form-group col-md-6'
+                        ],
+                    ]
+                ],
+                // optional
+                'min_rows' => 1, // minimum rows allowed, when reached the "delete" buttons will be hidden
+                'max_rows' => 1,
+            ],
+            [
+                'name' => 'is_masculine',
+                'type' => 'checkbox',
+                'label' => 'Мужской род',
+                'wrapper' => [
+                    'class' => 'form-group col-md-2'
+                ],
+            ],
+            [
+                'name' => 'is_feminine',
+                'type' => 'checkbox',
+                'label' => 'Женский род',
+                'wrapper' => [
+                    'class' => 'form-group col-md-2'
+                ],
+            ],
+            [
+                'name' => 'is_neutral',
+                'type' => 'checkbox',
+                'label' => 'Средный род',
+                'wrapper' => [
+                    'class' => 'form-group col-md-2'
+                ],
+            ],
+            [
+                'name' => 'is_noun',
+                'type' => 'checkbox',
+                'label' => 'Исм',
+                'wrapper' => [
+                    'class' => 'form-group col-md-2'
+                ],
+            ],
+            [
+                'name' => 'is_verb',
+                'type' => 'checkbox',
+                'label' => 'Феъл',
+                'wrapper' => [
+                    'class' => 'form-group col-md-2'
+                ],
+            ],
+            [
+                'name' => 'is_adjective',
+                'type' => 'checkbox',
+                'label' => 'Сифат',
+                'wrapper' => [
+                    'class' => 'form-group col-md-2'
+                ],
+            ],
         ]);
 
         /**
@@ -133,12 +192,17 @@ class RussianWordCrudController extends CrudController
         $this->crud->setRequest($this->crud->validateRequest());
         $request = $this->crud->getRequest();
 
-
         $dto = new RussianWordDto(
-            $request->russian,
+            ucfirst($request->russian),
             $request->tj,
             $request->categories,
-            $request->incorrect_answers
+            $request->incorrect_answers,
+            $request->is_masculine,
+            $request->is_feminine,
+            $request->is_neutral,
+            $request->is_noun,
+            $request->is_verb,
+            $request->is_adjective,
         );
 
         $word = $this->russianWordService->store($dto);
@@ -154,6 +218,7 @@ class RussianWordCrudController extends CrudController
             $this->crud->setSaveAction();
 
             return $this->crud->performSaveAction($word->getKey());
+
         }
     }
 
@@ -164,10 +229,16 @@ class RussianWordCrudController extends CrudController
         $request = $this->crud->getRequest();
 
         $dto = new RussianWordDto(
-            $request->russian,
+            ucfirst($request->russian),
             $request->tj,
             $request->categories,
-            $request->incorrect_answers
+            $request->incorrect_answers,
+            $request->is_masculine,
+            $request->is_feminine,
+            $request->is_neutral,
+            $request->is_noun,
+            $request->is_verb,
+            $request->is_adjective,
         );
 
         $word = $this->russianWordService->update($dto, $request->id);

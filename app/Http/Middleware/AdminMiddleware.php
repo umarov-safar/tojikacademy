@@ -18,7 +18,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!backpack_user()->hasAnyRole(Role::all())) {
-            return redirect('/');
+//            return redirect('/');
         }
         return $next($request);
     }

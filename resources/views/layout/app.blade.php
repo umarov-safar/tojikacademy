@@ -33,7 +33,8 @@
     @yield('js_head')
 </head>
 
-{{-- menu of header the function is in the helpers.php file --}} @php $menuTree = menuHeader(); @endphp
+{{-- menu of header the function is in the helpers.php file --}}
+@php $menuTree = menuHeader(); @endphp
 
 <body>
 <div class="wrapper">
@@ -90,7 +91,8 @@
                             <li class="catalog-menu-mobile mb-3">
                                 <a class="parent-item-mobile" href="/account/logout"><span>Баромадан</span><i class="fas fa-door-open"></i></a>
                             </li>
-                        @endauth @guest
+                        @endauth
+                        @guest
                             <li class="catalog-menu-mobile">
                                 <a class="parent-item-mobile mb-3" href="{{ route('login') }}">Воридшудан<i class="fas fa-sign-in-alt"></i></a>
                             </li>
@@ -247,7 +249,6 @@
             </div>
         </div>
 
-        <script src="{{ asset('js/skrollr.js') }}"></script>
         <script src="{{asset('js/main.js')}}"></script>
         @yield('js_bottom')
     </footer>
