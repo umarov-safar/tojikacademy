@@ -6,6 +6,11 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.33.1]- 19-01-2022
+### Changed
+- Uncommented admin middleware;
+
+
 ## [1.33.0]- 19-01-2022
 ### Added
 - New fields to words table
