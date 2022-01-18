@@ -18,7 +18,9 @@ class EnglishWordService {
         $word->english = $request->getEnglish();
         $word->tj = $request->getTj();
         $word->incorrect_answers = $request->getIncorrectAnswers();
-
+        $word->is_noun = $request->isNoun();
+        $word->is_verb = $request->isVerb();
+        $word->is_adjective = $request->isAdjective();
 
         if($word->save()){
             $word->categories()->sync($request->getCategories());
@@ -42,6 +44,9 @@ class EnglishWordService {
         $word->english = $request->getEnglish();
         $word->tj = $request->getTj();
         $word->incorrect_answers = $request->getIncorrectAnswers();
+        $word->is_noun = $request->isNoun();
+        $word->is_verb = $request->isVerb();
+        $word->is_adjective = $request->isAdjective();
 
         if($word->update()){
 

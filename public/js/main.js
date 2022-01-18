@@ -36,8 +36,6 @@ $('.category-item').click(function(){
     $(this).toggleClass('show-2')
 })
 
-console.log(skrollr);
-
 $(document).ready(function(){
     //Initialize the skrollr library
     //Owl carousel initialize

@@ -91,6 +91,8 @@ class Word {
 
             demoTranslates.find('.word').removeClass('word');
 
+            $('#next').off('click');
+
             return null;
         }
 

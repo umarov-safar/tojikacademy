@@ -19,6 +19,10 @@ class CreateWordCategoriesTable extends Migration
             $table->string('description')->nullable();
             $table->string('image')->nullable();
             $table->string('slug')->unique();
+            $table->integer('parent_id')->nullable();
+            $table->integer('lft')->default(0);
+            $table->integer('rgt')->default(0);
+            $table->integer('depth')->default(0);
             $table->timestamps();
         });
     }

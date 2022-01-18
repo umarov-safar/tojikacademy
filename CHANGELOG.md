@@ -1,10 +1,15 @@
-
+REMOVE COMMENT IN ADMIN MIDDLEWARE
 #Changelog
 [version]
 ## Unreleased:
 ### Added:
 ### Changed:
 ### Fixed:
+
+## [1.33.0]- 19-01-2022
+### Added
+- New fields to words table
+- Reorder word category
 
 ## [1.31.2]- 16-01-2022
 ### Changed

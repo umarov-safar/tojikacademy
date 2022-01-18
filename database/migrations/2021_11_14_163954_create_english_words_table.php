@@ -18,6 +18,9 @@ class CreateEnglishWordsTable extends Migration
             $table->string('english')->unique();
             $table->string('tj');
             $table->text('incorrect_answers'); // json
+            $table->boolean('is_noun')->default(0);
+            $table->boolean('is_verb')->default(0);
+            $table->boolean('is_adjective')->default(0);
             $table->timestamps();
         });
     }

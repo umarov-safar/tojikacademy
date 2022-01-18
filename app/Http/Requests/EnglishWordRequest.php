@@ -20,8 +20,17 @@ class EnglishWordRequest extends FormRequest
 
     protected function prepareForValidation()
     {
+        $incorrect_answers = json_decode($this->incorrect_answers, true);
+        foreach ($incorrect_answers[0] as $key => $value){
+            if(trim($value) == '') {
+                $incorrect_answers = [];
+                break;
+            }
+        }
         $this->merge([
-            'incorrect_answers' => json_decode($this->incorrect_answers, true)
+            'incorrect_answers' => $incorrect_answers,
+            'english' => trim($this->english)
+
         ]);
     }
 
@@ -33,10 +42,13 @@ class EnglishWordRequest extends FormRequest
     public function rules()
     {
         return [
-            'english' => 'required',
+            'english' => 'required|unique:english_words,english,'.$this->id,
             'tj' => 'required',
             'categories' => 'required',
             'incorrect_answers' => 'required',
+            'is_noun' => 'boolean',
+            'is_verb' => 'boolean',
+            'is_adjective' => 'boolean',
         ];
     }
 
@@ -60,10 +72,11 @@ class EnglishWordRequest extends FormRequest
     public function messages()
     {
         return [
-            'word.required' => 'Луғатро нависед',
-            'translate.required' => 'Тарҷумаро нависед',
+            'english.required' => 'Луғатро нависед',
+            'english.unique' => 'Луғат алакай сохта шудааст',
+            'tj.required' => 'Тарҷумаро нависед',
             'categories.required' => 'Категория луғатро интхоб кунед',
-            'words.required' => 'Луғатҳои нодурустро интихоб кунед',
+            'incorrect_answers.required' => 'Луғатҳои нодурустро интихоб кунед',
         ];
     }
 }

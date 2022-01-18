@@ -9,6 +9,23 @@ class WordCategory extends Model
 {
     use CrudTrait;
 
+    /**
+     * These specials categories will not be show when the user choose categories for words
+     */
+    const  SPECIALS_SLUGS = [
+        'specials/verb',
+        'specials/noun',
+        'specials/adjective',
+        'specials/masculine',
+        'specials/feminine',
+        'specials/neutral',
+    ];
+
+    const SPECIALS_SLUG_FOR_RUSSIAN_WORDS = [
+        'specials/masculine',
+        'specials/feminine',
+        'specials/neutral',
+    ];
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES

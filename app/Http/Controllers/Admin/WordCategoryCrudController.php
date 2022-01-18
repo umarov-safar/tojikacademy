@@ -21,6 +21,7 @@ class WordCategoryCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\App\Http\Controllers\Operations\ReorderOperation;
 
 
     protected WordCategoryService $wordCategoryService;
@@ -37,8 +38,19 @@ class WordCategoryCrudController extends CrudController
         CRUD::setEntityNameStrings('word category', 'word categories');
 
         $this->wordCategoryService = new WordCategoryService();
+
+        $this->setupReorderOperation();
     }
 
+
+    protected function setupReorderOperation()
+    {
+        // define which model attribute will be shown on draggable elements
+        $this->crud->set('reorder.label', 'name');
+        // define how deep the admin is allowed to nest the items
+        // for infinite levels, set it to 0
+        $this->crud->set('reorder.max_level', 1);
+    }
     /**
      * Define what happens when the List operation is loaded.
      *
@@ -48,6 +60,7 @@ class WordCategoryCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::setFromDb(); // columns
+        CRUD::removeColumns(['parent_id', 'lft', 'rgt', 'depth']);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -67,6 +80,9 @@ class WordCategoryCrudController extends CrudController
         CRUD::setValidation(WordCategoryRequest::class);
 
         CRUD::setFromDb(); // fields
+
+        CRUD::removeFields(['parent_id', 'lft', 'rgt', 'depth']);
+
 
         CRUD::field('description')->type('textarea');
 
