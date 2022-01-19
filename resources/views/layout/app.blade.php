@@ -22,6 +22,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="tg_Tj" />
 
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/global.css') }}" />

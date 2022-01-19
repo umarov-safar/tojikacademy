@@ -1,10 +1,10 @@
 @extends('layout.app')
 
-
 @section('title', $question->title )
-@section('keywords', 'Савол ҷавоб, савол чавоб, чихел кунем, чигуна, аз кучо')
-@section('description', Str::limit(strip_tags($question->title), 160, '...'))
-
+@section('keywords', 'Савол ҷавоб, савол чавоб, чихел кунем, чигуна, аз кучо' . $question->category->name)
+@section('description', Str::limit(strip_tags($question->body), 160, '...'))
+@section('image', asset('images/question.jpg'))
+@section('url', request()->url())
 
 @section('css')
     <link href="{{ asset('packages/summernote/dist/summernote-lite.min.css') }}" rel="stylesheet">

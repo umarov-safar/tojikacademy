@@ -1,9 +1,9 @@
 @extends('layout.app')
 
 @section('title', 'Тоҷик Академия - Корбар - '. $user->fullName())
-
+@section('description', $user->fullName() . " таърихи ба қайдгири дар самона " . $user->created_at . '. Шумо низ дар сомонаи мо обуна шавед ва ба монанди ин истифода барандагон дастраси ба имконоти сомона дошта бошед!')
+@section('url', request()->url())
 @section('content')
-
     <br>
     <div class="container">
         <div class="row">
@@ -12,7 +12,7 @@
                     <h1 class="m-3">{{ $user->fullName() }}</h1>
                     <span>Рузи бақайдгири: {{ $user->created_at->format('d-m-Y') }}</span>
                 </div>
-                <img src="/{{ isset($user->image_sizes['650x650']) ? $user->image_sizes['650x650'] : $user->image_sizes['460x460'] }}"
+                <img loading="lazy" src="{{ asset($user->image_sizes['650x650'] ?? $user->image_sizes['460x460'] ?? $user->avatar) }}"
                      class='radius-10'
                      width="500"
                      alt="{{ $user->fullName() }}">

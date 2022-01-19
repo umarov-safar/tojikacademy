@@ -2,7 +2,7 @@
 
 @section('title', $news->meta_title ?? $news->title)
 @section('description', $news->meta_description ?? $news->description)
-@section('url', url('news/'. $news->category->slug . '/' . $news->slug ))
+@section('url', request()->url())
 @section('image', asset($news->image_sizes['1100x800'] ?? $news->image))
 @section('content')
 

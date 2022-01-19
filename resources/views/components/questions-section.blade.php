@@ -115,7 +115,11 @@
                     </div>
                 </div>
             @empty
-                <p>Not quesitons are here</p>
+                <div class='d-block'>
+                    <p>Саволе гузошта нашудааст!</p>
+                    <br>
+                    <a href="{{ route('questions.create') }}" class="btn-b">Аввалин шуда савол гузоред</a>
+                </div>
             @endforelse
             <br>
             @isset($link)

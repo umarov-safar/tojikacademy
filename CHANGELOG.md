@@ -6,7 +6,12 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
-## [1.33.1]- 19-01-2022
+## [1.33.3]- 19-01-2022
+### CHANGED
+- SEO, og image to A&Q pages
+- title description to user and A&Q pages
+- 
+## [1.33.2]- 19-01-2022
 ### Fixed
 - Namespace in WordCategoryCrudController.php for reorderOperation
 

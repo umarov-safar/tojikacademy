@@ -1,5 +1,10 @@
 @extends('layout.app')
 
+@section('title', 'Саволҳо дар бораи - ' . $category->name )
+@section('keywords', 'Савол ҷавоб, савол чавоб, чихел кунем, чигуна, саволҳои' . $category->name)
+@section('description', $category->description)
+@section('image', asset($category->image))
+
 @section('content')
     <section class="question-category">
         <div class="container">
