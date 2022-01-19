@@ -138,16 +138,8 @@ class ArticleController extends Controller
 
         $tag = Tag::whereSlug($request->slug)->get()->firstOrFail();
 
-        $slug = 'tutorials';
-
-        if($request->parent == 'news')
-        {
-            $slug = 'news';
-        } else if($request->parent == 'blogs') {
-            $slug = 'blogs';
-        }
         //Parent categories
-        $tutorialCategory = CategoryArticle::whereSlug($slug)->get()->firstOrFail();
+        $tutorialCategory = CategoryArticle::whereSlug($request->parent)->get()->firstOrFail();
 
         //ids of tutorials
         $ids = $tutorialCategory->children->pluck('id');
@@ -158,7 +150,6 @@ class ArticleController extends Controller
             'tag' => $tag,
             'articles' => $articles,
             'tutorialCategory' => $tutorialCategory,
-            'parentSlug' => $slug,
         ]);
     }
 

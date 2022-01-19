@@ -1,4 +1,10 @@
 @extends('layout.app')
+@extends('layout.app')
+@section('title', "Савол пурсидан дар сомонаи Тоҷик Академия. Саволу ҷавоб")
+@section('keywords', 'савол гузоштан, савол пурсидан, савол додан, чигуна, аз куҷо')
+@section('description', 'Оё савол доред ё ягон чиз ба шумо нофаҳмо аст? Дар сомонаи Тоҷик Академия пурсед зуд башумо кор барон ҷавоб медиҳанд ва метавон ҷавоби худро ёбед!')
+@section('image', asset('images/have-question.jpg'))
+@section('url', request()->url())
 
 
 @section('css')

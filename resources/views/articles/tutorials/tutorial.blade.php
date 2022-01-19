@@ -2,7 +2,7 @@
 
 @section('title', $tutorial->meta_title ?? $tutorial->title )
 @section('description', $tutorial->meta_description ?? $tutorial->description)
-@section('url', url('/tutorials/'. $tutorial->category->slug . '/' . $tutorial->slug))
+@section('url', request()->url())
 @section('image', asset($tutorial->image_sizes['1100x800'] ?? $tutorial->image))
 @section('content')
 
