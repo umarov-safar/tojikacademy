@@ -7,6 +7,10 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Fixed:
 
 ## [1.33.1]- 19-01-2022
+### Fixed
+- Namespace in WordCategoryCrudController.php for reorderOperation
+
+## [1.33.1]- 19-01-2022
 ### Changed
 - Uncommented admin middleware;
 
