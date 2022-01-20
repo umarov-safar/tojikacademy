@@ -6,6 +6,10 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.33.4]- 21-01-2022
+### ADDED
+- Yandex verification
+
 ## [1.33.3]- 19-01-2022
 ### CHANGED
 - SEO, og image to A&Q pages
