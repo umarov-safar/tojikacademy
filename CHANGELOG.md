@@ -6,6 +6,11 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.35.1]- 23-01-2022
+### Changed 
+- styles
+- layout to login register page
+
 ## [1.35.0]- 23-01-2022
 ### Changed 
 - serviceworker.js

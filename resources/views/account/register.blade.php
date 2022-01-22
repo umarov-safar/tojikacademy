@@ -1,30 +1,37 @@
-@extends('layout.app')
+@extends('layout.easy')
+@section('keywords', 'Ҳамаи саволҳо, саволҳои нав, саволҳои куҳна, чигуна, аз куҷо. саволҳои имруз')
+@section('title', "Тоҷик Академия - Бақайдгирӣ. Aккаунт сохтан.")
+@section('description', 'Дар сомонаи мо обуна шавед то ба ҳамаи имконоти сайт дастраси ёбед. Аккаунти худро созед маълумотҳои шахсии худро нигоҳ доред ва бо дигарон суҳбат кунед дар сомона')
+@section('url', request()->url())
 
 @section('content')
     <section class="page">
         <div id="register">
             <div class="content">
-                <div class="text center ">
-                    <p class="fs-27 bold m-7">Интихоби беҳтарин</p>
-                    <p class="fs-20 m-auto w-80">Бо обуна шудан ба сомона шумо ба ҳамаи чиз даст раси меёбед!.</p>
+                <div class="text ">
+                    <h1><i class="fas fa-user-plus"></i> Бақайдгирӣ</h1>
+                    <br>
+                    <p class="fs-20 m-auto">Бо обуна шудан ба сомона шумо ба ҳамаи имконоти сомона дастраси!.</p>
                 </div>
                 <br>
                 <form id="register-form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @error('message') <p class="red d-block">{{ $message }}</p> @enderror
                     @csrf
-                    <div class="form-item">
-                        <label for="name" class="input-label">Номи корбарӣ</label>
-                        <input type="text" id="name" class="input @error('name') border-red @enderror" value="{{ old('name') }}" name="name" placeholder="Номатонро нависед..." >
-                        @error('name')
-                        <p class="red">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="form-item">
-                        <label for="lastname" class="input-label">Насаб</label>
-                        <input type="text" class="input @error('last_name') border-red @enderror" name="last_name" id="lastname" value="{{ old('last_name') }}" placeholder="Насабаторо нависед..." >
-                        @error('last_name')
-                        <p class="red">{{ $message }}</p>
-                        @enderror
+                    <div class="d-flex" style="gap: 3px">
+                        <div class="form-item">
+                            <label for="name" class="input-label">Номи корбарӣ</label>
+                            <input type="text" id="name" class="input @error('name') border-red @enderror" value="{{ old('name') }}" name="name" placeholder="Номатонро нависед..." >
+                            @error('name')
+                            <p class="red">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="form-item">
+                            <label for="lastname" class="input-label">Насаб</label>
+                            <input type="text" class="input @error('last_name') border-red @enderror" name="last_name" id="lastname" value="{{ old('last_name') }}" placeholder="Насабаторо нависед..." >
+                            @error('last_name')
+                            <p class="red">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                     <div class="form-item">
                         <label for="email" class="input-label">Почтаи электронӣ</label>
@@ -58,7 +65,7 @@
                     </div>
                     <br>
                     <div class="form-item">
-                        <button type="submit" id="register-btn" class="btn-b">Обуна шудан</button>
+                        <button type="submit" id="register-btn" class="btn-b" style="background: #111111">Обуна шудан</button>
                     </div>
                 </form>
                 <a href="{{ route('login') }}"  class="change-login" id="login">Ман алакай ба қайд гирифтаам</a>

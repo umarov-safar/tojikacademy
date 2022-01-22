@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root{
-    --main-bg-color: #04041e;
+    --main-bg-color: #000957;
     --main-color-text: #2b2020;
+    --footer-bg: #1A2849;
     --color-link: rgb(165, 149, 1);
     --color-link-hover: rgba(42,218,255,0.63);
     --imp: var(--color-link);
@@ -647,7 +648,7 @@ a.question-category-link {
     color: #212529 !important;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #7e8299;
+    border: 1px solid #c0c3c5;
     transition: border-color .15s ease-in-out;
     outline: none;
 }
