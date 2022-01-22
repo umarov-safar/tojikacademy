@@ -264,7 +264,11 @@ like this "home page, register page, question page etc"
 
     /*register page in 690*/
     #register .content{
-        width: 90%;
+        width: 98% !important;
+    }
+
+    #register .content p {
+        font-size: 15px;
     }
 
     /*  home page  */

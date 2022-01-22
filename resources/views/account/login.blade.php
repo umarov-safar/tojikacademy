@@ -1,12 +1,16 @@
-@extends('layout.app')
+@extends('layout.easy')
+@section('keywords', 'Воридшави, логин, дохишлшудан ба сайт')
+@section('title', "Тоҷик Академия - Воридшавӣ (логин).")
+@section('description', 'Воридшудан ба сомона. Хушомадед хушҳолем ки бо мо ҳастед.')
 
 @section('content')
     <section class="page">
         <div id="register">
             <div class="content">
-                <div class="text center ">
-                    <h3 class="fs-27 bold m-4">Хуш омадед дубора!</h3>
-                    <div class="d-flex align-center justify-center p-3"><p class="title-form">Ворид шудан ба сайт</p></div>
+                <div class="text">
+                    <h3 class="fs-27 bold m-4"><i class="fas fa-sign-in-alt"></i> Воридшавӣ!</h3>
+                    <br>
+                    <p>Хушомадед дубора.</p>
                 </div>
                 <br>
                 <form id="register-form" method="POST" action="{{ route('login') }}">
@@ -27,7 +31,7 @@
                         <input type="password" id="password" class="input" name="password" placeholder="Рамз барои ворид шудан ба сайт">
                     </div>
                     <div class="form-item">
-                        <button type="submit" id="register-btn" class="btn-b">Воридшави</button>
+                        <button type="submit" id="register-btn" class="btn-b"  style="background: #111111">Воридшави</button>
                     </div>
                 </form>
                 <a href="{{ route('register') }}"  class="change-login" id="login">Бақайдгирӣ</a>

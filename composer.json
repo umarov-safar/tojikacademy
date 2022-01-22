@@ -20,6 +20,7 @@
         "laravel/framework": "^8.12",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "silviolleite/laravelpwa": "^2.0",
         "spatie/laravel-sitemap": "^6.1"
     },
     "require-dev": {

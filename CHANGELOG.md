@@ -6,6 +6,19 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.35.1]- 23-01-2022
+### Changed 
+- styles
+- layout to login register page
+
+## [1.35.0]- 23-01-2022
+### Changed 
+- serviceworker.js
+
+## [1.35.0]- 22-01-2022
+### Added
+- PWA - progressive web application
+
 ## [1.34.2]- 22-01-2022
 ### Fixed
 - All css in on file by webpack.mix.js

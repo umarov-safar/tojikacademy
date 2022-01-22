@@ -7,6 +7,8 @@
     <meta name="csrf-token" content="{{ Session::token() }}" />
     <meta name="yandex-verification" content="86988634e2c620cf" />
     
+    @laravelPWA
+
     <title>@yield('title', 'Тоҷик Академия - сомонаи дарсии Тоҷикон')</title>
 
     <meta name="description" content="@yield('description', 'Тоҷик Академия - яке аз бузургтарин сомонаи дарсии Тоҷикон мебошад. Дар ин сомона шумо метавонед дарсҳои хуб ва пешрафтро биомузед бо роҳҳои осон.')" />
@@ -169,7 +171,7 @@
             </div>
         </div>
 
-        <div class="container-fluid" style="padding: 20px 0; background: #222834;" >
+        <div class="container-fluid" id="footer" >
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5">
@@ -200,8 +202,8 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <br>
                         <h3 class="white">Паём фиристодан</h3>
+                        <br>
                         <p class="success m-3">{{ \Illuminate\Support\Facades\Session::get('responseMessage') }}</p>
                         <form id="register-form" method="POST" action="{{ route('sendMessage') }}">
                             @csrf
