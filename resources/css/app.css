@@ -1,9 +1,10 @@
-/* customes */
-@import url('global.css');
-@import url('all.css');
-@import url('mobile.css');
-@import url('bootstrap.layout.css');
-
 @import "~owl.carousel/dist/assets/owl.theme.default.css";
 @import "~owl.carousel/dist/assets/owl.carousel.min.css";
 @import "~@fortawesome/fontawesome-free/css/all.css";
+
+/* customes */
+@import url('all.css');
+@import url('mobile.css');
+@import url('global.css');
+@import url('bootstrap.layout.css');
+

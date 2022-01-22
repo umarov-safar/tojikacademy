@@ -6,7 +6,11 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
-## [1.34.2]- 22-01-2022
+## [1.35.0]- 23-01-2022
+### Changed 
+- serviceworker.js
+
+## [1.35.0]- 22-01-2022
 ### Added
 - PWA - progressive web application
 
