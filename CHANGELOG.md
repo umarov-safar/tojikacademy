@@ -6,6 +6,10 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.34.2]- 22-01-2022
+### Fixed
+- All css in on file by webpack.mix.js
+
 ## [1.34.1]- 22-01-2022
 ### Added
 - gitignore was changed

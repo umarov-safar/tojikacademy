@@ -23,13 +23,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="tg_Tj" />
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
-
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/global.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/mobile.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.layout.css') }}" />
     @yield('css')
 
     <script src="{{ asset('js/app.js') }}"></script>
