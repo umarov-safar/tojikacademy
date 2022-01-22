@@ -7,6 +7,8 @@
     <meta name="csrf-token" content="{{ Session::token() }}" />
     <meta name="yandex-verification" content="86988634e2c620cf" />
     
+    @laravelPWA
+
     <title>@yield('title', 'Тоҷик Академия - сомонаи дарсии Тоҷикон')</title>
 
     <meta name="description" content="@yield('description', 'Тоҷик Академия - яке аз бузургтарин сомонаи дарсии Тоҷикон мебошад. Дар ин сомона шумо метавонед дарсҳои хуб ва пешрафтро биомузед бо роҳҳои осон.')" />

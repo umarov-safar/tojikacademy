@@ -28,7 +28,9 @@ use App\Http\Controllers\UserController;
 // Home page
 Route::get('/',[\App\Http\Controllers\HomeController::class, 'index']);
 
-
+Route::get('/offline', function () {
+    return view('vendor.laravelpwa.offline');
+});
 
 
 Route::group(['middleware' => ['auth', 'is_email_verify']], function () {

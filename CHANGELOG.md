@@ -7,6 +7,10 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Fixed:
 
 ## [1.34.2]- 22-01-2022
+### Added
+- PWA - progressive web application
+
+## [1.34.2]- 22-01-2022
 ### Fixed
 - All css in on file by webpack.mix.js
 
