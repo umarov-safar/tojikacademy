@@ -6,6 +6,10 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.34.1]- 22-01-2022
+### Added
+- gitignore was changed
+
 ## [1.34.0]- 22-01-2022
 ### Added
 - sitemap generator library

@@ -3,11 +3,7 @@
 /public/storage
 /public/fonts
 /public/sitemap.xml
-/public/uploads/questions/*
-/public/uploads/articles/*
-/public/uploads/users/*
-/public/uploads/.tmb
-/public/uploads/word-categories/*
+/public/uploads
 /public/js/app.js
 /public/css/style.css
 /public/images/vendor
