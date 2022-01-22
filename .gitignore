@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/fonts
+/public/sitemap.xml
 /public/uploads/questions/*
 /public/uploads/articles/*
 /public/uploads/users/*
