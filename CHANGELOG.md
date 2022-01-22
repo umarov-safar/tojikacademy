@@ -6,6 +6,9 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.35.2]- 23-01-2022
+### Changed 
+- backgroun
 ## [1.35.1]- 23-01-2022
 ### Changed 
 - styles
