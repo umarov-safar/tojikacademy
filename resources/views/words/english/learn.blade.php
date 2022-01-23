@@ -1,9 +1,9 @@
 @extends('layout.app')
 
-@section('title', 'Омузи луғатҳои забони Англиси дар бораи ' . $category->name)
+@section('title', 'Омузишӣ луғатҳои забонӣ Англисӣ дар бораи ' . $category->name)
 @section('keywords', 'Омузиши забони англиси, омузиши луғатҳои руси, луғатҳои ' . $category->name)
-@section('description', $category->descriptioin)
-@section('image', asset('images/english.png'))
+@section('description', 'Луғатҳои забони Англиси ' . $category->descriptioin)
+@section('image', asset($category->image))
 @section('url', route('russian'))
 
 @section('content')

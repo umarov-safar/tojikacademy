@@ -1,16 +1,16 @@
 @extends('layout.app')
 
-@section('title', 'Омузиши луғатҳои забони руси дар бораи' . $category->name)
+@section('title', 'Омузишӣ луғатҳои забони Руси дар бораи ' . $category->name)
 @section('keywords', 'Омузиши забони руси, омузиши луғатҳои руси, луғатҳои мактаби, луғатҳои ' . $category->name)
-@section('description', $category->descriptioin)
-@section('image', asset('images/russian.png'))
+@section('description', 'Омузиши луғатҳои Русӣ' $category->descriptioin)
+@section('image', asset($category->image))
 @section('url', route('russian'))
 
 @section('content')
     <section class="learning" id="russian-word">
         <div class="container max-width">
             <div class="center">
-                <h1 class="text-page">Омузиши луғатҳои забони руси аз категорияи {{ $category->name }}</h1>
+                <h1 class="text-page">Омузишӣ луғатҳои забонӣ русӣ аз категорияи {{ $category->name }}</h1>
             </div>
             <div class="content">
                 <h4 class="fs-24" id="end-message">

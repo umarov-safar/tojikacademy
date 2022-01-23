@@ -8,6 +8,10 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 
 ## [1.35.4]- 24-01-2022
 ### Changed
+- Text changed in words for SEO
+
+## [1.35.4]- 24-01-2022
+### Changed
 - fields in admin panel
 
 ## [1.35.4]- 24-01-2022
