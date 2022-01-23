@@ -71,6 +71,11 @@ class EnglishCrudController extends CrudController
     {
         CRUD::setValidation(EnglishRequest::class);
 
+        $this->crud->addField([
+            'name' => 'sentence',
+            'label' => 'Тоҷикӣ',
+        ]);
+
         CRUD::setFromDb(); // fields
 
         CRUD::removeField('category_id');
