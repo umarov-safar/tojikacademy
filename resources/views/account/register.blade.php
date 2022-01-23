@@ -11,7 +11,7 @@
                 <div class="text ">
                     <h1><i class="fas fa-user-plus"></i> Бақайдгирӣ</h1>
                     <br>
-                    <p class="fs-20 m-auto">Бо обуна шудан ба сомона шумо ба ҳамаи имконоти сомона дастраси!.</p>
+                    <p class="fs-20 m-auto">Бо обуна шудан ба сомона шумо ба ҳамаи имконоти сомона дастраси меёбед!.</p>
                 </div>
                 <br>
                 <form id="register-form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">

@@ -94,12 +94,6 @@ function startTask(Russian)  {
 }
 
 
-//text to speech
-function speech(e) {
-    textToSpeech(e.innerText, 'Google русский');
-}
-
-
 class RuHtml{
     /*
     * @task is object
@@ -109,7 +103,6 @@ class RuHtml{
         for(let i = 0; i < task.randomWordRu.length; i++ ) {
             if(task.randomWordRu[i] && task.randomWordRu[i] !== '') {
                 let button = this.createElement('button', false,'word');
-                button.setAttribute('onclick', 'speech(this)');
                 button.innerHTML = `<span class="text listen">${task.randomWordRu[i]}</span>`;
                 demoRandomWords.append(button);
             }

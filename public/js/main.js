@@ -75,21 +75,6 @@ $('#avatar').change((event) => {
 })
 
 
-//text to speech function for learning word and sentence
-let synth = speechSynthesis;
-function textToSpeech(text, name){
-    synth.cancel();
-    let utternamce = new SpeechSynthesisUtterance(text);
-    for(let voice of synth.getVoices()){
-        if(voice.name === name){
-            utternamce.voice = voice;
-        }
-    }
-    speechSynthesis.speak(utternamce)
-}
-
-
-
 // it use in question
 function showAnswerToAnswerForm(el) {
     let form = el.parentElement.querySelector('form');

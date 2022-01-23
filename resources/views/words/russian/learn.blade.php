@@ -15,7 +15,7 @@
             <div class="content">
                 <h4 class="fs-24" id="end-message">
                     <span id="demo-text"></span>
-                    <i class="fa fa-volume-up listen pointer"></i>
+                    {{-- <i class="fa fa-volume-up listen pointer"></i> --}}
                 </h4>
                 <p class="message" style="margin-top: 10px;">
                 </p>
@@ -50,7 +50,6 @@
             textBtn = e.target;
             if(textBtn.classList.contains('listen')){
                 let text = textBtn.parentElement.querySelector('span');
-                textToSpeech(text.innerText, 'Google русский');
             }
         })
     </script>
