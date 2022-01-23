@@ -96,7 +96,7 @@ function startTask(English)  {
 
 //text to speech
 function speech(e) {
-    textToSpeech(e.innerText, '');
+    textToSpeech(e.innerText);
 }
 
 
