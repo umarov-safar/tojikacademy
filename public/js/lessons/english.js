@@ -94,10 +94,7 @@ function startTask(English)  {
 }
 
 
-//text to speech
-function speech(e) {
-    textToSpeech(e.innerText);
-}
+
 
 
 class EnglishHtml{
@@ -109,7 +106,6 @@ class EnglishHtml{
         for(let i = 0; i < task.randomWordEn.length; i++ ) {
             if(task.randomWordEn[i] && task.randomWordEn[i] !== ''){
                 let button = this.createElement('button', false,'word');
-                button.setAttribute('onclick', 'speech(this)');
                 button.innerHTML += `<span class="text listen">${task.randomWordEn[i]}</span>`;
                 demoRandomWords.append(button);
             }

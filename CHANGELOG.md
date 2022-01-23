@@ -6,6 +6,12 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.35.4]- 24-01-2022
+### Changed
+- Styles
+### Removed
+- Pronounciation of words
+
 ## [1.35.3]- 24-01-2022
 - Fixed:
 - English speech text

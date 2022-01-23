@@ -7,10 +7,10 @@
 
 @section('content')
 <section class="articles tt-page">
-    <div class="container">
+    <div class="container p-sm2-0">
         <div class="content row">
             <div class="col-lg-8">
-                <h2 class="section-title">Дарсҳои Гуногун</h2>
+                <h2 class="section-title center">Дарсҳои Гуногун</h2>
                 @forelse($tutorials as $tutorial)
                 <div class="article row">
                     <div class="text p-0">

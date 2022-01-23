@@ -7,10 +7,10 @@
 
 @section('content')
 <section class="articles tt-page">
-    <div class="container">
+    <div class="container p-sm2-0">
         <div class="content row">
             <div class="col-lg-8">
-                <h2 class="section-title">Тагҳо аз {{ $tag->name }}</h2>
+                <h2 class="section-title center">Тагҳо аз {{ $tag->name }}</h2>
                 @forelse($articles as $article)
                 <div class="article row">
                     <div class="text p-0">

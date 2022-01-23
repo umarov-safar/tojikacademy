@@ -1,5 +1,5 @@
 <section id="questions" class="question">
-    <div class="container max-width">
+    <div class="container">
         <div class="w-100  left-t">
             <h2 class="section-title">{{ isset($text) ? $text : 'Саволҳои охирин' }}</h2>
         </div>
