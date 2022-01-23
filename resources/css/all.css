@@ -820,6 +820,7 @@ a.ques {
     border-bottom: 2px solid black;
     width: max-content;
     min-width: 200px;
+    max-width: 100% !important;
     height: 80px;
     display: flex;
     align-items: flex-end;
