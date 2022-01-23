@@ -77,11 +77,12 @@ $('#avatar').change((event) => {
 
 //text to speech function for learning word and sentence
 let synth = speechSynthesis;
-function textToSpeech(text, name){
+function textToSpeech(text, name = "Google UK English Male"){
     synth.cancel();
     let utternamce = new SpeechSynthesisUtterance(text);
     for(let voice of synth.getVoices()){
         if(voice.name === name){
+            console.log(voice.name);
             utternamce.voice = voice;
         }
     }

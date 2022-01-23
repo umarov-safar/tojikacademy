@@ -6,6 +6,10 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.35.3]- 24-01-2022
+- Fixed:
+- English speech text
+
 ## [1.35.2]- 23-01-2022
 ### Changed 
 - backgroun

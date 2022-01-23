@@ -281,10 +281,12 @@
 
 {{-- Мавзуъҳо--}}
 <section class="articles">
-    <div class="container  p-sm2-0">
+    <div class="container">
         <div class="content row">
-            <div class="col-lg-6">
-                <h2 class="section-title">Хабарҳои нав</h2>
+            <div class="col-lg-6 p-sm2-0">
+                <div class="col-12">
+                    <h2 class="section-title ml-5">Хабарҳои нав</h2>
+                </div>
                 @forelse($news as $article)
                     <div class="article row">
                         <div class="text p-0">
@@ -313,8 +315,10 @@
                 @endforelse
             </div>
 
-            <div class="col-lg-6">
-                <h2 class="section-title">Дарсҳои нав</h2>
+            <div class="col-lg-6 p-sm2-0">
+                <div class="col-12">
+                    <h2 class="section-title ml-5">Дарсҳои нав</h2>
+                </div>
                 @forelse($tutorials as $tutorial)
                     <div class="article row">
                         <div class="text p-0">
