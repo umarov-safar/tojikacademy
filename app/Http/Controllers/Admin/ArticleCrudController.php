@@ -36,9 +36,19 @@ class ArticleCrudController extends \Backpack\NewsCRUD\app\Http\Controllers\Admi
         $this->crud->operation(['create', 'update'], function() {
             $this->crud->setValidation(ArticleRequest::class);
 
+            $this->crud->removeField('content');
+
             $this->crud->addField([
                 'name' => 'description',
             ])->afterField('title');
+
+            $this->crud->addField([
+                'name' => 'content',
+                'type' => 'summernote',
+                'options' => [
+                    'height'=> 320,
+                ]
+            ])->afterField('description');
 
             $this->crud->addFields([
                 ['name' => 'meta_title'],

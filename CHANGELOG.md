@@ -7,6 +7,10 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Fixed:
 
 ## [1.35.4]- 24-01-2022
+### Changed
+- fields in admin panel
+
+## [1.35.4]- 24-01-2022
 ### Fixed
 - style changed in sentences page
 
