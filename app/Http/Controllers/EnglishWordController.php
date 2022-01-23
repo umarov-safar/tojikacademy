@@ -63,6 +63,17 @@ class EnglishWordController extends Controller
     }
 
 
+    public function all() 
+    {
+        $category = WordCategory::where('slug', 'all')->get()->firstOrFail();
+        $words = EnglishWord::inRandomOrder()->limit(50)->get();
+
+        $wordsArray = self::makeWordTasks($words);
+
+        return view('words.russian.learn', compact('wordsArray', 'category'));
+    }
+
+
     protected function makeWordTasks($words) : array
     {
         $wordsArray = [];
