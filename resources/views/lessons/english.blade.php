@@ -29,7 +29,7 @@
 
             {{-- exercies section --}}
             <section class="learning hidden" id="english-exercise" oncut="return false">
-                <div class="container max-width">
+                <div class="container p-sm2-0">
                     <div class="content">
                         <div class="counter">
                             <div class="percent"></div>
