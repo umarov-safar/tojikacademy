@@ -48,7 +48,7 @@
                         @enderror
                     </div>
                     <div class="form-item">
-                        <label for="password_confirmation" class="input-label">Рамзи такрор нависед</label>
+                        <label for="password_confirmation" class="input-label">Рамзро такрор нависед</label>
                         <input type="password" class="input @error('password_confirmation') border-red @enderror" name="password_confirmation" id="password_confirmation" placeholder="Рамзро дубора нависед" >
                         @error('password_confirmation')
                         <p class="red">{{ $message }}</p>
