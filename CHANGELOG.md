@@ -6,6 +6,10 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.36.1]- 24-01-2022
+### Changed
+- some text
+
 ## [1.36.0]- 24-01-2022
 ### Added
 - Learning all words category
@@ -19,7 +23,7 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 - fields in admin panel
 
 ## [1.35.6]- 24-01-2022
-### Fixed
+### Fixed.
 - style changed in sentences page
 
 ## [1.35.5]- 24-01-2022
