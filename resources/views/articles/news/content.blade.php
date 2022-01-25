@@ -13,7 +13,7 @@
                 <h1 class="title">{{ $news->title }}</h1>
                 <p class="p-4">{{ $news->description }}</p>
                 <article>
-                    <img src="{{ asset($news->image_sizes['1100x800'] ?? $news->image) }}" alt="" />
+                    <img src="{{ asset($news->image_sizes['1000x600'] ?? $news->image) }}" alt="" />
                     {!! $news->content !!}
                 </article>
 

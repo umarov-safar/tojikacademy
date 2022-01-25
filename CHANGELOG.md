@@ -6,6 +6,10 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.36.2]- 25-01-2022
+### Changed
+- Changed size to main image in articles page and font size
+
 ## [1.36.1]- 24-01-2022
 ### Changed
 - some text

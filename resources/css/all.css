@@ -1145,7 +1145,17 @@ small.des, small.ans {
     border-radius: 10px 10px 0 0;
     font-weight: bold;
 }
+.news-page * p, .tt-page * p {
+    font-size: 18px !important;
+    line-height: 1.6rem;
+    text-align: justify;
+}
 
+.news-page article, .tt-page article {
+    font-size: 18px !important;
+    line-height: 1.6rem;
+    text-align: justify;
+}
 
 /* footer page */
 footer .content{
