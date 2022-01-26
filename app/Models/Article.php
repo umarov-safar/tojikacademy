@@ -37,7 +37,12 @@ class Article extends \Backpack\NewsCRUD\app\Models\Article
             $arrPaths = imageResizer($article->image, 'articles', 'articles');
             $article->image_sizes = $arrPaths;
         });
-
     }
 
+    public function category()
+    {
+        return $this->belongsTo('Backpack\NewsCRUD\app\Models\Category', 'category_id');
+    }
+
+ 
 }
