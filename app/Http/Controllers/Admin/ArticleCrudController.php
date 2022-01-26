@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ArticleRequest;
+use App\Models\CategoryArticle;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Spatie\Permission\Models\Role;
@@ -38,6 +39,8 @@ class ArticleCrudController extends \Backpack\NewsCRUD\app\Http\Controllers\Admi
 
             $this->crud->removeField('content');
 
+            $this->crud->removeField('category_id');
+
             $this->crud->addField([
                 'name' => 'description',
             ])->afterField('title');
@@ -49,6 +52,15 @@ class ArticleCrudController extends \Backpack\NewsCRUD\app\Http\Controllers\Admi
                     'height'=> 320,
                 ]
             ])->afterField('description');
+
+            $this->crud->addField([
+                'label' => 'Category',
+                'type' => 'relationship',
+                'name' => 'category_id',
+                'entity' => 'category',
+                'model' => CategoryArticle::class,
+                'attribute' => 'name',
+            ]);
 
             $this->crud->addFields([
                 ['name' => 'meta_title'],
