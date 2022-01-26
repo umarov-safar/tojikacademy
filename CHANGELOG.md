@@ -6,7 +6,12 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
-## [1.36.2]- 25-01-2022
+
+## [1.36.4]- 25-01-2022
+### Fixed
+- Russian sentece  
+
+## [1.36.3]- 25-01-2022
 ### Changed
 - Filed category in operation create update articles
 
