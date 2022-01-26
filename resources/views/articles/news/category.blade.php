@@ -10,7 +10,7 @@
     <div class="container p-sm2-0">
         <div class="content row">
             <div class="col-lg-8">
-                <h1 class="section-title center">Хабарҳо аз {{ $category->name }}</h1>
+                <h1 class="section-title center">Хабарҳо аз {{ $category->originalName; }}</h1>
                 @forelse($newsS as $news)
                 <div class="article row">
                     <div class="text p-0">

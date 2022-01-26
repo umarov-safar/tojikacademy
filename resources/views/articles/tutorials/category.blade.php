@@ -11,7 +11,7 @@
     <div class="container p-sm2-0">
         <div class="content row">
             <div class="col-lg-8">
-                <h2 class="section-title center">Дарсҳо аз {{ $category->name }}</h2>
+                <h2 class="section-title center">Дарсҳо аз {{ $category->originalName }}</h2>
                 @forelse($tutorials as $tutorial)
                 <div class="article row">
                     <div class="text p-0">
