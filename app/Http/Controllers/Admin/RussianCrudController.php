@@ -104,8 +104,8 @@ class RussianCrudController extends CrudController
         //removing spaces
         $sentenceTj = preg_replace('/\s+/', ' ', $request->sentence);
         $translate1 = preg_replace('/\s+/', ' ', $request->translate1);
-        $translate2 = preg_replace('/\s+/', ' ', $request->translate1);
-        $translate3 = preg_replace('/\s+/', ' ', $request->translate1);
+        $translate2 = preg_replace('/\s+/', ' ', $request->translate2);
+        $translate3 = preg_replace('/\s+/', ' ', $request->translate3);
 
         $dto = new RussianDto(
             $sentenceTj,
@@ -139,8 +139,8 @@ class RussianCrudController extends CrudController
         //removing spaces
         $sentenceTj = preg_replace('/\s+/', ' ', $request->sentence);
         $translate1 = preg_replace('/\s+/', ' ', $request->translate1);
-        $translate2 = preg_replace('/\s+/', ' ', $request->translate1);
-        $translate3 = preg_replace('/\s+/', ' ', $request->translate1);
+        $translate2 = preg_replace('/\s+/', ' ', $request->translate2);
+        $translate3 = preg_replace('/\s+/', ' ', $request->translate3);
 
         $dto = new RussianDto(
             $sentenceTj,
