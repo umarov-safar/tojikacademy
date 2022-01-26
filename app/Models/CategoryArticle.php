@@ -13,6 +13,7 @@ class CategoryArticle extends Category
     use CrudTrait;
     use Sluggable, SluggableScopeHelpers;
 
+    public $originalName;
 
 
     public function articles(): HasMany
@@ -24,6 +25,7 @@ class CategoryArticle extends Category
 
     public function getNameAttribute($value)
     {
+        $this->originalName = $value;
         return @$this->parent->name ? $this->parent->name . ' - ' . $value : $value;
     }
 
