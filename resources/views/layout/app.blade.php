@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="csrf-token" content="{{ Session::token() }}" />
     <meta name="yandex-verification" content="86988634e2c620cf" />
-    
-    @laravelPWA
+    <meta name="yandex-verification" content="86988634e2c620cf" />
 
     <title>@yield('title', 'Тоҷик Академия - сомонаи дарсии Тоҷикон')</title>
 
@@ -24,6 +23,8 @@
     <meta property="og:site_name" content="Тоҷик Академия" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="tg_Tj" />
+
+    @laravelPWA
 
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
