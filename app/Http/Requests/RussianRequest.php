@@ -27,7 +27,7 @@ class RussianRequest extends FormRequest
     public function rules()
     {
         return [
-            'sentence' => 'required|min:5|max:255|unique:russian,sentence,' . $this->id,
+            'sentence' => 'required|min:3|max:255',
             'translate1' =>  'required',
             'category'  => 'required|exists:language_categories,id',
         ];
@@ -54,7 +54,6 @@ class RussianRequest extends FormRequest
     {
         return [
             'sentence.required' => 'Ибораро нависед',
-            'sentence.unique' => 'Инхел ибора вуҷуд дорад',
             'sentence.min' => 'Ибора бояд аз 5 ҳарф зиёд бошад',
             'translate1.required' => 'Тарҷумаро нависед',
             'category.required' => 'Категорияро итихоб кунед',
