@@ -2,7 +2,7 @@
 
 @section('title', 'Омузишӣ луғатҳои забонӣ Англисӣ дар бораи ' . $category->name)
 @section('keywords', 'Омузиши забони англиси, омузиши луғатҳои руси, луғатҳои ' . $category->name)
-@section('description', 'Луғатҳои забони Англиси ' . $category->descriptioin)
+@section('description', 'Луғатҳои забони Англиси. ' . $category->description)
 @section('image', asset($category->image))
 @section('url', route('russian'))
 
