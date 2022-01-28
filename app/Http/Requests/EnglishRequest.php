@@ -26,7 +26,7 @@ class EnglishRequest extends FormRequest
     public function rules()
     {
         return [
-            'sentence' => 'required|unique:englishes,sentence|min:5|max:255',
+            'sentence' => 'required|min:3|max:255',
             'translate1' =>  'required',
             'category'  => 'required|exists:language_categories,id',
         ];
@@ -53,7 +53,6 @@ class EnglishRequest extends FormRequest
     {
         return [
             'sentence.required' => 'Ибораро нависед',
-            'sentence.unique' => 'Инхел ибора вуҷуд дорад',
             'sentence.min' => 'Ибора бояд аз 5 ҳарф зиёд бошад',
             'translate1.required' => 'Тарҷумаро нависед',
             'category.required' => 'Категорияро итихоб кунед',

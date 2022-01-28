@@ -6,6 +6,9 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.36.4]- 25-01-2022
+### Changed
+- Unique in russian and english tables!
 
 ## [1.36.4]- 25-01-2022
 ### Fixed
