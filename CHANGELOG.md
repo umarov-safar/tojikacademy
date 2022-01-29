@@ -6,9 +6,13 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
-## [1.36.5]- 29-01-2022
-### Fixed:
-- Description in words page
+
+
+
+## [1.36.6]- 29-01-2022
+### Added:
+- PWA button
+- Yandex metrika
 
 ## [1.36.5]- 29-01-2022
 ### Changed
