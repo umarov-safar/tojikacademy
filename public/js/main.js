@@ -122,3 +122,21 @@ $('.delete-btn').click(function(event) {
         $(this).parent().submit();
     }
 });
+
+
+
+//PWA installer
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+    deferredPrompt = e;
+});
+const installApp = document.getElementById('installPwa');
+installApp.addEventListener('click', async () => {
+    if (deferredPrompt !== null) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+            deferredPrompt = null;
+        }
+    }
+});

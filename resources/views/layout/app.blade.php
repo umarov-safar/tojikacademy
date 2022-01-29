@@ -32,6 +32,24 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('js_head')
+
+
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript" >
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+            ym(87329263, "init", {
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+            });
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/87329263" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+
+
 </head>
 
 {{-- menu of header the function is in the helpers.php file --}}
@@ -122,6 +140,11 @@
                             </li>
                         @endforeach
                     </ul>
+
+                    <div class="p-5 w-100">
+                        <button id="installPwa" class="btn-b">Насб кардан</button>
+                    </div>
+
                     <ul class="p-10">
                         <h3 class="m-5">Таммос бо мо</h3>
                         <li class="m-5">Email: <a href="mailto:info@tojikacademy.com" style="color: #ccc">info@tojikacademy.com</a></li>

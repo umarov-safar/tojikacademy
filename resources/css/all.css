@@ -4,6 +4,16 @@
     font-size: 1.2rem;
 }
 
+#installPwa {
+    width: 70%;
+    margin: auto;
+    background: #086E7D;
+    margin: 10px;
+    box-shadow: 1px 1px 10px #58ff9fab;
+    border: 1px solid #2fc8bd;
+    font-weight: bold;
+}
+
 #description-site {
     min-height: 200px;
     display: flex;
