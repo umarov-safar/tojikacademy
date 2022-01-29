@@ -132,6 +132,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 const installApp = document.getElementById('installPwa');
 installApp.addEventListener('click', async () => {
+    console.log(deferredPrompt);
     if (deferredPrompt !== null) {
         deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
@@ -139,4 +140,9 @@ installApp.addEventListener('click', async () => {
             deferredPrompt = null;
         }
     }
+});
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    $('#installPwa').show();
+    deferredPrompt = e;
 });

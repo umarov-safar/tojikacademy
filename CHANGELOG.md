@@ -8,12 +8,14 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 
 
 
+## [1.36.6]- 29-01-2022
+### Fixed:
+- PWA button
 
 ## [1.36.6]- 29-01-2022
 ### Added:
 - PWA button
 - Yandex metrika
-
 ## [1.36.5]- 29-01-2022
 ### Changed
 - Unique in russian and english tables!
