@@ -12,6 +12,7 @@
     box-shadow: 1px 1px 10px #58ff9fab;
     border: 1px solid #2fc8bd;
     font-weight: bold;
+    display: none;
 }
 
 #description-site {
