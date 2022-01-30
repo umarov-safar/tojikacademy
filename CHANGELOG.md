@@ -7,8 +7,11 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Fixed:
 
 
+## [1.36.8]- 29-01-2022
+### Added:
+- Google analytic
 
-## [1.36.6]- 29-01-2022
+## [1.36.7]- 29-01-2022
 ### Fixed:
 - PWA button
 

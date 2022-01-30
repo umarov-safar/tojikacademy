@@ -49,6 +49,14 @@
         <noscript><div><img src="https://mc.yandex.ru/watch/87329263" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
         <!-- /Yandex.Metrika counter -->
 
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-R3XQYY6JT7"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-R3XQYY6JT7');
+        </script>
 
 </head>
 
