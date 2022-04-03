@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -26,15 +26,15 @@ class RegisterRequest extends FormRequest
         return [
             'name' => 'required|string|min:3',
             'username' => 'required|alpha_dash|min:4|unique:users,username,'.$this->id,
+            'last_name' => 'nullable|string|min:3',
             'email' => 'nullable|unique:users,email,' . $this->id,
             'password' => 'required|confirmed|min:4',
             'password_confirmation' => 'required',
+//            'avatar' => 'nullable|mimes:jpg,png,jpeg,webp|max:5048'
         ];
     }
 
-    /**
-     * @return array|void
-     */
+
     public function messages()
     {
         return [
@@ -48,6 +48,7 @@ class RegisterRequest extends FormRequest
             'password.required' => 'Рамзро пур кунед!',
             'password.confirmed' => 'Рамзҳо як хела нестанд!',
             'password_confirmation.required' => 'Рамзи такрориро пур кунед!',
+            'avatar.mimes' => 'Лутфан акс интихоб кунед'
         ];
     }
 }

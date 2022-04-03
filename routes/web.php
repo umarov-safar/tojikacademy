@@ -35,11 +35,12 @@ Route::get('/offline', function () {
 });
 
 
-Route::group(['middleware' => ['auth', 'is_email_verify']], function () {
+Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('account/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('auth/logout', [LoginController::class, 'logout'])->name('logout');
 
-    Route::put('account/register/{id}', [RegisterController::class, 'update'])->name('updateUser');
+    Route::put('account/users/{id}', [UserController::class, 'update'])->name('updateUser');
+    Route::put('account/users/{id}/avatar', [UserController::class, 'changeAvatar'])->name('changeAvatar');
 
     //Question routes
     Route::resource('questions', QuestionController::class)->except('show');
@@ -59,15 +60,15 @@ Route::group(['middleware' => ['guest']], function() {
 
     //Account controller
     //register
-    Route::get('account/register', [RegisterController::class, 'register'])->name('register');
-    Route::post('account/register', [RegisterController::class, 'create']);
+    Route::get('auth/register', [RegisterController::class, 'register'])->name('register');
+    Route::post('auth/register', [RegisterController::class, 'create']);
     //login
-    Route::get('account/login', [LoginController::class, 'login'])->name('login');
-    Route::post('account/login', [LoginController::class, 'check']);
+    Route::get('auth/login', [LoginController::class, 'login'])->name('login');
+    Route::post('auth/login', [LoginController::class, 'check']);
 
     //email verify
-    Route::get('/account/verify', [\App\Http\Controllers\VerifyEmailController::class, 'index']);
-    Route::get('/account/verify/{token}', [\App\Http\Controllers\VerifyEmailController::class, 'emailVerify'])->name('verify_email');
+    Route::get('/auth/verify', [\App\Http\Controllers\VerifyEmailController::class, 'index']);
+    Route::get('/auth/verify/{token}', [\App\Http\Controllers\VerifyEmailController::class, 'emailVerify'])->name('verify_email');
 });
 
 

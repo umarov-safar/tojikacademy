@@ -16,9 +16,11 @@ class IsEmailVerify
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!\Auth::user()->is_email_verified) {
-           return redirect('/account/verify');
-        }
+        // Until 28.03.2028 in does not work
+        //  if(!\Auth::user()->is_email_verified) {
+        //           return redirect('/account/verify');
+        //        }
+
         return $next($request);
     }
 }

@@ -31,7 +31,6 @@ class User extends Authenticatable
         'is_email_verified',
     ];
 
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -52,6 +51,7 @@ class User extends Authenticatable
         'image_sizes' => 'array',
     ];
 
+    const DEFAULT_IMAGE = 'images/user.png';
 
     /**
      * @return string
@@ -60,7 +60,6 @@ class User extends Authenticatable
     {
         return $this->name . ' ' . $this->last_name;
     }
-
 
     // --- Relationships ---
     public function answers() : HasMany

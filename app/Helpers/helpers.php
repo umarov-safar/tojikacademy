@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Nette\Utils\Json;
 use App\Models\Answer;
@@ -38,11 +40,9 @@ if(!function_exists('upload_images')){
         foreach ($sizes as $folder => $size) {
             $image = Image::make($file);
 
-
             $userImageSizePath = $userFolder . $folder; //folder from config
 
-
-            !file_exists(public_path($userImageSizePath)) ? mkdir(public_path($userImageSizePath)) : null; //folder not exists than creat
+            !file_exists(public_path($userImageSizePath)) ?? mkdir(public_path($userImageSizePath)); //folder not exists than create
 
             $image->resize($size['w'], $size['h']);// size from config filesystem
 
@@ -102,7 +102,6 @@ if(!function_exists('upload_images')){
                     'main' => $mainPaths
                 ];
             }
-
 
             $imageSizes = Json::encode($imageSizes);
 
