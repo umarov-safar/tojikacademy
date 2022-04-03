@@ -34,8 +34,19 @@ class Article extends \Backpack\NewsCRUD\app\Models\Article
     {
         parent::boot();
         self::saving(function ($article) {
+
+            if(request()->isMethod('PUT')) {
+
+                $oldArticle = Article::find($article->id);
+
+                if($article->image === $oldArticle->image){
+                    return;
+                }
+            }
+
             $arrPaths = imageResizer($article->image, 'articles', 'articles');
             $article->image_sizes = $arrPaths;
+
         });
     }
 
@@ -44,5 +55,5 @@ class Article extends \Backpack\NewsCRUD\app\Models\Article
         return $this->belongsTo('Backpack\NewsCRUD\app\Models\Category', 'category_id');
     }
 
- 
+
 }

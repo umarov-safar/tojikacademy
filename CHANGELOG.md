@@ -5,6 +5,10 @@
 ### Changed:
 ### Fixed:
 
+## [1.37.1]- 04-04-2022
+### Fixed:
+- Duplicating articles image
+
 ## [1.37.0]- 04-04-2022
 ### Added:
 - username to users table for login
