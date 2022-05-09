@@ -23,7 +23,7 @@
                                 <div class="d-flex align-center justify-between">
                                     {{--         name image               --}}
                                     <div class="name-img d-flex align-center p-7">
-                                        <img style="border-radius: 30%"  src="{{ asset($question->user->image_sizes['100x100'] ?? $question->user->avatar) }}" width="64" class="ml-5">
+                                        <img style="border-radius: 30%"  src="{{ asset($question->user->image_sizes['100x100'] ?? $question->user->avatar ?? \App\Models\User::DEFAULT_IMAGE) }}" width="64" class="ml-5">
                                         <div class="p-3">
                                             <a class="p-3" href="{{ route('users.show', $question->user->id) }}"><strong>{{ $question->user->fullName() }}</strong></a>
                                             <small class="p-3 d-block">{{ $question->formattedDate() }}</small>

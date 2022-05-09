@@ -9,9 +9,9 @@
                     {{--    Full name, img date     --}}
                     <div class="name-img d-flex justify-between">
                         <div class="d-flex align-center">
-                            <img style="border-radius: 30% !important;" 
-                                 src="{{ asset($question->user->image_sizes['100x100'] ?? $question->user->avatar)}}" 
-                                 alt="{{'Савлдиҳанда '. $question->user->fullName() }}" 
+                            <img style="border-radius: 30% !important;"
+                                 src="{{ asset($question->user->image_sizes['100x100'] ?? $question->user->avatar ?? \App\Models\User::DEFAULT_IMAGE)}}"
+                                 alt="{{'Савлдиҳанда '. $question->user->fullName() }}"
                                  class="mr-3"
                                  width="40"
                                  >

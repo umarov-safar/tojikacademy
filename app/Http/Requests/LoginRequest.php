@@ -24,7 +24,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|exists:users,email',
+            'username' => 'required|alpha_dash|exists:users,username',
             'password' => 'required',
         ];
     }
@@ -33,8 +33,8 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-          'email.required' => 'Почтаи электрониро нависед',
-          'email.exists' => 'Почтаи электрони ёфта нашуд!',
+          'username.required' => 'Номи корбариро нависед',
+          'username.exists' => 'Номи корбари ёфта нашуд!',
           'password.required' => 'Рамзро нависед'
         ];
     }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Providers\AuthServiceProvider;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,16 +30,13 @@ class LoginController extends Controller
 
     public function check(LoginRequest $request)
     {
-       $logged =  Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+       $logged =  Auth::attempt(['username' => $request->username, 'password' => $request->password]);
 
-       if($logged && Auth::user()->is_email_verified) {
-           return redirect()->intended();
-       } else if($logged) {
-           Auth::logout();
-           return redirect(route('login'))->with('email_verify', __('login.email_verify_message'));
+       if($logged) {
+           return redirect(RouteServiceProvider::HOME);
        }
 
-       return back()->withErrors(['error' => 'Почтаи электрони ё рамз нодуруст аст!']);
+       return back()->withErrors(['error' => 'Ном ё рамз нодуруст аст!']);
     }
 
 }

@@ -2,58 +2,44 @@
 
 namespace App\Dtos;
 
-class RegisterDto {
+class UserDto {
 
-    /**
-     * @var string $name
-     */
-    protected $name;
+    protected string $name;
 
-    /**
-     * @var string|null $lastName
-     * Last name not in use until 28.03.2022
-     */
-    protected ?string $lastName;
+    protected string $username;
 
-    /**
-     * @var string
-     */
-    protected string $username; // username is for login to system
-
-    /**
-     * @var string|null $email
-     */
     protected ?string $email;
 
-    /**
-     * @var string $password
-     */
     protected string $password;
 
-    /**
-     * @var string|null $avatar
-     */
-    protected $avatar;
+    protected ?array $image_sizes;
+
+    protected ?string $avatar;
 
     /**
-     * @var array
+     * @param string $name
+     * @param string $username
+     * @param string $email
+     * @param string $password
+     * @param string|null $avatar
+     * @param string|null $image_sizes
      */
-    protected array $image_sizes;
-
-
     public function __construct(
         string $name,
         string $username,
-        ?string $email,
         string $password,
+        ?string $email = NULL,
+        ?string $avatar = NULL,
+        ?array $image_sizes = NULL
     )
     {
         $this->name = $name;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
+        $this->image_sizes = $image_sizes;
+        $this->avatar = $avatar;
     }
-
 
     /**
      * @return string
@@ -69,15 +55,6 @@ class RegisterDto {
     public function getUsername(): string
     {
         return $this->username;
-    }
-
-
-    /**
-     * @return string|null
-     */
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
     }
 
     /**
@@ -97,19 +74,19 @@ class RegisterDto {
     }
 
     /**
-     * @return array|null
+     * @return string|null
+     */
+    public function getImageSizes(): ?array
+    {
+        return $this->image_sizes;
+    }
+
+    /**
+     * @return string
      */
     public function getAvatar(): ?string
     {
         return $this->avatar;
-    }
-
-    /**
-     * @return array
-     */
-    public function getImageSizes(): array
-    {
-        return $this->image_sizes;
     }
 
 }

@@ -1,4 +1,4 @@
-@extends('layout.easy')
+@extends('layout.app')
 @section('keywords', 'Воридшави, логин, дохишлшудан ба сайт')
 @section('title', "Тоҷик Академия - Воридшавӣ (логин).")
 @section('description', 'Воридшудан ба сомона. Хушомадед хушҳолем ки бо мо ҳастед.')
@@ -15,16 +15,11 @@
                 <br>
                 <form id="register-form" method="POST" action="{{ route('login') }}">
                     @error('error') <span class="red">{{ $message }}</span> @enderror
-                    @if(Session::has('email_verify'))
-                        <div class="bg-info p-10">
-                            <p class="white">{{ Session::get('email_verify') }}</p>
-                        </div>
-                    @endif
                     @csrf
                     <div class="form-item">
-                        <label for="email" class="input-label">Почтаи электронии:</label>
-                        <input type="email" class="input" name="email" id="email" value="{{ old('email') }}" placeholder="example@gmail.com">
-                        @error('email') <span class="red">{{ $message }}</span> @enderror
+                        <label for="username" class="input-label">Номи корбари (Англисӣ):</label>
+                        <input type="text" class="input" name="username" id="username" value="{{ old('username') }}" placeholder="Номи корбари ...">
+                        @error('username') <span class="red">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-item">
                         <label for="password" class="input-label">Рамз:</label>

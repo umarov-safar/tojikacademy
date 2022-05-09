@@ -100,7 +100,8 @@
                             @auth()
                                 <a class="nav-icon" href="{{ route('users.show', [auth()->id()]) }}"><span class="far fa-user-circle"></span></a>
                                 <a class="nav-icon" href="{{ route('logout') }}"><i class="fas fa-door-open"></i></a>
-                            @endauth @guest
+                            @endauth
+                            @guest
                                 <a class="nav-icon" href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a>
                                 <a class="nav-icon" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i></a>
                             @endguest

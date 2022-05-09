@@ -1,4 +1,3 @@
-REMOVE COMMENT IN ADMIN MIDDLEWARE
 #Changelog
 [version]
 ## Unreleased:
@@ -6,6 +5,17 @@ REMOVE COMMENT IN ADMIN MIDDLEWARE
 ### Changed:
 ### Fixed:
 
+## [1.37.1]- 04-04-2022
+### Fixed:
+- Duplicating articles image
+
+## [1.37.0]- 04-04-2022
+### Added:
+- username to users table for login
+- Default roles and abilities
+### Changed:
+- Registration with username
+- Default user avatar in model
 
 ## [1.36.8]- 29-01-2022
 ### Added:
