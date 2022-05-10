@@ -121,7 +121,10 @@ Route::get('/tutorials', [ArticleController::class, 'tutorials'])->name('tutoria
 Route::get('/tutorials/{category}', [ArticleController::class, 'tutorialCategory'])->name('tutorial-category');
 Route::get('/tutorials/{category}/{slug}', [ArticleController::class, 'tutorial'])->name('tutorial');
 
-
+Route::get('quizzes', [\App\Http\Controllers\QuizController::class, 'index'])->name('quizzes');
+Route::get('quizzes/{category}', [\App\Http\Controllers\QuizController::class,  'startQuiz'])
+    ->whereAlpha('category')
+    ->name('startQuiz');
 
 Route::get('{page}/{subs?}', [\App\Http\Controllers\PageController::class, 'index'])
     ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);

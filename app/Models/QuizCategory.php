@@ -40,6 +40,12 @@ class QuizCategory extends Model
         return $this->belongsTo(QuizCategory::class, 'parent_id');
     }
 
+
+    public function quizzes()
+    {
+        return $this->hasMany(Quiz::class, 'category_id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
