@@ -72,6 +72,9 @@ html, body, p, h1, h2, h3, h4, h5, h6, a, div, input, textarea, section, article
 
 
 /* Bootstrap bg-colors */
+.bg-unset{
+    background: unset !important;
+}
 .bg-primary{
     background: #007bff !important;
 }
@@ -704,4 +707,7 @@ a.question-category-link {
     flex-wrap: wrap !important;
 }
 
+.mx-w-0{
+    max-width: unset !important;
+}
 

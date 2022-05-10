@@ -109,7 +109,7 @@ class UserController extends Controller
     public function changeAvatar(Request $request, $id)
     {
         $request->validate([
-            'avatar' => 'nullable|mimes:jpg,png,jpeg,webp|max:5048'
+            'avatar' => 'nullable|mimes:jpg,png,jpeg,webp'
         ]);
 
         $user = User::find($id);

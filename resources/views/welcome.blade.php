@@ -109,7 +109,7 @@
                     тестҳо кор кунед ва балҳои худро бубинед. Тестҳо аз ҳамаи фанҳо мебошад.
                 </p>
                 <div class="links">
-                    <a class="link-1" href="">
+                    <a class="link-1" href="{{ route('quizzes') }}">
                         Саҳифаи тестҳо
                     </a>
                 </div>
@@ -123,7 +123,7 @@
                 </p>
                 <div class="links">
                     <a class="link-1" href="">
-                        Саҳифаи тестҳо
+                        Саҳифаи видеоҳо
                     </a>
                 </div>
             </div>
@@ -136,7 +136,7 @@
                 </p>
                 <div class="links">
                     <a class="link-1" href="">
-                        Саҳифаи тестҳо
+                        Саҳифаи бозиҳо
                     </a>
                 </div>
             </div>
